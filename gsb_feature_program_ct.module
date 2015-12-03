@@ -1,0 +1,37 @@
+<?php
+/**
+ * @file
+ * Code for the GSB Feature Program Content Type feature.
+ */
+
+include_once 'gsb_feature_program_ct.features.inc';
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function gsb_feature_program_ct_form_node_form_alter(&$form, &$form_state) {
+  $language = $form['language']['#value'];
+
+  $form['field_link_single']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_program_detail[' . $language . ']"]' => array(
+        array('value' => '1'),
+      ),
+    ),
+  );
+
+  $form['field_overview_description']['#states'] = array(
+    'invisible' => array(
+      ':input[name="field_program_detail[' . $language . ']"]' => array(
+        array('value' => '1'),
+      ),
+    ),
+  );
+  $form['field_key_benefits_description']['#states'] = array(
+    'invisible' => array(
+      ':input[name="field_program_detail[' . $language . ']"]' => array(
+        array('value' => '1'),
+      ),
+    ),
+  );
+}
