@@ -21,7 +21,7 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Overview',
-    'weight' => '5',
+    'weight' => '14',
     'children' => array(
       0 => 'field_overview_teaser',
     ),
