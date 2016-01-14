@@ -19,16 +19,19 @@ function gsb_feature_program_ct_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '39',
+          'weight' => '35',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '38',
+          'weight' => '34',
         ),
         'redirect' => array(
-          'weight' => '37',
+          'weight' => '33',
+        ),
+        'gsb_program_instance_listing_eva_field_form' => array(
+          'weight' => '1',
         ),
       ),
       'display' => array(),

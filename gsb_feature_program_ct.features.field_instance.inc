@@ -52,7 +52,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 11,
+      'weight' => 13,
     ),
     'workbench_access_field' => 0,
   );
@@ -85,7 +85,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_application_requirements',
-    'label' => 'Application Requirements',
+    'label' => 'Application Requirements URL',
     'required' => 0,
     'settings' => array(
       'absolute_url' => 1,
@@ -121,7 +121,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 31,
+      'weight' => 26,
     ),
     'workbench_access_field' => 0,
   );
@@ -282,7 +282,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'hs_taxonomy',
       'settings' => array(),
       'type' => 'taxonomy_hs',
-      'weight' => 5,
+      'weight' => 7,
     ),
     'workbench_access_field' => 0,
   );
@@ -315,7 +315,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_cta1',
-    'label' => 'CTA1',
+    'label' => 'CTA #1',
     'required' => 0,
     'settings' => array(
       'absolute_url' => 1,
@@ -351,7 +351,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 29,
+      'weight' => 26,
     ),
     'workbench_access_field' => 0,
   );
@@ -384,7 +384,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_cta2',
-    'label' => 'CTA2',
+    'label' => 'CTA #2',
     'required' => 0,
     'settings' => array(
       'absolute_url' => 1,
@@ -420,7 +420,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 30,
+      'weight' => 27,
     ),
     'workbench_access_field' => 0,
   );
@@ -497,7 +497,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 12,
+      'weight' => 14,
     ),
     'workbench_access_field' => 0,
   );
@@ -641,7 +641,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_featured_event',
-    'label' => 'Featured Item',
+    'label' => 'Title',
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
@@ -657,7 +657,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 23,
+      'weight' => 24,
     ),
     'workbench_access_field' => 0,
   );
@@ -690,7 +690,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_featured_superhead',
-    'label' => 'Featured Superhead',
+    'label' => 'Superhead',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -765,7 +765,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 22,
+      'weight' => 23,
     ),
     'workbench_access_field' => 0,
   );
@@ -797,7 +797,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_file_unlimited_public',
-    'label' => 'Related Files',
+    'label' => 'Files',
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
@@ -835,7 +835,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 36,
+      'weight' => 32,
     ),
     'workbench_access_field' => 0,
   );
@@ -945,7 +945,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 24,
+      'weight' => 23,
     ),
     'workbench_access_field' => 0,
   );
@@ -1022,7 +1022,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 13,
+      'weight' => 15,
     ),
     'workbench_access_field' => 0,
   );
@@ -1055,7 +1055,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_key_benefits_description',
-    'label' => 'Key Benefits Description',
+    'label' => 'Description',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -1132,7 +1132,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 17,
+      'weight' => 19,
     ),
     'workbench_access_field' => 0,
   );
@@ -1165,7 +1165,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_key_benefits_teaser',
-    'label' => 'Key Benefits Teaser',
+    'label' => 'Teaser',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -1240,7 +1240,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 16,
+      'weight' => 18,
     ),
     'workbench_access_field' => 0,
   );
@@ -1291,7 +1291,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'hs_taxonomy',
       'settings' => array(),
       'type' => 'taxonomy_hs',
-      'weight' => 8,
+      'weight' => 10,
     ),
     'workbench_access_field' => 0,
   );
@@ -1342,7 +1342,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'hs_taxonomy',
       'settings' => array(),
       'type' => 'taxonomy_hs',
-      'weight' => 4,
+      'weight' => 6,
     ),
     'workbench_access_field' => 0,
   );
@@ -1376,7 +1376,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_learn_more_photo',
-    'label' => 'Learn More Photo',
+    'label' => 'Image',
     'required' => 0,
     'settings' => array(
       'alt_field' => 1,
@@ -1452,7 +1452,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_learn_more_video_title',
-    'label' => 'Learn More Video Title',
+    'label' => 'Video Title',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -1596,7 +1596,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 2,
+      'weight' => 3,
     ),
     'workbench_access_field' => 0,
   );
@@ -1629,7 +1629,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_link_unlimited',
-    'label' => 'Related Links',
+    'label' => 'Links',
     'required' => 0,
     'settings' => array(
       'absolute_url' => 1,
@@ -1665,7 +1665,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 35,
+      'weight' => 31,
     ),
     'workbench_access_field' => 0,
   );
@@ -1698,7 +1698,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_overview_description',
-    'label' => 'Overview Description',
+    'label' => 'Description',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -1775,7 +1775,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 15,
+      'weight' => 11,
     ),
     'workbench_access_field' => 0,
   );
@@ -1988,10 +1988,60 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'settings' => array(
         'maxlength_js' => 0,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'size' => 60,
+        'size' => 150,
       ),
       'type' => 'text_textfield',
-      'weight' => 7,
+      'weight' => 9,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance: 'node-program-field_pathauto_title_alias'.
+  $field_instances['node-program-field_pathauto_title_alias'] = array(
+    'bundle' => 'program',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => array(
+      0 => array(
+        'use_autogenerate' => 1,
+        'alias' => '',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'pathauto_title_alias',
+        'settings' => array(
+          'conditions' => array(),
+        ),
+        'type' => 'pathauto_title_alias_default',
+        'weight' => 37,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_pathauto_title_alias',
+    'label' => 'Path Alias',
+    'required' => FALSE,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'pathauto_title_alias',
+      'settings' => array(),
+      'type' => 'pathauto_title_alias_form',
+      'weight' => 4,
     ),
     'workbench_access_field' => 0,
   );
@@ -2037,7 +2087,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 3,
+      'weight' => 5,
     ),
     'workbench_access_field' => 0,
   );
@@ -2163,7 +2213,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'checkall' => FALSE,
       ),
       'type' => 'options_buttons',
-      'weight' => 1,
+      'weight' => 2,
     ),
     'workbench_access_field' => 0,
   );
@@ -2250,7 +2300,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_program_small_teams',
-    'label' => 'This Program is for Small Teams',
+    'label' => 'This program is for small teams.',
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
@@ -2264,7 +2314,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 10,
+      'weight' => 12,
     ),
     'workbench_access_field' => 0,
   );
@@ -2315,7 +2365,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'hs_taxonomy',
       'settings' => array(),
       'type' => 'taxonomy_hs',
-      'weight' => 9,
+      'weight' => 11,
     ),
     'workbench_access_field' => 0,
   );
@@ -2349,7 +2399,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_related_idea_story',
-    'label' => 'Related Stories and Announcements',
+    'label' => 'Stories and Announcements',
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
@@ -2365,7 +2415,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 32,
+      'weight' => 28,
     ),
     'workbench_access_field' => 0,
   );
@@ -2403,7 +2453,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_related_other_unlimited',
-    'label' => 'Related Publications and Events',
+    'label' => 'Publications and Events',
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
@@ -2415,7 +2465,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 33,
+      'weight' => 29,
     ),
     'workbench_access_field' => 0,
   );
@@ -2449,7 +2499,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_related_programs',
-    'label' => 'Related Programs',
+    'label' => 'Programs',
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
@@ -2465,7 +2515,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 34,
+      'weight' => 30,
     ),
     'workbench_access_field' => 0,
   );
@@ -2511,7 +2561,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 6,
+      'weight' => 8,
     ),
     'workbench_access_field' => 0,
   );
@@ -2544,7 +2594,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_video_description',
-    'label' => 'Learn More Video Description',
+    'label' => 'Video Description',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -2657,7 +2707,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_video_url',
-    'label' => 'Learn More Video Link',
+    'label' => 'Video Link',
     'required' => 0,
     'settings' => array(
       'allowed_providers' => array(
@@ -2683,40 +2733,39 @@ function gsb_feature_program_ct_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('All Topics');
-  t('Application Requirements');
+  t('Application Requirements URL');
   t('Awarded Upon Completion');
-  t('CTA1');
-  t('CTA2');
+  t('CTA #1');
+  t('CTA #2');
   t('Career Level');
+  t('Description');
   t('Detail Page');
   t('Display Image');
-  t('Featured Item');
-  t('Featured Superhead');
+  t('Files');
   t('Financial Assistance Statement');
-  t('Key Benefits Description');
-  t('Key Benefits Teaser');
+  t('Image');
   t('Key Image');
   t('Key Topics');
   t('Leadership Level');
-  t('Learn More Photo');
-  t('Learn More Video Description');
-  t('Learn More Video Link');
-  t('Learn More Video Title');
-  t('Overview Description');
+  t('Links');
   t('Part-Time Details');
+  t('Path Alias');
   t('Program Category');
   t('Program Contact Link');
   t('Program Director Name');
-  t('Related Files');
-  t('Related Links');
-  t('Related Programs');
-  t('Related Publications and Events');
-  t('Related Stories and Announcements');
+  t('Programs');
+  t('Publications and Events');
+  t('Stories and Announcements');
+  t('Superhead');
   t('Teaser');
   t('The application is open.');
-  t('This Program is for Small Teams');
+  t('This program is for small teams.');
   t('Time Commitment');
+  t('Title');
   t('URL');
+  t('Video Description');
+  t('Video Link');
+  t('Video Title');
   t('Who Should Attend?');
 
   return $field_instances;
