@@ -604,7 +604,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'maxlength_js_enforce' => 0,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'maxlength_js_truncate_html' => 0,
-        'rows' => 5,
+        'rows' => 2,
       ),
       'type' => 'text_textarea',
       'weight' => 18,
@@ -1237,7 +1237,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'settings' => array(
         'maxlength_js' => 0,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'size' => 60,
+        'size' => 150,
       ),
       'type' => 'text_textfield',
       'weight' => 18,
@@ -2520,6 +2520,90 @@ function gsb_feature_program_ct_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
+  // Exported field_instance: 'node-program-field_search_field'.
+  $field_instances['node-program-field_search_field'] = array(
+    'bundle' => 'program',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'concat_field',
+        'settings' => array(
+          'conditions' => array(),
+        ),
+        'type' => 'concat_field_blank',
+        'weight' => 38,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_search_field',
+    'label' => 'Search field',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'selected_fields' => array(
+        'concat_field_entity_label' => 'concat_field_entity_label',
+        'field_application_open' => 0,
+        'field_application_requirements' => 0,
+        'field_awarded_upon_completion' => 'field_awarded_upon_completion',
+        'field_career_level' => 'field_career_level',
+        'field_cta1' => 0,
+        'field_cta2' => 0,
+        'field_display_image' => 0,
+        'field_event_who_attend' => 'field_event_who_attend',
+        'field_featured_event' => 0,
+        'field_featured_superhead' => 'field_featured_superhead',
+        'field_file_unlimited_public' => 0,
+        'field_financial_assist_statement' => 'field_financial_assist_statement',
+        'field_image_key_image' => 0,
+        'field_key_benefits_description' => 'field_key_benefits_description',
+        'field_key_benefits_teaser' => 'field_key_benefits_teaser',
+        'field_key_program_topics' => 'field_key_program_topics',
+        'field_leadership_level' => 'field_leadership_level',
+        'field_learn_more_photo' => 0,
+        'field_learn_more_video_title' => 'field_learn_more_video_title',
+        'field_link_single' => 0,
+        'field_link_unlimited' => 0,
+        'field_overview_description' => 'field_overview_description',
+        'field_overview_teaser' => 'field_overview_teaser',
+        'field_part_time_details' => 'field_part_time_details',
+        'field_pathauto_title_alias' => 0,
+        'field_program_category' => 'field_program_category',
+        'field_program_contact_link' => 0,
+        'field_program_detail' => 'field_program_detail',
+        'field_program_director_name' => 0,
+        'field_program_small_teams' => 0,
+        'field_program_topics' => 'field_program_topics',
+        'field_related_idea_story' => 0,
+        'field_related_other_unlimited' => 0,
+        'field_related_programs' => 0,
+        'field_time_commitment' => 'field_time_commitment',
+        'field_video_description' => 'field_video_description',
+        'field_video_url' => 0,
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'concat_field',
+      'settings' => array(),
+      'type' => 'concat_field_default',
+      'weight' => 28,
+    ),
+    'workbench_access_field' => 0,
+  );
+
   // Exported field_instance: 'node-program-field_time_commitment'.
   $field_instances['node-program-field_time_commitment'] = array(
     'bundle' => 'program',
@@ -2755,6 +2839,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
   t('Program Director Name');
   t('Programs');
   t('Publications and Events');
+  t('Search field');
   t('Stories and Announcements');
   t('Superhead');
   t('Teaser');
