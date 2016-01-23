@@ -35,3 +35,78 @@ function gsb_feature_program_ct_form_node_form_alter(&$form, &$form_state) {
     ),
   );
 }
+
+/**
+ * Implements hook_node_insert().
+ */
+function gsb_feature_program_ct_entity_insert($node, $type) {
+  if ($type == 'node') {
+    _gsb_feature_program_ct_node_save($node);
+  }
+}
+
+/**
+ * Implements hook_node_update().
+ */
+function gsb_feature_program_ct_entity_update($node, $type) {
+  if ($type == 'node') {
+    _gsb_feature_program_ct_node_save($node);
+  }
+}
+
+/**
+ * Helper for hook_node_insert() and hook_node_update().
+ */
+function _gsb_feature_program_ct_node_save($node) {
+
+  if ($node->type != 'program') {
+    return;
+  }
+  if ($node->path['alias'] == '') {
+    return;
+  }
+
+  _gsb_feature_program_ct_create_ppp($node, 'curriculum');
+  _gsb_feature_program_ct_create_ppp($node, 'faculty');
+  _gsb_feature_program_ct_create_ppp($node, 'participant');
+
+  if ($node->field_program_small_teams['und'][0]['value'] == '1') {
+    _gsb_feature_program_ct_create_ppp($node, 'team');
+  }
+
+}
+
+function _gsb_feature_program_ct_create_ppp($node, $ppp_type) {
+
+  $ppp_node = new stdClass();  // Create a new node object
+  $ppp_node->type = 'program_panelized_page';  // Content type
+  $ppp_node->language = LANGUAGE_NONE;
+  node_object_prepare($ppp_node);  //Set some default values
+
+  $ppp_node->title = $node->title . ' --- ' . $ppp_type;
+
+  $ppp_node->status = 1;   // (1 or 0): published or unpublished
+  $ppp_node->promote = 0;  // (1 or 0): promoted to front page or not
+  $ppp_node->sticky = 0;   // (1 or 0): sticky at top of lists or not
+  $ppp_node->comment = 0;  // 2 = comments open, 1 = comments closed, 0 = comments hidden
+
+  // Add author of the node
+  $ppp_node->uid = 1;
+
+  $program_path_alias = $node->path['alias'];
+  $program_path_alias_title = explode('/', $program_path_alias);
+  $program_path_alias_title = $program_path_alias_title[sizeof($program_path_alias_title) - 1];
+
+  $path = 'exec-ed/programs/' . $program_path_alias_title . '/' . $ppp_type;
+  $ppp_node->path = array('alias' => $path);
+
+  $path = drupal_lookup_path("source", $path);
+  $found_node = menu_get_object("node", 1, $path);
+
+  if (!$found_node) {
+    // Save the new Program Panelized Page node
+    node_save($ppp_node);
+  }
+
+}
+
