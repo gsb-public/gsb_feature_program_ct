@@ -84,7 +84,7 @@ function gsb_feature_program_ct_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_program_pattern';
-  $strongarm->value = '';
+  $strongarm->value = 'exec-ed/programs/[node:title]';
   $export['pathauto_node_program_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
