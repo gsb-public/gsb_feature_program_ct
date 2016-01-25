@@ -106,6 +106,11 @@ function _gsb_feature_program_ct_create_ppp($node, $ppp_type) {
   if (!$found_node) {
     // Save the new Program Panelized Page node
     node_save($ppp_node);
+    // Resave the Program Panelized Page node
+    // With the in-place editor option
+    $ppp_node = node_load($ppp_node->nid);
+    $ppp_node->panelizer['page_manager']->pipeline = 'ipe';
+    node_save($ppp_node);
   }
 
 }
