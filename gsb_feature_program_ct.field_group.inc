@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function gsb_feature_program_ct_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -36,7 +36,7 @@ function gsb_feature_program_ct_field_group_info() {
       ),
     ),
   );
-  $export['group_ctas|node|program|form'] = $field_group;
+  $field_groups['group_ctas|node|program|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -64,7 +64,7 @@ function gsb_feature_program_ct_field_group_info() {
       ),
     ),
   );
-  $export['group_featured_item|node|program|form'] = $field_group;
+  $field_groups['group_featured_item|node|program|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -92,7 +92,7 @@ function gsb_feature_program_ct_field_group_info() {
       ),
     ),
   );
-  $export['group_key_benefits|node|program|form'] = $field_group;
+  $field_groups['group_key_benefits|node|program|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -122,7 +122,7 @@ function gsb_feature_program_ct_field_group_info() {
       ),
     ),
   );
-  $export['group_learn_more|node|program|form'] = $field_group;
+  $field_groups['group_learn_more|node|program|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -151,7 +151,7 @@ function gsb_feature_program_ct_field_group_info() {
       'formatter' => 'collapsible',
     ),
   );
-  $export['group_overview|node|program|form'] = $field_group;
+  $field_groups['group_overview|node|program|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -182,7 +182,16 @@ function gsb_feature_program_ct_field_group_info() {
       ),
     ),
   );
-  $export['group_related_content|node|program|form'] = $field_group;
+  $field_groups['group_related_content|node|program|form'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Call-to-Actions (CTAs)');
+  t('Featured Item');
+  t('Key Benefits');
+  t('Learn More');
+  t('Overview');
+  t('Related Content');
+
+  return $field_groups;
 }
