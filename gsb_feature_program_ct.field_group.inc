@@ -51,8 +51,8 @@ function gsb_feature_program_ct_field_group_info() {
     'label' => 'Featured Item',
     'weight' => '22',
     'children' => array(
-      0 => 'field_featured_superhead',
-      1 => 'field_featured_event',
+      0 => 'field_featured_event',
+      1 => 'field_featured_superhead',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -79,8 +79,8 @@ function gsb_feature_program_ct_field_group_info() {
     'label' => 'Key Benefits',
     'weight' => '17',
     'children' => array(
-      0 => 'field_key_benefits_teaser',
-      1 => 'field_key_benefits_description',
+      0 => 'field_key_benefits_description',
+      1 => 'field_key_benefits_teaser',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -166,11 +166,11 @@ function gsb_feature_program_ct_field_group_info() {
     'label' => 'Related Content',
     'weight' => '27',
     'children' => array(
-      0 => 'field_related_idea_story',
-      1 => 'field_related_other_unlimited',
-      2 => 'field_related_programs',
-      3 => 'field_link_unlimited',
-      4 => 'field_file_unlimited_public',
+      0 => 'field_file_unlimited_public',
+      1 => 'field_link_unlimited',
+      2 => 'field_related_idea_story',
+      3 => 'field_related_other_unlimited',
+      4 => 'field_related_programs',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
