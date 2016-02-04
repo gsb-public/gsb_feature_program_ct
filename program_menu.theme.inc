@@ -2,8 +2,6 @@
 
 function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_program_menu(&$vars) {
 
-  $links = array();
-
   $node = menu_get_object();
 
   $program_node = null;
@@ -30,6 +28,8 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_program_menu(&
     'Faculty & Speakers' => 'faculty',
     'Participant Profile' => 'participant'
   );
+  
+  $links = array();
 
   foreach($program_links as $link_title => $path_suffix) {
     $link['text'] = $link_title;
@@ -43,19 +43,13 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_program_menu(&
   $additional_pages = $wrapper->field_additional_pages->value();
 
   if (!empty($additional_pages->field_page_link['und'])) {
-    $link_title = $additional_pages->field_page_link['und'][0]['title'];
-    $url = $additional_pages->field_page_link['und'][0]['url'];
     $link = array();
-    $link['text'] = $link_title;
-    $link['path'] = $url;
+    $link['text'] = $additional_pages->field_page_link['und'][0]['title'];
+    $link['path'] = $additional_pages->field_page_link['und'][0]['url'];
     $link['options']['attributes'] = array('class' => array('program_menu_item'));
     $link['options']['html'] = null;
     $links[] = theme('link', $link);
   }
-
-  $output = theme('item_list', array('items' => $links));
-
-  $vars['program_menu'] = $output;
-
-  $fred = 'fred';
+  
+  $vars['program_menu'] = theme('item_list', array('items' => $links));
 }
