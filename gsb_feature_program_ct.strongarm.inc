@@ -149,9 +149,7 @@ function gsb_feature_program_ct_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_program';
-  $strongarm->value = array(
-    0 => 'main-menu',
-  );
+  $strongarm->value = array();
   $export['menu_options_program'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -166,9 +164,8 @@ function gsb_feature_program_ct_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_program';
   $strongarm->value = array(
-    0 => 'force_pathauto',
-    1 => 'moderation',
-    2 => 'revision',
+    0 => 'moderation',
+    1 => 'revision',
   );
   $export['node_options_program'] = $strongarm;
 
@@ -190,14 +187,14 @@ function gsb_feature_program_ct_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_program_pattern';
-  $strongarm->value = 'exec-ed/programs/[node:title]';
+  $strongarm->value = '';
   $export['pathauto_node_program_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'workbench_access_node_type_program';
-  $strongarm->value = 0;
+  $strongarm->value = 1;
   $export['workbench_access_node_type_program'] = $strongarm;
 
   $strongarm = new stdClass();
