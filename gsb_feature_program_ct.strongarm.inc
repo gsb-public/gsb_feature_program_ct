@@ -74,7 +74,7 @@ function gsb_feature_program_ct_strongarm() {
         'custom_settings' => FALSE,
       ),
       'idea_story_related' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'idea_story_top_stories' => array(
         'custom_settings' => FALSE,
