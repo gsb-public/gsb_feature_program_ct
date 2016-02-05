@@ -21,7 +21,7 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Call-to-Actions (CTAs)',
-    'weight' => '25',
+    'weight' => '26',
     'children' => array(
       0 => 'field_cta1',
       1 => 'field_cta2',
@@ -49,7 +49,7 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Featured Item',
-    'weight' => '22',
+    'weight' => '23',
     'children' => array(
       0 => 'field_featured_event',
       1 => 'field_featured_superhead',
@@ -77,7 +77,7 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Key Benefits',
-    'weight' => '17',
+    'weight' => '18',
     'children' => array(
       0 => 'field_key_benefits_description',
       1 => 'field_key_benefits_teaser',
@@ -105,7 +105,7 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Learn More',
-    'weight' => '24',
+    'weight' => '25',
     'children' => array(
       0 => 'field_learn_more_photo',
       1 => 'field_learn_more_video_title',
@@ -135,7 +135,7 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Overview',
-    'weight' => '16',
+    'weight' => '17',
     'children' => array(
       0 => 'field_overview_teaser',
       1 => 'field_overview_description',
@@ -164,7 +164,7 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Related Content',
-    'weight' => '27',
+    'weight' => '28',
     'children' => array(
       0 => 'field_file_unlimited_public',
       1 => 'field_link_unlimited',
