@@ -1367,11 +1367,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'file',
         'settings' => array(
-          'conditions' => array(
-            0 => array(
-              'condition' => '',
-            ),
-          ),
+          'conditions' => array(),
         ),
         'type' => 'file_default',
         'weight' => 5,
@@ -3785,7 +3781,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(
           'conditions' => array(),
           'links' => 0,
-          'view_mode' => 'teaser',
+          'view_mode' => 'idea_story_related',
         ),
         'type' => 'entityreference_entity_view',
         'weight' => 3,
