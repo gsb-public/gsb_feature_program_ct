@@ -184,6 +184,38 @@ function gsb_feature_program_ct_field_group_info() {
   );
   $field_groups['group_related_content|node|program|form'] = $field_group;
 
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_wrapper_related|node|program|field_program_related';
+  $field_group->group_name = 'group_wrapper_related';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'program';
+  $field_group->mode = 'field_program_related';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Related',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_file_unlimited_public',
+      1 => 'field_link_unlimited',
+      2 => 'field_related_idea_story',
+      3 => 'field_related_other_unlimited',
+      4 => 'field_related_programs',
+      5 => 'related_title',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-wrapper-related field-group-fieldset',
+        'id' => '',
+      ),
+    ),
+  );
+  $field_groups['group_wrapper_related|node|program|field_program_related'] = $field_group;
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Call-to-Actions (CTAs)');
@@ -191,6 +223,7 @@ function gsb_feature_program_ct_field_group_info() {
   t('Key Benefits');
   t('Learn More');
   t('Overview');
+  t('Related');
   t('Related Content');
 
   return $field_groups;

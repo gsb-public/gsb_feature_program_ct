@@ -113,6 +113,17 @@ function gsb_feature_program_ct_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'program';
   $ds_fieldsetting->view_mode = 'field_program_related';
   $ds_fieldsetting->settings = array(
+    'related_title' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+        ),
+        'conditions' => array(),
+      ),
+    ),
     'field_file_unlimited_public' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -123,6 +134,13 @@ function gsb_feature_program_ct_ds_field_settings_info() {
           'ow-def-cl' => TRUE,
           'ow-at' => '',
           'ow-def-at' => FALSE,
+          'fi' => TRUE,
+          'fi-el' => 'div',
+          'fi-cl' => '',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+          'fi-first-last' => FALSE,
         ),
       ),
     ),
@@ -136,6 +154,13 @@ function gsb_feature_program_ct_ds_field_settings_info() {
           'ow-def-cl' => TRUE,
           'ow-at' => '',
           'ow-def-at' => FALSE,
+          'fi' => TRUE,
+          'fi-el' => 'div',
+          'fi-cl' => '',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+          'fi-first-last' => FALSE,
         ),
       ),
     ),
@@ -180,6 +205,36 @@ function gsb_feature_program_ct_ds_field_settings_info() {
     ),
   );
   $export['node|program|field_program_related'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|program|idea_story_related';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'program';
+  $ds_fieldsetting->view_mode = 'idea_story_related';
+  $ds_fieldsetting->settings = array(
+    'title' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '1',
+        'wrapper' => 'h2',
+        'class' => '',
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'ow' => TRUE,
+          'ow-el' => 'div',
+          'ow-cl' => '',
+          'ow-def-cl' => TRUE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
+        ),
+        'conditions' => array(),
+      ),
+    ),
+  );
+  $export['node|program|idea_story_related'] = $ds_fieldsetting;
 
   return $export;
 }
@@ -288,14 +343,18 @@ function gsb_feature_program_ct_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'ds_content' => array(
-        0 => 'field_related_idea_story',
-        1 => 'field_related_other_unlimited',
-        2 => 'field_related_programs',
-        3 => 'field_link_unlimited',
-        4 => 'field_file_unlimited_public',
+        0 => 'group_wrapper_related',
+        1 => 'related_title',
+        2 => 'field_related_idea_story',
+        3 => 'field_related_other_unlimited',
+        4 => 'field_related_programs',
+        5 => 'field_link_unlimited',
+        6 => 'field_file_unlimited_public',
       ),
     ),
     'fields' => array(
+      'group_wrapper_related' => 'ds_content',
+      'related_title' => 'ds_content',
       'field_related_idea_story' => 'ds_content',
       'field_related_other_unlimited' => 'ds_content',
       'field_related_programs' => 'ds_content',
@@ -313,6 +372,34 @@ function gsb_feature_program_ct_ds_layout_settings_info() {
     'layout_link_custom' => '',
   );
   $export['node|program|field_program_related'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|program|idea_story_related';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'program';
+  $ds_layout->view_mode = 'idea_story_related';
+  $ds_layout->layout = 'ds_1col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'title',
+      ),
+    ),
+    'fields' => array(
+      'title' => 'ds_content',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'ds_content' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
+  );
+  $export['node|program|idea_story_related'] = $ds_layout;
 
   return $export;
 }
