@@ -3512,9 +3512,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'weight' => 32,
       ),
       'idea_story_related' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'conditions' => array(),
+        ),
+        'type' => 'text_default',
         'weight' => 29,
       ),
       'teaser' => array(
@@ -4104,7 +4107,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(
           'conditions' => array(),
           'links' => 0,
-          'view_mode' => 'default',
+          'view_mode' => 'field_program_director',
         ),
         'type' => 'entityreference_entity_view',
         'weight' => 2,
