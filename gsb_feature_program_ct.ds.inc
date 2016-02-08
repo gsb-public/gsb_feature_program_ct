@@ -66,22 +66,67 @@ function gsb_feature_program_ct_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'program';
   $ds_fieldsetting->view_mode = 'field_program_curriculum';
   $ds_fieldsetting->settings = array(
-    'title' => array(
-      'weight' => '0',
-      'label' => 'hidden',
-      'format' => 'default',
+    'field_curriculum_intro' => array(
       'formatter_settings' => array(
-        'link' => '0',
-        'wrapper' => 'h2',
-        'class' => '',
         'ft' => array(
           'func' => 'theme_ds_field_expert',
+          'ow' => TRUE,
+          'ow-el' => 'div',
+          'ow-cl' => '',
+          'ow-def-cl' => TRUE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
         ),
-        'conditions' => array(),
       ),
     ),
   );
   $export['node|program|field_program_curriculum'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|program|field_program_curriculum_one';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'program';
+  $ds_fieldsetting->view_mode = 'field_program_curriculum_one';
+  $ds_fieldsetting->settings = array(
+    'field_curriculum_description_1' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'ow' => TRUE,
+          'ow-el' => 'div',
+          'ow-cl' => '',
+          'ow-def-cl' => TRUE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
+        ),
+      ),
+    ),
+  );
+  $export['node|program|field_program_curriculum_one'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|program|field_program_curriculum_two';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'program';
+  $ds_fieldsetting->view_mode = 'field_program_curriculum_two';
+  $ds_fieldsetting->settings = array(
+    'field_curriculum_description_2' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'ow' => TRUE,
+          'ow-el' => 'div',
+          'ow-cl' => '',
+          'ow-def-cl' => TRUE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
+        ),
+      ),
+    ),
+  );
+  $export['node|program|field_program_curriculum_two'] = $ds_fieldsetting;
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
@@ -287,11 +332,11 @@ function gsb_feature_program_ct_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'ds_content' => array(
-        0 => 'title',
+        0 => 'field_curriculum_intro',
       ),
     ),
     'fields' => array(
-      'title' => 'ds_content',
+      'field_curriculum_intro' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(
@@ -304,6 +349,62 @@ function gsb_feature_program_ct_ds_layout_settings_info() {
     'layout_link_custom' => '',
   );
   $export['node|program|field_program_curriculum'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|program|field_program_curriculum_one';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'program';
+  $ds_layout->view_mode = 'field_program_curriculum_one';
+  $ds_layout->layout = 'ds_1col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'field_curriculum_description_1',
+      ),
+    ),
+    'fields' => array(
+      'field_curriculum_description_1' => 'ds_content',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'ds_content' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
+  );
+  $export['node|program|field_program_curriculum_one'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|program|field_program_curriculum_two';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'program';
+  $ds_layout->view_mode = 'field_program_curriculum_two';
+  $ds_layout->layout = 'ds_1col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'field_curriculum_description_2',
+      ),
+    ),
+    'fields' => array(
+      'field_curriculum_description_2' => 'ds_content',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'ds_content' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
+  );
+  $export['node|program|field_program_curriculum_two'] = $ds_layout;
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
@@ -422,11 +523,29 @@ function gsb_feature_program_ct_ds_view_modes_info() {
   $ds_view_mode = new stdClass();
   $ds_view_mode->api_version = 1;
   $ds_view_mode->view_mode = 'field_program_curriculum';
-  $ds_view_mode->label = 'Program Curriculum block';
+  $ds_view_mode->label = 'Program Curriculum block intro';
   $ds_view_mode->entities = array(
     'node' => 'node',
   );
   $export['field_program_curriculum'] = $ds_view_mode;
+
+  $ds_view_mode = new stdClass();
+  $ds_view_mode->api_version = 1;
+  $ds_view_mode->view_mode = 'field_program_curriculum_one';
+  $ds_view_mode->label = 'Program Curriculum block one';
+  $ds_view_mode->entities = array(
+    'node' => 'node',
+  );
+  $export['field_program_curriculum_one'] = $ds_view_mode;
+
+  $ds_view_mode = new stdClass();
+  $ds_view_mode->api_version = 1;
+  $ds_view_mode->view_mode = 'field_program_curriculum_two';
+  $ds_view_mode->label = 'Program Curriculum block two';
+  $ds_view_mode->entities = array(
+    'node' => 'node',
+  );
+  $export['field_program_curriculum_two'] = $ds_view_mode;
 
   $ds_view_mode = new stdClass();
   $ds_view_mode->api_version = 1;

@@ -121,6 +121,12 @@ function gsb_feature_program_ct_strongarm() {
       'field_program_director' => array(
         'custom_settings' => TRUE,
       ),
+      'field_program_curriculum_one' => array(
+        'custom_settings' => TRUE,
+      ),
+      'field_program_curriculum_two' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
