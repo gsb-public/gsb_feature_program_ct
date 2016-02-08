@@ -254,7 +254,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 14,
+      'weight' => 16,
     ),
     'workbench_access_field' => 0,
   );
@@ -331,7 +331,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 13,
+      'weight' => 15,
     ),
     'workbench_access_field' => 0,
   );
@@ -433,7 +433,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 27,
+      'weight' => 17,
     ),
     'workbench_access_field' => 0,
   );
@@ -573,7 +573,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 20,
+      'weight' => 10,
     ),
     'workbench_access_field' => 0,
   );
@@ -654,7 +654,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'hs_taxonomy',
       'settings' => array(),
       'type' => 'taxonomy_hs',
-      'weight' => 7,
+      'weight' => 10,
     ),
     'workbench_access_field' => 0,
   );
@@ -996,7 +996,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 30,
+      'weight' => 2,
     ),
     'workbench_access_field' => 0,
   );
@@ -1134,7 +1134,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 31,
+      'weight' => 3,
     ),
     'workbench_access_field' => 0,
   );
@@ -1272,7 +1272,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 29,
+      'weight' => 1,
     ),
     'workbench_access_field' => 0,
   );
@@ -1379,7 +1379,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 15,
+      'weight' => 4,
     ),
     'workbench_access_field' => 0,
   );
@@ -1519,7 +1519,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'rows' => 2,
       ),
       'type' => 'text_textarea',
-      'weight' => 19,
+      'weight' => 9,
     ),
     'workbench_access_field' => 0,
   );
@@ -1599,7 +1599,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 24,
+      'weight' => 25,
     ),
     'workbench_access_field' => 0,
   );
@@ -1840,7 +1840,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 33,
+      'weight' => 10,
     ),
     'workbench_access_field' => 0,
   );
@@ -1980,7 +1980,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 24,
+      'weight' => 14,
     ),
     'workbench_access_field' => 0,
   );
@@ -2087,7 +2087,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 16,
+      'weight' => 5,
     ),
     'workbench_access_field' => 0,
   );
@@ -2227,7 +2227,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 19,
+      'weight' => 26,
     ),
     'workbench_access_field' => 0,
   );
@@ -2365,7 +2365,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'size' => 150,
       ),
       'type' => 'text_textfield',
-      'weight' => 18,
+      'weight' => 25,
     ),
     'workbench_access_field' => 0,
   );
@@ -2446,7 +2446,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'hs_taxonomy',
       'settings' => array(),
       'type' => 'taxonomy_hs',
-      'weight' => 10,
+      'weight' => 13,
     ),
     'workbench_access_field' => 0,
   );
@@ -2527,7 +2527,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'hs_taxonomy',
       'settings' => array(),
       'type' => 'taxonomy_hs',
-      'weight' => 6,
+      'weight' => 10,
     ),
     'workbench_access_field' => 0,
   );
@@ -2772,7 +2772,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 26,
+      'weight' => 27,
     ),
     'workbench_access_field' => 0,
   );
@@ -2871,7 +2871,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 4,
+      'weight' => 7,
     ),
     'workbench_access_field' => 0,
   );
@@ -2973,7 +2973,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 32,
+      'weight' => 9,
     ),
     'workbench_access_field' => 0,
   );
@@ -3113,7 +3113,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 12,
+      'weight' => 27,
     ),
     'workbench_access_field' => 0,
   );
@@ -3251,7 +3251,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'size' => 150,
       ),
       'type' => 'text_textfield',
-      'weight' => 10,
+      'weight' => 25,
     ),
     'workbench_access_field' => 0,
   );
@@ -3389,7 +3389,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'size' => 150,
       ),
       'type' => 'text_textfield',
-      'weight' => 9,
+      'weight' => 13,
     ),
     'workbench_access_field' => 0,
   );
@@ -3465,7 +3465,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 5,
+      'weight' => 9,
     ),
     'workbench_access_field' => 0,
   );
@@ -3564,7 +3564,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 22,
+      'weight' => 13,
     ),
     'workbench_access_field' => 0,
   );
@@ -3651,7 +3651,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'checkall' => FALSE,
       ),
       'type' => 'options_buttons',
-      'weight' => 3,
+      'weight' => 6,
     ),
     'workbench_access_field' => 0,
   );
@@ -3736,7 +3736,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 21,
+      'weight' => 12,
     ),
     'workbench_access_field' => 0,
   );
@@ -3817,7 +3817,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'hs_taxonomy',
       'settings' => array(),
       'type' => 'taxonomy_hs',
-      'weight' => 11,
+      'weight' => 14,
     ),
     'workbench_access_field' => 0,
   );
@@ -3902,7 +3902,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 28,
+      'weight' => 5,
     ),
     'workbench_access_field' => 0,
   );
@@ -3986,7 +3986,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 29,
+      'weight' => 6,
     ),
     'workbench_access_field' => 0,
   );
@@ -4071,7 +4071,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 31,
+      'weight' => 8,
     ),
     'workbench_access_field' => 0,
   );
@@ -4185,7 +4185,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'concat_field',
       'settings' => array(),
       'type' => 'concat_field_default',
-      'weight' => 32,
+      'weight' => 1,
     ),
     'workbench_access_field' => 0,
   );
@@ -4261,7 +4261,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 8,
+      'weight' => 12,
     ),
     'workbench_access_field' => 0,
   );
@@ -4401,7 +4401,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 27,
+      'weight' => 28,
     ),
     'workbench_access_field' => 0,
   );
@@ -4485,7 +4485,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'video_embed_field',
       'settings' => array(),
       'type' => 'video_embed_field_video',
-      'weight' => 28,
+      'weight' => 29,
     ),
     'workbench_access_field' => 0,
   );
