@@ -12,6 +12,8 @@ include_once 'gsb_feature_program_ct.features.inc';
 function gsb_feature_program_ct_form_node_form_alter(&$form, &$form_state) {
   $language = $form['language']['#value'];
 
+  $form['title']['#title'] = 'Program Name';
+
   $form['field_link_single']['#states'] = array(
     'visible' => array(
       ':input[name="field_program_detail[' . $language . ']"]' => array(
