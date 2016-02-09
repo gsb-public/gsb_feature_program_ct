@@ -259,21 +259,15 @@ function gsb_feature_program_ct_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'idea_story_related';
   $ds_fieldsetting->settings = array(
     'title' => array(
-      'weight' => '0',
+      'weight' => '2',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
         'link' => '1',
-        'wrapper' => 'h2',
+        'wrapper' => 'h3',
         'class' => '',
         'ft' => array(
           'func' => 'theme_ds_field_expert',
-          'ow' => TRUE,
-          'ow-el' => 'div',
-          'ow-cl' => '',
-          'ow-def-cl' => TRUE,
-          'ow-at' => '',
-          'ow-def-at' => FALSE,
         ),
         'conditions' => array(),
       ),
@@ -284,6 +278,20 @@ function gsb_feature_program_ct_ds_field_settings_info() {
           'func' => 'theme_ds_field_expert',
           'ow' => TRUE,
           'ow-el' => 'div',
+          'ow-cl' => '',
+          'ow-def-cl' => TRUE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
+        ),
+      ),
+    ),
+    'field_program_category' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'suffix' => '<span class="pipe">|</span>',
+          'ow' => TRUE,
+          'ow-el' => 'span',
           'ow-cl' => '',
           'ow-def-cl' => TRUE,
           'ow-at' => '',
@@ -497,11 +505,15 @@ function gsb_feature_program_ct_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'ds_content' => array(
-        0 => 'title',
-        1 => 'field_overview_teaser',
+        0 => 'group_wrapper_title',
+        1 => 'field_program_category',
+        2 => 'title',
+        3 => 'field_overview_teaser',
       ),
     ),
     'fields' => array(
+      'group_wrapper_title' => 'ds_content',
+      'field_program_category' => 'ds_content',
       'title' => 'ds_content',
       'field_overview_teaser' => 'ds_content',
     ),

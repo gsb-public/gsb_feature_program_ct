@@ -621,6 +621,39 @@ function gsb_feature_program_ct_field_group_info() {
   );
   $field_groups['group_wrapper_related|node|program|field_program_related'] = $field_group;
 
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_wrapper_title|node|program|idea_story_related';
+  $field_group->group_name = 'group_wrapper_title';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'program';
+  $field_group->mode = 'idea_story_related';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Title wrapper',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_program_category',
+      1 => 'title',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Title wrapper',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'group-wrapper-title field-group-div',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'none',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $field_groups['group_wrapper_title|node|program|idea_story_related'] = $field_group;
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Administration');
@@ -642,6 +675,7 @@ function gsb_feature_program_ct_field_group_info() {
   t('Related');
   t('Related Content');
   t('Time Commitment');
+  t('Title wrapper');
 
   return $field_groups;
 }

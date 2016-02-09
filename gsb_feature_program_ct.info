@@ -72,6 +72,7 @@ features[field_group][] = group_program_lead|node|program|form
 features[field_group][] = group_related_content|node|program|form
 features[field_group][] = group_time_commitment|node|program|form
 features[field_group][] = group_wrapper_related|node|program|field_program_related
+features[field_group][] = group_wrapper_title|node|program|idea_story_related
 features[field_instance][] = field_collection_item-field_additional_pages-field_overview
 features[field_instance][] = field_collection_item-field_additional_pages-field_page_link
 features[field_instance][] = node-program-field_additional_pages
