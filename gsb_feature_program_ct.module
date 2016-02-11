@@ -12,6 +12,10 @@ include_once 'gsb_feature_program_ct.features.inc';
 function gsb_feature_program_ct_form_node_form_alter(&$form, &$form_state) {
   $language = $form['language']['#value'];
 
+  if ($form['type']['#value'] != 'program') {
+    return;
+  }
+
   $form['title']['#title'] = 'Program Name';
 
   $form['field_additional_pages']['und'][0]['#title'] = '';
