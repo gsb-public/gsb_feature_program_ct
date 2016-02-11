@@ -3986,11 +3986,13 @@ function gsb_feature_program_ct_field_default_field_instances() {
       ),
       'idea_story_related' => array(
         'label' => 'hidden',
-        'module' => 'taxonomy',
+        'module' => 'ds',
         'settings' => array(
           'conditions' => array(),
+          'taxonomy_term_reference_view_mode' => 'short_name',
+          'use_content_language' => 1,
         ),
-        'type' => 'taxonomy_term_reference_plain',
+        'type' => 'ds_taxonomy_view_mode',
         'weight' => 1,
       ),
       'teaser' => array(
