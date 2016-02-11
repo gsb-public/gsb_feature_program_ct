@@ -131,19 +131,19 @@ function gsb_feature_program_ct_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '35',
+          'weight' => '5',
         ),
         'title' => array(
-          'weight' => '0',
+          'weight' => '2',
         ),
         'path' => array(
-          'weight' => '34',
+          'weight' => '4',
         ),
         'redirect' => array(
-          'weight' => '33',
+          'weight' => '2',
         ),
         'gsb_program_instance_listing_eva_field_form' => array(
-          'weight' => '2',
+          'weight' => '4',
         ),
         'workbench_access' => array(
           'weight' => '1',

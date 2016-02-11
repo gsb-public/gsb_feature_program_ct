@@ -56,12 +56,10 @@ function gsb_feature_program_ct_field_group_info() {
     'children' => array(
       0 => 'field_link_single',
       1 => 'field_program_detail',
-      2 => 'field_application_open',
-      3 => 'field_additional_pages',
-      4 => 'gsb_program_instance_listing_eva_field_form',
-      5 => 'title',
-      6 => 'workbench_access',
-      7 => 'group_admin_details',
+      2 => 'field_additional_pages',
+      3 => 'title',
+      4 => 'workbench_access',
+      5 => 'group_taxonomy',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -83,10 +81,10 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'program';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_admin_details';
+  $field_group->parent_name = 'group_taxonomy';
   $field_group->data = array(
     'label' => 'All Topics',
-    'weight' => '14',
+    'weight' => '9',
     'children' => array(
       0 => 'field_program_topics',
     ),
@@ -105,15 +103,69 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_application_requirements|node|program|form';
+  $field_group->group_name = 'group_application_requirements';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'program';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_overview_vtab';
+  $field_group->data = array(
+    'label' => 'Application Requirements',
+    'weight' => '19',
+    'children' => array(
+      0 => 'field_application_requirements',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-application-requirements field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_application_requirements|node|program|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_awarded_upon_completion|node|program|form';
+  $field_group->group_name = 'group_awarded_upon_completion';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'program';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_overview_vtab';
+  $field_group->data = array(
+    'label' => 'Awarded Upon Completion',
+    'weight' => '14',
+    'children' => array(
+      0 => 'field_awarded_upon_completion',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-awarded-upon-completion field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_awarded_upon_completion|node|program|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_career_level|node|program|form';
   $field_group->group_name = 'group_career_level';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'program';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_admin_details';
+  $field_group->parent_name = 'group_taxonomy';
   $field_group->data = array(
     'label' => 'Career Level',
-    'weight' => '11',
+    'weight' => '6',
     'children' => array(
       0 => 'field_career_level',
     ),
@@ -137,20 +189,20 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'program';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_overview_htab';
+  $field_group->parent_name = 'group_overview_vtab';
   $field_group->data = array(
     'label' => 'Call-to-Actions (CTAs)',
-    'weight' => '16',
+    'weight' => '17',
     'children' => array(
       0 => 'field_cta1',
       1 => 'field_cta2',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-ctas field-group-fieldset',
+        'classes' => '',
         'required_fields' => 1,
       ),
     ),
@@ -197,7 +249,7 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->parent_name = 'group_overview_htab';
   $field_group->data = array(
     'label' => 'Featured Item',
-    'weight' => '6',
+    'weight' => '5',
     'children' => array(
       0 => 'field_featured_event',
       1 => 'field_featured_superhead',
@@ -226,7 +278,9 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->data = array(
     'label' => 'Instances',
     'weight' => '4',
-    'children' => array(),
+    'children' => array(
+      0 => 'gsb_program_instance_listing_eva_field_form',
+    ),
     'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
@@ -247,20 +301,20 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'program';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_overview_htab';
+  $field_group->parent_name = 'group_overview_vtab';
   $field_group->data = array(
     'label' => 'Key Benefits',
-    'weight' => '8',
+    'weight' => '12',
     'children' => array(
       0 => 'field_key_benefits_description',
       1 => 'field_key_benefits_teaser',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-key-benefits field-group-fieldset',
+        'classes' => '',
         'required_fields' => 1,
       ),
     ),
@@ -275,10 +329,10 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'program';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_admin_details';
+  $field_group->parent_name = 'group_taxonomy';
   $field_group->data = array(
     'label' => 'Key Topics',
-    'weight' => '13',
+    'weight' => '8',
     'children' => array(
       0 => 'field_key_program_topics',
     ),
@@ -302,10 +356,10 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'program';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_admin_details';
+  $field_group->parent_name = 'group_taxonomy';
   $field_group->data = array(
     'label' => 'Leadership Level',
-    'weight' => '10',
+    'weight' => '5',
     'children' => array(
       0 => 'field_leadership_level',
     ),
@@ -329,22 +383,22 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'program';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_overview_htab';
+  $field_group->parent_name = 'group_overview_vtab';
   $field_group->data = array(
     'label' => 'Learn More',
-    'weight' => '15',
+    'weight' => '16',
     'children' => array(
       0 => 'field_learn_more_photo',
       1 => 'field_learn_more_video_title',
       2 => 'field_video_description',
       3 => 'field_video_url',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-learn-more field-group-fieldset',
+        'classes' => '',
         'required_fields' => 1,
       ),
     ),
@@ -365,10 +419,10 @@ function gsb_feature_program_ct_field_group_info() {
     'weight' => '0',
     'children' => array(
       0 => 'group_administration',
-      1 => 'group_overview_htab',
+      1 => 'group_curriculum',
       2 => 'group_instances',
-      3 => 'group_participants',
-      4 => 'group_curriculum',
+      3 => 'group_overview_htab',
+      4 => 'group_participants',
     ),
     'format_type' => 'htabs',
     'format_settings' => array(
@@ -394,19 +448,10 @@ function gsb_feature_program_ct_field_group_info() {
     'label' => 'Overview',
     'weight' => '3',
     'children' => array(
-      0 => 'field_application_requirements',
-      1 => 'field_awarded_upon_completion',
-      2 => 'field_display_image',
-      3 => 'field_event_who_attend',
-      4 => 'field_financial_assist_statement',
-      5 => 'field_image_key_image',
-      6 => 'group_ctas',
-      7 => 'group_featured_item',
-      8 => 'group_key_benefits',
-      9 => 'group_learn_more',
-      10 => 'group_overview',
-      11 => 'group_related_content',
-      12 => 'group_program_lead',
+      0 => 'field_display_image',
+      1 => 'field_image_key_image',
+      2 => 'group_featured_item',
+      3 => 'group_overview_vtab',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -419,6 +464,68 @@ function gsb_feature_program_ct_field_group_info() {
     ),
   );
   $field_groups['group_overview_htab|node|program|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_overview_tab|node|program|form';
+  $field_group->group_name = 'group_overview_tab';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'program';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_overview_vtab';
+  $field_group->data = array(
+    'label' => 'Overview',
+    'weight' => '11',
+    'children' => array(
+      0 => 'field_overview_teaser',
+      1 => 'field_overview_description',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-overview-tab field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_overview_tab|node|program|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_overview_vtab|node|program|form';
+  $field_group->group_name = 'group_overview_vtab';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'program';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_overview_htab';
+  $field_group->data = array(
+    'label' => '',
+    'weight' => '7',
+    'children' => array(
+      0 => 'group_ctas',
+      1 => 'group_key_benefits',
+      2 => 'group_learn_more',
+      3 => 'group_program_lead',
+      4 => 'group_related_content',
+      5 => 'group_overview_tab',
+      6 => 'group_who_should',
+      7 => 'group_awarded_upon_completion',
+      8 => 'group_application_requirements',
+    ),
+    'format_type' => 'tabs',
+    'format_settings' => array(
+      'formatter' => '',
+      'instance_settings' => array(
+        'classes' => 'group-overview-vtab field-group-tabs',
+        'id' => '',
+      ),
+    ),
+  );
+  $field_groups['group_overview_vtab|node|program|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -461,7 +568,10 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->data = array(
     'label' => 'Participants',
     'weight' => '5',
-    'children' => array(),
+    'children' => array(
+      0 => 'field_participant_intro',
+      1 => 'field_participant_description',
+    ),
     'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
@@ -482,10 +592,10 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'program';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_admin_details';
+  $field_group->parent_name = 'group_taxonomy';
   $field_group->data = array(
     'label' => 'Program Category',
-    'weight' => '9',
+    'weight' => '4',
     'children' => array(
       0 => 'field_program_category',
     ),
@@ -509,22 +619,21 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'program';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_overview_htab';
+  $field_group->parent_name = 'group_overview_vtab';
   $field_group->data = array(
     'label' => 'Program Lead',
-    'weight' => '11',
+    'weight' => '15',
     'children' => array(
       0 => 'field_program_contact_link',
       1 => 'field_program_director_name',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-program-lead field-group-fieldset',
+        'classes' => '',
         'required_fields' => 1,
-        'id' => '',
       ),
     ),
   );
@@ -538,7 +647,7 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'program';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_overview_htab';
+  $field_group->parent_name = 'group_overview_vtab';
   $field_group->data = array(
     'label' => 'Related Content',
     'weight' => '18',
@@ -549,12 +658,12 @@ function gsb_feature_program_ct_field_group_info() {
       3 => 'field_related_other_unlimited',
       4 => 'field_related_programs',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-related-content field-group-fieldset',
+        'classes' => '',
         'required_fields' => 1,
       ),
     ),
@@ -564,15 +673,46 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_taxonomy|node|program|form';
+  $field_group->group_name = 'group_taxonomy';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'program';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_administration';
+  $field_group->data = array(
+    'label' => 'Taxonomy',
+    'weight' => '5',
+    'children' => array(
+      0 => 'group_all_topics',
+      1 => 'group_career_level',
+      2 => 'group_key_topics',
+      3 => 'group_leadership_level',
+      4 => 'group_program_category',
+      5 => 'group_time_commitment',
+    ),
+    'format_type' => 'tabs',
+    'format_settings' => array(
+      'formatter' => '',
+      'instance_settings' => array(
+        'classes' => 'group-taxonomy field-group-tabs',
+        'id' => '',
+      ),
+    ),
+  );
+  $field_groups['group_taxonomy|node|program|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_time_commitment|node|program|form';
   $field_group->group_name = 'group_time_commitment';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'program';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_admin_details';
+  $field_group->parent_name = 'group_taxonomy';
   $field_group->data = array(
     'label' => 'Time Commitment',
-    'weight' => '12',
+    'weight' => '7',
     'children' => array(
       0 => 'field_part_time_details',
       1 => 'field_time_commitment',
@@ -588,6 +728,33 @@ function gsb_feature_program_ct_field_group_info() {
     ),
   );
   $field_groups['group_time_commitment|node|program|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_who_should|node|program|form';
+  $field_group->group_name = 'group_who_should';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'program';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_overview_vtab';
+  $field_group->data = array(
+    'label' => 'Who Should Attend',
+    'weight' => '13',
+    'children' => array(
+      0 => 'field_event_who_attend',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-who-should field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_who_should|node|program|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -658,6 +825,8 @@ function gsb_feature_program_ct_field_group_info() {
   // Included for use with string extractors like potx.
   t('Administration');
   t('All Topics');
+  t('Application Requirements');
+  t('Awarded Upon Completion');
   t('Call-to-Actions (CTAs)');
   t('Career Level');
   t('Curriculum');
@@ -674,8 +843,10 @@ function gsb_feature_program_ct_field_group_info() {
   t('Program Lead');
   t('Related');
   t('Related Content');
+  t('Taxonomy');
   t('Time Commitment');
   t('Title wrapper');
+  t('Who Should Attend');
 
   return $field_groups;
 }
