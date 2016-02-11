@@ -26,9 +26,11 @@ function gsb_feature_program_ct_field_group_info() {
       0 => 'field_link_single',
       1 => 'field_program_detail',
       2 => 'field_additional_pages',
-      3 => 'title',
-      4 => 'workbench_access',
-      5 => 'group_taxonomy',
+      3 => 'field_taxonomy_vtab_prefix',
+      4 => 'title',
+      5 => 'workbench_access',
+      6 => 'field_additional_page_prefix',
+      7 => 'group_taxonomy',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -53,7 +55,7 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->parent_name = 'group_taxonomy';
   $field_group->data = array(
     'label' => 'All Topics',
-    'weight' => '9',
+    'weight' => '56',
     'children' => array(
       0 => 'field_program_topics',
     ),
@@ -80,7 +82,7 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->parent_name = 'group_overview_vtab';
   $field_group->data = array(
     'label' => 'Application Requirements',
-    'weight' => '20',
+    'weight' => '19',
     'children' => array(
       0 => 'field_application_requirements',
     ),
@@ -134,7 +136,7 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->parent_name = 'group_taxonomy';
   $field_group->data = array(
     'label' => 'Career Level',
-    'weight' => '6',
+    'weight' => '53',
     'children' => array(
       0 => 'field_career_level',
     ),
@@ -218,7 +220,7 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->parent_name = 'group_overview_htab';
   $field_group->data = array(
     'label' => 'Featured Item',
-    'weight' => '5',
+    'weight' => '8',
     'children' => array(
       0 => 'field_featured_event',
       1 => 'field_featured_superhead',
@@ -301,7 +303,7 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->parent_name = 'group_taxonomy';
   $field_group->data = array(
     'label' => 'Key Topics',
-    'weight' => '8',
+    'weight' => '55',
     'children' => array(
       0 => 'field_key_program_topics',
     ),
@@ -328,7 +330,7 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->parent_name = 'group_taxonomy';
   $field_group->data = array(
     'label' => 'Leadership Level',
-    'weight' => '5',
+    'weight' => '52',
     'children' => array(
       0 => 'field_leadership_level',
     ),
@@ -474,7 +476,7 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->parent_name = 'group_overview_htab';
   $field_group->data = array(
     'label' => '',
-    'weight' => '7',
+    'weight' => '9',
     'children' => array(
       0 => 'group_application_requirements',
       1 => 'group_awarded_upon_completion',
@@ -536,7 +538,7 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->parent_name = 'group_taxonomy';
   $field_group->data = array(
     'label' => 'Program Category',
-    'weight' => '4',
+    'weight' => '51',
     'children' => array(
       0 => 'field_program_category',
     ),
@@ -622,7 +624,7 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->parent_name = 'group_administration';
   $field_group->data = array(
     'label' => 'Taxonomy',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'group_all_topics',
       1 => 'group_career_level',
@@ -653,7 +655,7 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->parent_name = 'group_taxonomy';
   $field_group->data = array(
     'label' => 'Time Commitment',
-    'weight' => '7',
+    'weight' => '54',
     'children' => array(
       0 => 'field_part_time_details',
       1 => 'field_time_commitment',

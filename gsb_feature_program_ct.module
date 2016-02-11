@@ -14,6 +14,8 @@ function gsb_feature_program_ct_form_node_form_alter(&$form, &$form_state) {
 
   $form['title']['#title'] = 'Program Name';
 
+  $form['field_additional_pages']['und'][0]['#title'] = '';
+
   // hide the n/a option for field_image_or_video radio buttons
   unset($form['field_image_or_video']['und']['#options']['_none']);
 
