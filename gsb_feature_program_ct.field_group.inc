@@ -13,37 +13,6 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_admin_details|node|program|form';
-  $field_group->group_name = 'group_admin_details';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'program';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_administration';
-  $field_group->data = array(
-    'label' => '',
-    'weight' => '8',
-    'children' => array(
-      0 => 'group_program_category',
-      1 => 'group_leadership_level',
-      2 => 'group_time_commitment',
-      3 => 'group_career_level',
-      4 => 'group_key_topics',
-      5 => 'group_all_topics',
-    ),
-    'format_type' => 'tabs',
-    'format_settings' => array(
-      'formatter' => '',
-      'instance_settings' => array(
-        'classes' => 'group-admin-details field-group-tabs',
-        'id' => '',
-      ),
-    ),
-  );
-  $field_groups['group_admin_details|node|program|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
   $field_group->identifier = 'group_administration|node|program|form';
   $field_group->group_name = 'group_administration';
   $field_group->entity_type = 'node';
