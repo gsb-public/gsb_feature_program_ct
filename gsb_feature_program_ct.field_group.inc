@@ -111,7 +111,7 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->parent_name = 'group_overview_vtab';
   $field_group->data = array(
     'label' => 'Application Requirements',
-    'weight' => '19',
+    'weight' => '20',
     'children' => array(
       0 => 'field_application_requirements',
     ),
@@ -506,15 +506,15 @@ function gsb_feature_program_ct_field_group_info() {
     'label' => '',
     'weight' => '7',
     'children' => array(
-      0 => 'group_ctas',
-      1 => 'group_key_benefits',
-      2 => 'group_learn_more',
-      3 => 'group_program_lead',
-      4 => 'group_related_content',
+      0 => 'group_application_requirements',
+      1 => 'group_awarded_upon_completion',
+      2 => 'group_ctas',
+      3 => 'group_key_benefits',
+      4 => 'group_learn_more',
       5 => 'group_overview_tab',
-      6 => 'group_who_should',
-      7 => 'group_awarded_upon_completion',
-      8 => 'group_application_requirements',
+      6 => 'group_program_lead',
+      7 => 'group_related_content',
+      8 => 'group_who_should',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -569,8 +569,8 @@ function gsb_feature_program_ct_field_group_info() {
     'label' => 'Participants',
     'weight' => '5',
     'children' => array(
-      0 => 'field_participant_intro',
-      1 => 'field_participant_description',
+      0 => 'field_participant_description',
+      1 => 'field_participant_intro',
     ),
     'format_type' => 'htab',
     'format_settings' => array(

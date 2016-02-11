@@ -532,7 +532,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 9,
+      'weight' => 11,
     ),
     'workbench_access_field' => 0,
   );
@@ -853,7 +853,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 28,
+      'weight' => 27,
     ),
     'workbench_access_field' => 0,
   );
@@ -1012,7 +1012,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 4,
+      'weight' => 5,
     ),
     'workbench_access_field' => 0,
   );
@@ -1171,7 +1171,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 5,
+      'weight' => 6,
     ),
     'workbench_access_field' => 0,
   );
@@ -1330,7 +1330,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 3,
+      'weight' => 4,
     ),
     'workbench_access_field' => 0,
   );
@@ -3211,7 +3211,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 4,
+      'weight' => 15,
     ),
     'workbench_access_field' => 0,
   );
@@ -3364,7 +3364,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'size' => 150,
       ),
       'type' => 'text_textfield',
-      'weight' => 3,
+      'weight' => 14,
     ),
     'workbench_access_field' => 0,
   );
@@ -3670,7 +3670,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 51,
+      'weight' => 5,
     ),
     'workbench_access_field' => 0,
   );
@@ -3826,7 +3826,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 50,
+      'weight' => 4,
     ),
     'workbench_access_field' => 0,
   );
