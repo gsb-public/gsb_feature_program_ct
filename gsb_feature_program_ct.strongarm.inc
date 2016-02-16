@@ -143,7 +143,7 @@ function gsb_feature_program_ct_strongarm() {
           'weight' => '2',
         ),
         'gsb_program_instance_listing_eva_field_form' => array(
-          'weight' => '7',
+          'weight' => '62',
         ),
         'workbench_access' => array(
           'weight' => '1',
