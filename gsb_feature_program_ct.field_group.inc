@@ -242,34 +242,6 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_featured_item|node|program|form';
-  $field_group->group_name = 'group_featured_item';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'program';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_overview_htab';
-  $field_group->data = array(
-    'label' => 'Featured Item',
-    'weight' => '8',
-    'children' => array(
-      0 => 'field_featured_event',
-      1 => 'field_featured_superhead',
-    ),
-    'format_type' => 'fieldset',
-    'format_settings' => array(
-      'formatter' => 'collapsible',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-featured-item field-group-fieldset',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $field_groups['group_featured_item|node|program|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
   $field_group->identifier = 'group_images|node|program|form';
   $field_group->group_name = 'group_images';
   $field_group->entity_type = 'node';
