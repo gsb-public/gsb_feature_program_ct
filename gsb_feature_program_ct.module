@@ -199,3 +199,117 @@ function gsb_feature_program_ct_theme($existing, $type , $theme, $path) {
     )
   );
 }
+
+/**
+ * Implements hook_field_extra_fields().
+ */
+function gsb_feature_program_ct_field_extra_fields() {
+  $extra = array();
+  $extra['node']['program']['display'] = array(
+    'gsb_program_explore_more' => array(
+      'label' => t('Explore more'),
+      'description' => t('Programs with same Career Levels and Key Topics'),
+      'weight' => 0,
+    ),
+  );
+  return $extra;
+}
+
+/**
+ * Implements hook_entity_view().
+ */
+function gsb_feature_program_ct_entity_view($entity, $type, $view_mode, $langcode) {
+
+  // Only go thru this code if we are working with a node
+  if ($type != 'node') {
+    return;
+  }
+  // Only go thru this code if we are working with a program node
+  if ($entity->type != 'program') {
+    return;
+  }
+  // Only go thru this code if the 'explore more' field is visible
+  $fields = field_extra_fields_get_display('node', $entity->type, $view_mode);
+  if (empty($fields['gsb_program_explore_more']['visible'])) {
+    return;
+  }
+
+  // Get the list of career level tids
+  $wrapper = entity_metadata_wrapper($type, $entity);
+  $tids = array();
+  foreach ($wrapper->field_career_level as $term) {
+    if ($term->value()) {
+      $tids[] = $term->value()->tid;
+    }
+  };
+
+  // Get the list of key program topics tids
+  $wrapper = entity_metadata_wrapper($type, $entity);
+  $ktids = array();
+  foreach ($wrapper->field_key_program_topics as $term) {
+    if ($term->value()) {
+      $ktids[] = $term->value()->tid;
+    }
+  };
+
+  $nid = $entity->nid;
+
+  // Run a query to find other programs that have key topics and career levels
+  // like the program node we are viewing
+  $query = db_select('node', 'n');
+  $query->fields('n', array('nid', 'status', 'type', 'created'));
+  $query->join('field_data_field_career_level', 'cl', "n.nid = cl.entity_id AND cl.entity_type = 'node'");
+  $query->join('taxonomy_term_data', 't', "t.tid = cl.field_career_level_tid");
+  $query->join('field_data_field_key_program_topics', 'kpt', "n.nid = kpt.entity_id AND kpt.entity_type = 'node'");
+  $query->fields('kt', array('tid'));
+  $query->join('taxonomy_term_data', 'kt', "kt.tid = kpt.field_key_program_topics_tid");
+  $query->condition('n.nid', $nid, '<>');
+  $query->condition('n.type', 'program');
+  $query->condition('n.status', '1');
+  $query->condition('t.tid', $tids, 'IN');
+  $query->condition('kt.tid', $ktids, 'IN');
+  $query->orderBy('created', 'DESC');
+  $query->orderBy('nid', 'DESC');
+  $results = $query->execute();
+
+  // Get the counts of programs that have more than one match
+  $programs = array();
+  foreach ($results as $record) {
+    $programs[$record->nid] = (empty($programs[$record->nid])) ? 1 : $programs[$record->nid] + 1;
+  }
+  // Sort descending so we can find the programs with the most matches
+  arsort($programs);
+  // Only keep the top 3
+  $programs = array_slice($programs, 0, 3, TRUE);
+
+  // Render the top 3 matching programs in the 'expore more' wrapper
+  if ($programs) {
+
+    $nodes = node_load_multiple(array_keys($programs));
+    $content = node_view_multiple($nodes, 'teaser');
+
+    // Wrap content in container.
+    $content_wrapper = array(
+      '#type' => 'container',
+      '#attributes' => array(
+        'class' => array('explore-more-content'),
+      ),
+    );
+    $content_wrapper['content'] = $content;
+
+    // Wrap content and title in container.
+    $container = array(
+      '#type' => 'container',
+      '#attributes' => array(
+        'class' => array('gsb-program-expore-more-wraooer'),
+      ),
+    );
+
+    // Add a title.
+    $container['title'] = array('#markup' => '<div class="superhead">' . t('Explore More') . '</div>');
+    $container['content'] = $content_wrapper;
+
+    $entity->content['gsb_program_explore_more'] = $container;
+  }
+
+}
