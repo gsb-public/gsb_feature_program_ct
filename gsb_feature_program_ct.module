@@ -207,8 +207,13 @@ function gsb_feature_program_ct_field_extra_fields() {
   $extra = array();
   $extra['node']['program']['display'] = array(
     'gsb_program_explore_more' => array(
-      'label' => t('Explore more'),
+      'label' => t('Explore Other Programs'),
       'description' => t('Programs with same Career Levels and Key Topics'),
+      'weight' => 0,
+    ),
+    'gsb_program_program_instance_fields' => array(
+      'label' => t('Program Instance Fields'),
+      'description' => t('Renders the program instance fields.'),
       'weight' => 0,
     ),
   );
@@ -219,6 +224,30 @@ function gsb_feature_program_ct_field_extra_fields() {
  * Implements hook_entity_view().
  */
 function gsb_feature_program_ct_entity_view($entity, $type, $view_mode, $langcode) {
+
+  // Only go thru this code if we are working with a node
+  if ($type != 'node') {
+    return;
+  }
+  // Only go thru this code if we are working with a program node
+  if ($entity->type != 'program') {
+    return;
+  }
+  // Only go thru this code if the 'explore more' field is visible
+  $fields = field_extra_fields_get_display('node', $entity->type, $view_mode);
+  if (!empty($fields['gsb_program_explore_more']['visible'])) {
+    gsb_feature_program_ct_explore_more($entity, $type, $view_mode, $langcode);
+  }
+  else if (!empty($fields['gsb_program_program_instance_fields']['visible'])) {
+    gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mode, $langcode);
+  }
+
+}
+
+/**
+ * Implements hook_entity_view().
+ */
+function gsb_feature_program_ct_explore_more($entity, $type, $view_mode, $langcode) {
 
   // Only go thru this code if we are working with a node
   if ($type != 'node') {
@@ -301,7 +330,7 @@ function gsb_feature_program_ct_entity_view($entity, $type, $view_mode, $langcod
     $container = array(
       '#type' => 'container',
       '#attributes' => array(
-        'class' => array('gsb-program-expore-more-wraooer'),
+        'class' => array('gsb-program-expore-more-wrapper'),
       ),
     );
 
@@ -311,5 +340,104 @@ function gsb_feature_program_ct_entity_view($entity, $type, $view_mode, $langcod
 
     $entity->content['gsb_program_explore_more'] = $container;
   }
+
+}
+
+/**
+ * Implements hook_entity_view().
+ */
+function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mode, $langcode) {
+
+  // Only go thru this code if we are working with a node
+  if ($type != 'node') {
+    return;
+  }
+  // Only go thru this code if we are working with a program node
+  if ($entity->type != 'program') {
+    return;
+  }
+  // Only go thru this code if the 'explore more' field is visible
+  $fields = field_extra_fields_get_display('node', $entity->type, $view_mode);
+  if (empty($fields['gsb_program_program_instance_fields']['visible'])) {
+    return;
+  }
+
+  $nid = $entity->nid;
+
+  // Lookup the program instances for this program
+  $query = db_select('node', 'n');
+  $query->fields('n', array('nid', 'status', 'type'));
+  $query->join('field_data_field_program', 'fp', "n.nid = fp.entity_id AND fp.entity_type = 'node' AND fp.deleted = '0'");
+  $query->fields('fp', array('entity_id', 'entity_type', 'deleted', 'field_program_target_id'));
+  $query->join('node', 'nodefp', 'fp.field_program_target_id = nodefp.nid');
+  $query->fields('nodefp', array('nid'));
+  $query->join('field_data_field_instance_date', 'fid', "n.nid = fid.entity_id AND fid.entity_type = 'node' AND fid.deleted = '0'");
+  $query->fields('fid', array('field_instance_date_value'));
+  $query->condition('nodefp.nid', $nid);
+  $query->condition('n.status', '1');
+  $query->condition('n.type', 'program_instance');
+  $query->orderBy('fid.field_instance_date_value', 'DESC');
+  //$query->range(0,1);
+  $results = $query->execute();
+
+  $node_wrapper = entity_metadata_wrapper('node', $nid);
+
+  $program_instance_markups = array();
+  foreach ($results as $record) {
+    $instance_wrapper = entity_metadata_wrapper('node', $record->nid);
+    // add program format markup
+    $program_location = $instance_wrapper->field_program_location->value();
+    $ewrap_location = entity_metadata_wrapper('field_collection_item', $program_location);
+    $program_format = $ewrap_location->field_program_format->value();
+    $program_instance_markups[$record->nid][] = '<div class="program-format">' . $program_format->name . '</div>';
+    // add tuition amount markup
+    $tuition = $instance_wrapper->field_tuition->value();
+    $program_instance_markups[$record->nid][] = '<div class="tuition-amount">' . $tuition['title'] . '</div>';
+    // add included in tuition markup
+    $included_in_tuition = $instance_wrapper->field_included_in_tuition->value();
+    $program_instance_markups[$record->nid][] = '<div class="included-in-tuition">' . $included_in_tuition['safe_value'] . '</div>';
+    // seek in a couple program fields
+    // add awarded_upon_completion markup from program
+    $awarded_upon_completion = $node_wrapper->field_awarded_upon_completion->value();
+    if ($awarded_upon_completion) {
+      $program_instance_markups[$record->nid][] = '<div class="awarded-upon-completion">' . $awarded_upon_completion . '</div>';
+    }
+    // add app_requirements_intro markup from program
+    $app_requirements_intro = $node_wrapper->field_app_requirements_intro->value();
+    if ($app_requirements_intro) {
+      $program_instance_markups[$record->nid][] = '<div class="app-requirements-intro">' . $app_requirements_intro . '</div>';
+    }
+  }
+
+  // Wrap content and title in container.
+  $container = array(
+    '#type' => 'container',
+    '#attributes' => array(
+      'class' => array('gsb-program-program-instance-fields'),
+    ),
+  );
+
+  $instance_wrappers = array();
+
+  foreach ($program_instance_markups as $pi_markup) {
+
+    // Wrap content in container.
+    $content_wrapper = array(
+      '#type' => 'container',
+      '#attributes' => array(
+        'class' => array('program-instance-wrapper'),
+      ),
+    );
+    $content_wrapper['content'] = array('#markup' => '<div class="program-instance">' . implode(" ", $pi_markup) . '</div>');
+
+    $instance_wrappers['content'][] = $content_wrapper;
+
+  }
+
+  // Add a title.
+  $container['title'] = array('#markup' => '<div class="superhead">' . t('Program Instance Fields') . '</div>');
+  $container['content'] = $instance_wrappers;
+
+  $entity->content['gsb_program_program_instance_fields'] = $container;
 
 }
