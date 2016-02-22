@@ -31,7 +31,7 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_ee_section_hea
     $link_apply_button = $instance_wrapper->field_link_apply_button->value();
     if ($display_on_finder && $is_application_open) {
       $link = array();
-      $link['text'] = 'Apply Button'; //$link_apply_button['title'];
+      $link['text'] = 'Apply';
       $link['path'] = $link_apply_button['url'];
       $link['options']['html'] = null;
       $link['options']['attributes'] = $link_apply_button['attributes'];
