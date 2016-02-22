@@ -111,9 +111,9 @@ function _gsb_feature_program_ct_node_save($node) {
   _gsb_feature_program_ct_create_ppp($node, 'faculty');
   _gsb_feature_program_ct_create_ppp($node, 'participant');
 
-  if ($node->field_program_small_teams['und'][0]['value'] == '1') {
-    _gsb_feature_program_ct_create_ppp($node, 'team');
-  }
+  //if ($node->field_program_small_teams['und'][0]['value'] == '1') {
+    //_gsb_feature_program_ct_create_ppp($node, 'team');
+  //}
 
 }
 
@@ -166,6 +166,10 @@ function gsb_feature_program_ct_block_info() {
     'program_menu' => array(
       'info' => t('Program Menu'),
       'cache' => DRUPAL_CACHE_GLOBAL,
+    ),
+    'ee_section_header' => array(
+      'info' => t('EE Section Header'),
+      'cache' => DRUPAL_CACHE_GLOBAL,
     )
   );
 }
@@ -182,6 +186,9 @@ function gsb_feature_program_ct_block_view($delta = '') {
     case 'program_menu':
       $block['content'] = theme('gsb_feature_program_ct_program_menu');
       break;
+    case 'ee_section_header':
+      $block['content'] = theme('gsb_feature_program_ct_ee_section_header');
+      break;
   }
   return $block;
 }
@@ -194,8 +201,12 @@ function gsb_feature_program_ct_block_view($delta = '') {
 function gsb_feature_program_ct_theme($existing, $type , $theme, $path) {
   return array(
     'gsb_feature_program_ct_program_menu' => array(
-      'template' => 'templates/gsb-freature-program-ct-program-menu',
+      'template' => 'templates/gsb-feature-program-ct-program-menu',
       'file' => 'program_menu.theme.inc',
+    ),
+    'gsb_feature_program_ct_ee_section_header' => array(
+      'template' => 'templates/gsb-feature-program-ct-ee-section-header',
+      'file' => 'ee_section_header.theme.inc',
     )
   );
 }
