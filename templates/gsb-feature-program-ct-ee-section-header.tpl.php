@@ -13,11 +13,4 @@
       <?php print $ee_section_header_follow_us; ?>
     </div>
   </div>
-  <div>
-    <?php if ($ee_section_header_apply_button) : ?>
-    <div class="ee-section-header-apply-button">
-      <?php print $ee_section_header_apply_button; ?>
-    </div>
-    <?php endif; ?>
-  </div>
 </div>
