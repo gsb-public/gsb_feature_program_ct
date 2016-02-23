@@ -130,6 +130,9 @@ function gsb_feature_program_ct_strongarm() {
       'program_contact' => array(
         'custom_settings' => FALSE,
       ),
+      'program_explore_other' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -156,6 +159,28 @@ function gsb_feature_program_ct_strongarm() {
         'gsb_program_explore_more' => array(
           'teaser' => array(
             'weight' => '0',
+            'visible' => FALSE,
+          ),
+          'default' => array(
+            'weight' => '13',
+            'visible' => TRUE,
+          ),
+          'program_explore_other' => array(
+            'weight' => '22',
+            'visible' => FALSE,
+          ),
+        ),
+        'gsb_program_program_instance_fields' => array(
+          'teaser' => array(
+            'weight' => '0',
+            'visible' => FALSE,
+          ),
+          'default' => array(
+            'weight' => '6',
+            'visible' => TRUE,
+          ),
+          'program_explore_other' => array(
+            'weight' => '23',
             'visible' => FALSE,
           ),
         ),

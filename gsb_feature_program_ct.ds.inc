@@ -22,7 +22,7 @@ function gsb_feature_program_ct_ds_field_settings_info() {
         'ft' => array(
           'func' => 'theme_ds_field_expert',
           'lb' => 'Who Should Attend',
-          'lb-el' => 'h2',
+          'lb-el' => 'h3',
           'lb-col' => TRUE,
           'ow' => TRUE,
           'ow-el' => 'div',
@@ -83,7 +83,7 @@ function gsb_feature_program_ct_ds_field_settings_info() {
           'ow-def-at' => FALSE,
           'fi' => TRUE,
           'fi-el' => 'div',
-          'fi-cl' => 'show-more-less-wrapper',
+          'fi-cl' => 'show-more-less-wrapper format-body',
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
@@ -103,7 +103,7 @@ function gsb_feature_program_ct_ds_field_settings_info() {
           'ow-def-at' => FALSE,
           'fi' => TRUE,
           'fi-el' => 'div',
-          'fi-cl' => 'show-more-less-wrapper',
+          'fi-cl' => 'show-more-less-wrapper format-body',
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
@@ -116,6 +116,7 @@ function gsb_feature_program_ct_ds_field_settings_info() {
         'ft' => array(
           'func' => 'theme_ds_field_expert',
           'lb' => 'Contact',
+          'lb-el' => 'h3',
           'lb-col' => TRUE,
           'ow' => TRUE,
           'ow-el' => 'div',
@@ -131,11 +132,11 @@ function gsb_feature_program_ct_ds_field_settings_info() {
         'ft' => array(
           'func' => 'theme_ds_field_expert',
           'lb' => 'Key Benefits',
-          'lb-el' => 'h2',
+          'lb-el' => 'h3',
           'lb-col' => TRUE,
           'ow' => TRUE,
           'ow-el' => 'div',
-          'ow-cl' => '',
+          'ow-cl' => 'format-body',
           'ow-def-cl' => TRUE,
           'ow-at' => '',
           'ow-def-at' => FALSE,
@@ -450,6 +451,49 @@ function gsb_feature_program_ct_ds_field_settings_info() {
   );
   $export['node|program|idea_story_related'] = $ds_fieldsetting;
 
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|program|program_explore_other';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'program';
+  $ds_fieldsetting->view_mode = 'program_explore_other';
+  $ds_fieldsetting->settings = array(
+    'title' => array(
+      'weight' => '1',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '1',
+        'wrapper' => 'h4',
+        'class' => '',
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'ow' => TRUE,
+          'ow-el' => 'div',
+          'ow-cl' => '',
+          'ow-def-cl' => TRUE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
+        ),
+        'conditions' => array(),
+      ),
+    ),
+    'field_image_key_image' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'ow' => TRUE,
+          'ow-el' => 'div',
+          'ow-cl' => '',
+          'ow-def-cl' => TRUE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
+        ),
+      ),
+    ),
+  );
+  $export['node|program|program_explore_other'] = $ds_fieldsetting;
+
   return $export;
 }
 
@@ -476,18 +520,27 @@ function gsb_feature_program_ct_ds_layout_settings_info() {
         4 => 'field_event_who_attend',
       ),
       'right' => array(
-        5 => 'field_featured_superhead',
-        6 => 'field_featured_event',
-        7 => 'field_program_director_name',
+        5 => 'group_wrapper_featured_item',
+        6 => 'field_featured_superhead',
+        7 => 'gsb_program_program_instance_fields',
+        8 => 'field_featured_event',
+        9 => 'field_program_director_name',
       ),
       'learn' => array(
-        8 => 'field_video_url',
-        9 => 'field_learn_more_video_title',
-        10 => 'field_video_description',
+        10 => 'field_video_url',
+        11 => 'field_learn_more_video_title',
+        12 => 'field_video_description',
       ),
       'cta' => array(
-        11 => 'field_cta1',
-        12 => 'field_cta2',
+        13 => 'field_cta1',
+        14 => 'field_cta2',
+      ),
+      'explore' => array(
+        15 => 'gsb_program_explore_more',
+      ),
+      'footer' => array(
+        16 => 'group_wrapper_taxonomy',
+        17 => 'field_program_topics',
       ),
     ),
     'fields' => array(
@@ -496,7 +549,9 @@ function gsb_feature_program_ct_ds_layout_settings_info() {
       'field_key_benefits_intro' => 'left',
       'field_key_benefits_description' => 'left',
       'field_event_who_attend' => 'left',
+      'group_wrapper_featured_item' => 'right',
       'field_featured_superhead' => 'right',
+      'gsb_program_program_instance_fields' => 'right',
       'field_featured_event' => 'right',
       'field_program_director_name' => 'right',
       'field_video_url' => 'learn',
@@ -504,6 +559,9 @@ function gsb_feature_program_ct_ds_layout_settings_info() {
       'field_video_description' => 'learn',
       'field_cta1' => 'cta',
       'field_cta2' => 'cta',
+      'gsb_program_explore_more' => 'explore',
+      'group_wrapper_taxonomy' => 'footer',
+      'field_program_topics' => 'footer',
     ),
     'classes' => array(),
     'wrappers' => array(
@@ -520,6 +578,7 @@ function gsb_feature_program_ct_ds_layout_settings_info() {
     'layout_attributes_merge' => 1,
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
+    'layout_disable_css' => FALSE,
   );
   $export['node|program|default'] = $ds_layout;
 
@@ -740,6 +799,37 @@ function gsb_feature_program_ct_ds_layout_settings_info() {
     'layout_link_custom' => '',
   );
   $export['node|program|idea_story_related'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|program|program_explore_other';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'program';
+  $ds_layout->view_mode = 'program_explore_other';
+  $ds_layout->layout = 'ds_1col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'field_image_key_image',
+        1 => 'title',
+      ),
+    ),
+    'fields' => array(
+      'field_image_key_image' => 'ds_content',
+      'title' => 'ds_content',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'ds_content' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
+    'layout_disable_css' => FALSE,
+  );
+  $export['node|program|program_explore_other'] = $ds_layout;
 
   return $export;
 }

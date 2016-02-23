@@ -238,7 +238,7 @@ function gsb_feature_program_ct_entity_view($entity, $type, $view_mode, $langcod
   if (!empty($fields['gsb_program_explore_more']['visible'])) {
     gsb_feature_program_ct_explore_more($entity, $type, $view_mode, $langcode);
   }
-  else if (!empty($fields['gsb_program_program_instance_fields']['visible'])) {
+  if (!empty($fields['gsb_program_program_instance_fields']['visible'])) {
     gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mode, $langcode);
   }
 
@@ -315,7 +315,7 @@ function gsb_feature_program_ct_explore_more($entity, $type, $view_mode, $langco
   if ($programs) {
 
     $nodes = node_load_multiple(array_keys($programs));
-    $content = node_view_multiple($nodes, 'teaser');
+    $content = node_view_multiple($nodes, 'program_explore_other');
 
     // Wrap content in container.
     $content_wrapper = array(
@@ -335,7 +335,7 @@ function gsb_feature_program_ct_explore_more($entity, $type, $view_mode, $langco
     );
 
     // Add a title.
-    $container['title'] = array('#markup' => '<div class="superhead">' . t('Explore More') . '</div>');
+    $container['title'] = array('#markup' => '<h3 class="section-title">' . t('Explore Related Programs') . '</h3>');
     $container['content'] = $content_wrapper;
 
     $entity->content['gsb_program_explore_more'] = $container;

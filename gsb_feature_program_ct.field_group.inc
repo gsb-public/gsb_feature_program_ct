@@ -731,6 +731,39 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_wrapper_featured_item|node|program|default';
+  $field_group->group_name = 'group_wrapper_featured_item';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'program';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Featured Item wrapper',
+    'weight' => '5',
+    'children' => array(
+      0 => 'field_featured_event',
+      1 => 'field_featured_superhead',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Featured Item wrapper',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'group-wrapper-featured-item field-group-div',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'none',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $field_groups['group_wrapper_featured_item|node|program|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_wrapper_related|node|program|field_program_related';
   $field_group->group_name = 'group_wrapper_related';
   $field_group->entity_type = 'node';
@@ -759,6 +792,33 @@ function gsb_feature_program_ct_field_group_info() {
     ),
   );
   $field_groups['group_wrapper_related|node|program|field_program_related'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_wrapper_taxonomy|node|program|default';
+  $field_group->group_name = 'group_wrapper_taxonomy';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'program';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Taxonomy wrapper',
+    'weight' => '14',
+    'children' => array(
+      0 => 'field_program_topics',
+    ),
+    'format_type' => 'gsb_field_formatter_group_comma_separator',
+    'format_settings' => array(
+      'label' => 'Taxonomy wrapper',
+      'instance_settings' => array(
+        'item_count' => '0',
+        'classes' => 'group-wrapper-taxonomy field-group-gsb_field_formatter_group_comma_separator',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $field_groups['group_wrapper_taxonomy|node|program|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -803,6 +863,7 @@ function gsb_feature_program_ct_field_group_info() {
   t('Career Level');
   t('Curriculum');
   t('Featured Item');
+  t('Featured Item wrapper');
   t('Images');
   t('Instances');
   t('Key Benefits');
@@ -817,6 +878,7 @@ function gsb_feature_program_ct_field_group_info() {
   t('Related');
   t('Related Content');
   t('Taxonomy');
+  t('Taxonomy wrapper');
   t('Time Commitment');
   t('Title wrapper');
   t('Who Should Attend');
