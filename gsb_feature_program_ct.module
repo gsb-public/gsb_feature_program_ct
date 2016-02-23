@@ -385,6 +385,7 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
   }
 
   $nid = $entity->nid;
+  $language = $entity->language;
 
   // Lookup the program instances for this program
   $query = db_select('node', 'n');
@@ -404,31 +405,111 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
 
   $node_wrapper = entity_metadata_wrapper('node', $nid);
 
+  $topics = array();
+
   $program_instance_markups = array();
   foreach ($results as $record) {
     $instance_wrapper = entity_metadata_wrapper('node', $record->nid);
+
+    // get instance label
+    $instance_label = $instance_wrapper->field_instance_label->value();
+
+    // get instance date
+    $instance_date = $instance_wrapper->field_instance_date->value();
+    $start_date = new DateTime($instance_date['value']);
+    $formatted_date = $start_date->format('d M Y');
+    if (!empty($instance_date['value2'])) {
+      $end_date = new DateTime($instance_date['value2']);
+      $formatted_date = $formatted_date . ' - ' . $end_date->format('d M Y');
+    }
+
+    // add instance header (label and date) markup as -first item-
+    $program_instance_markups[$record->nid][] = '<h2 class="instance-header">' . $instance_label . '<span class="pipe">|</span>' . $formatted_date . '</h2>';
+
+    $program_instance_markups[$record->nid][] = '<div class ="group-left">';
+    $program_instance_markups[$record->nid][] = '<h3>Format</h3>';
+
     // add program format markup
     $program_location = $instance_wrapper->field_program_location->value();
     $ewrap_location = entity_metadata_wrapper('field_collection_item', $program_location);
     $program_format = $ewrap_location->field_program_format->value();
     $program_instance_markups[$record->nid][] = '<div class="program-format">' . $program_format->name . '</div>';
-    // add tuition amount markup
-    $tuition = $instance_wrapper->field_tuition->value();
-    $program_instance_markups[$record->nid][] = '<div class="tuition-amount">' . $tuition['title'] . '</div>';
-    // add included in tuition markup
-    $included_in_tuition = $instance_wrapper->field_included_in_tuition->value();
-    $program_instance_markups[$record->nid][] = '<div class="included-in-tuition">' . $included_in_tuition['safe_value'] . '</div>';
-    // seek in a couple program fields
-    // add awarded_upon_completion markup from program
-    $awarded_upon_completion = $node_wrapper->field_awarded_upon_completion->value();
-    if ($awarded_upon_completion) {
-      $program_instance_markups[$record->nid][] = '<div class="awarded-upon-completion">' . $awarded_upon_completion . '</div>';
+
+    // add time commitment markup
+    $time_commitment = $node_wrapper->field_time_commitment->value();
+    $program_instance_markups[$record->nid][] = '<div class="time-commitment">' . $time_commitment->name . '</div>';
+
+    $program_instance_markups[$record->nid][] = '<h3>Program Schedule</h3>';
+
+    // add program schedule markup
+    $program_schedule = $instance_wrapper->field_program_schedule->value();
+    foreach($program_schedule as $ps) {
+      $ewrap_schedule = entity_metadata_wrapper('field_collection_item', $ps);
+      $schedule_body = $ewrap_schedule->field_body->value();
+      $program_date = $ewrap_schedule->field_program_date->value();
+      $start_date = new DateTime($program_date['value']);
+      $formatted_date = $start_date->format('d M Y');
+      if (!empty($program_date['value2'])) {
+        $end_date = new DateTime($program_date['value2']);
+        $formatted_date = $formatted_date . ' - ' . $end_date->format('d M Y');
+      }
+      $program_instance_markups[$record->nid][] = '<div class="program-schedule-date">' . $formatted_date . '</div>';
+      $program_instance_markups[$record->nid][] = '<div class="program-schedule-description">' . $schedule_body . '</div>';
     }
+
     // add app_requirements_intro markup from program
     $app_requirements_intro = $node_wrapper->field_app_requirements_intro->value();
     if ($app_requirements_intro) {
       $program_instance_markups[$record->nid][] = '<div class="app-requirements-intro">' . $app_requirements_intro . '</div>';
     }
+
+    $program_instance_markups[$record->nid][] = '</div>';
+    $program_instance_markups[$record->nid][] = '<div class ="group-right">';
+    $program_instance_markups[$record->nid][] = '<h3>Program Tuition</h3>';
+
+    // add tuition amount markup
+    $tuition = $instance_wrapper->field_tuition->value();
+    $program_instance_markups[$record->nid][] = '<div class="tuition-amount">' . $tuition['title'] . '</div>';
+
+    // add included in tuition markup
+    $included_in_tuition = $instance_wrapper->field_included_in_tuition->value();
+    $program_instance_markups[$record->nid][] = '<div class="included-in-tuition">' . $included_in_tuition['safe_value'] . '</div>';
+
+    // add optional programming markup
+    $optional_programming = $instance_wrapper->field_optional_programming->value();
+    if ($optional_programming) {
+      $program_instance_markups[$record->nid][] = '<div class="optional-programing">' . $optional_programming['safe_value'] . '</div>';
+    }
+
+    // add payment cancellation markup
+    $payment_cancellation = $instance_wrapper->field_payment_cancellation->value();
+    if ($payment_cancellation) {
+      $program_instance_markups[$record->nid][] =
+        '<div class="payment-cancellation">' .
+          '<a href="' . $payment_cancellation['url'] . '">Learn more about payment, financial aid, and cancellation policies.</a>' .
+        '</div>';
+    }
+
+    // seek in a couple program fields
+    // add awarded_upon_completion markup from program
+    $awarded_upon_completion = $node_wrapper->field_awarded_upon_completion->value();
+    if ($awarded_upon_completion) {
+      $program_instance_markups[$record->nid][] = '<h3>Awarded</h3>';
+      $program_instance_markups[$record->nid][] = '<div class="awarded-upon-completion">' . $awarded_upon_completion . '</div>';
+    }
+
+    // add program topics from program - to the topics array
+    $program_topics = $node_wrapper->field_program_topics->value();
+    foreach($program_topics as $pt) {
+      $topics[] = $pt;
+    }
+
+    // add program category from program - to the categories array
+    $program_category = $node_wrapper->field_program_category->value();
+    $program_listing_page_url = $program_category->field_program_listing_page_url[$language][0]['url'];
+
+    $program_instance_markups[$record->nid][] = '</div>';
+
   }
 
   // Wrap content and title in container.
@@ -447,17 +528,56 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
     $content_wrapper = array(
       '#type' => 'container',
       '#attributes' => array(
-        'class' => array('program-instance-wrapper'),
+        'class' => array('instance-wrapper'),
       ),
     );
-    $content_wrapper['content'] = array('#markup' => '<div class="program-instance">' . implode(" ", $pi_markup) . '</div>');
+
+    // get the header as the first item in the list of markup
+    $header = array_shift($pi_markup);
+
+    $content_wrapper['content'] = array('#markup' =>
+      $header .
+      '<div class="instance-information">' .
+      implode(" ", $pi_markup) .
+      '</div>'
+    );
 
     $instance_wrappers['content'][] = $content_wrapper;
 
   }
 
-  // Add a title.
-  $container['title'] = array('#markup' => '<div class="superhead">' . t('Program Instance Fields') . '</div>');
+
+  // create the topics markup
+  $topics_markup = array();
+  $count = count($topics);
+  foreach($topics as $delta => $item) {
+    $path = $program_listing_page_url . '?program-topic=' . str_replace(' ', '-', strtolower($item->name));
+    $topics_markup[] = '<a href="' . base_path() . $path . '">' . check_plain($item->name) . '</a>';
+    if ($delta != $count - 1) {
+      $topics_markup[] = '<span class="separator">' . check_plain(', ') . '</span>';
+    }
+  }
+
+  // create the program category markup
+  $path = $program_listing_page_url;
+  $program_category_markup = array();
+  $program_category_markup[] = '<a href="' . base_path() . $path . '">' . $program_category->name . '</a>';
+
+  // Wrap a taxonomy container around the topics and program category links
+  $taxonomy_wrapper = array(
+    '#type' => 'container',
+    '#attributes' => array(
+      'class' => array('instance-taxonomy'),
+    ),
+    'content' => array('#markup' =>
+      implode(" ", $topics_markup) .
+      '<span class="separator">' . check_plain(', ') . '</span>' .
+      implode(" ", $program_category_markup)
+    )
+  );
+
+  $instance_wrappers['content'][] = $taxonomy_wrapper;
+
   $container['content'] = $instance_wrappers;
 
   $entity->content['gsb_program_program_instance_fields'] = $container;
