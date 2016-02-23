@@ -37,6 +37,8 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_ee_section_app
       $link['options']['attributes'] = $link_apply_button['attributes'];
       $link['options']['attributes'] = array('class' => array('ee-section-apply-brochure-apply-button-link'));
       $vars['ee_section_apply_brochure_apply_button'] = theme('link', $link);
+    } else {
+      $vars['ee_section_apply_brochure_apply_button'] = null;
     }
   }
 }
