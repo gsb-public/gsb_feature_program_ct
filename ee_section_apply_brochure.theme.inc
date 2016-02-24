@@ -4,6 +4,10 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_ee_section_app
 
   $node = menu_get_object();
 
+  if (empty($node)) {
+    return;
+  }
+
   $language = $node->language;
 
   $nid = $node->nid;
