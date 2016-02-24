@@ -4,6 +4,11 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_ee_section_hea
 
   $node = menu_get_object();
 
+  if ($node->type == 'program_panelized_page') {
+    $program_nid = $node->field_program['und'][0]['target_id'];
+    $node = node_load($program_nid);
+  }
+
   $language = $node->language;
 
   if (!empty($node->field_display_image[$language][0])) {
