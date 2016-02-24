@@ -8,8 +8,8 @@
       <div class="ee-section-header-menu">
         <?php print $ee_section_header_menu; ?>
       </div>
-      <div class="ee-section-header-follow-us">
-        <?php print $ee_section_header_follow_us; ?>
+      <div class="ee-section-header-social-buttons">
+        <?php print $ee_section_header_social_buttons; ?>
       </div>
     </div>
   </div>
