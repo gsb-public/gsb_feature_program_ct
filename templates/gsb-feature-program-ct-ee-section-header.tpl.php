@@ -1,7 +1,9 @@
 <div class="ee-section-header">
-  <div class="ee-section-header-image">
-    <?php print $ee_section_header_image; ?>
-  </div>
+  <?php if (!empty($ee_section_header_image)) : ?>
+    <div class="ee-section-header-image">
+      <?php print $ee_section_header_image; ?>
+    </div>
+  <?php endif; ?>
   <div class="ee-section-header-overlay">
     <div class="overlay-inner-wrapper">
       <h1 class="ee-section-header-title"><?php print $ee_section_header_title; ?></h1>
