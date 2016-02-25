@@ -648,14 +648,12 @@ function gsb_feature_program_ct_program_instance_faculty_fields($entity, $type, 
   $faculty_directors = array();
   foreach ($results as $record) {
     $instance_wrapper = entity_metadata_wrapper('node', $record->nid);
-    foreach ($instance_wrapper->field_faculty_directors as $key => $director) {
-      if (($director_ref = $director->field_person_fac_single_ref) && $director_ref->getIdentifier()) {
-        $view = $director_ref->view('faculty_leadership');
-        $id = $director_ref->getIdentifier();
-        if (isset($view['node'][$id])) {
-          $faculty_directors[$id] = $view['node'][$id];
-          $faculty_directors[$id]['#weight'] = $key;
-        }
+    foreach ($instance_wrapper->field_faculty_directors as $key => $fci) {
+      $view = $fci->view('faculty_leadership');
+      $id = $fci->getIdentifier();
+      if (isset($view['field_collection_item'][$id])) {
+        $faculty_directors[$id] = $view['field_collection_item'][$id];
+        $faculty_directors[$id]['#weight'] = $key;
       }
     }
   }
@@ -669,5 +667,4 @@ function gsb_feature_program_ct_program_instance_faculty_fields($entity, $type, 
         ),
       ) + $faculty_directors;
   }
-
 }
