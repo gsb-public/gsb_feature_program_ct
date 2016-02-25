@@ -238,6 +238,11 @@ function gsb_feature_program_ct_field_extra_fields() {
       'description' => t('Renders the program instance fields.'),
       'weight' => 0,
     ),
+    'gsb_program_program_instance_faculty_fields' => array(
+      'label' => t('Program Instance Faculty Fields'),
+      'description' => t('Renders the program instance faculty fields.'),
+      'weight' => 0,
+    ),
   );
   return $extra;
 }
@@ -262,6 +267,9 @@ function gsb_feature_program_ct_entity_view($entity, $type, $view_mode, $langcod
   }
   if (!empty($fields['gsb_program_program_instance_fields']['visible'])) {
     gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mode, $langcode);
+  }
+  if (!empty($fields['gsb_program_program_instance_faculty_fields']['visible'])) {
+    gsb_feature_program_ct_program_instance_faculty_fields($entity, $type, $view_mode, $langcode);
   }
 
 }
@@ -587,5 +595,78 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
   $container['content'] = $instance_wrappers;
 
   $entity->content['gsb_program_program_instance_fields'] = $container;
+
+}
+
+/**
+ * Implements hook_entity_view().
+ */
+function gsb_feature_program_ct_program_instance_faculty_fields($entity, $type, $view_mode, $langcode) {
+
+  // Only go thru this code if we are working with a node
+  if ($type != 'node') {
+    return;
+  }
+  // Only go thru this code if we are working with a program node
+  if ($entity->type != 'program') {
+    return;
+  }
+  // Only go thru this code if we are working with view mode full
+  if ($view_mode != 'full') {
+    return;
+  }
+
+  // Only go thru this code if the 'explore more' field is visible
+  $fields = field_extra_fields_get_display('node', $entity->type, $view_mode);
+  if (empty($fields['gsb_program_program_instance_faculty_fields']['visible'])) {
+    return;
+  }
+
+  $nid = $entity->nid;
+  $language = $entity->language;
+
+  // Lookup the program instances for this program
+  $query = db_select('node', 'n');
+  $query->fields('n', array('nid', 'status', 'type'));
+  $query->join('field_data_field_program', 'fp', "n.nid = fp.entity_id AND fp.entity_type = 'node' AND fp.deleted = '0'");
+  $query->fields('fp', array('entity_id', 'entity_type', 'deleted', 'field_program_target_id'));
+  $query->join('node', 'nodefp', 'fp.field_program_target_id = nodefp.nid');
+  $query->fields('nodefp', array('nid'));
+  $query->join('field_data_field_instance_date', 'fid', "n.nid = fid.entity_id AND fid.entity_type = 'node' AND fid.deleted = '0'");
+  $query->fields('fid', array('field_instance_date_value'));
+  $query->join('field_data_field_display_on_finder', 'dof', "n.nid = dof.entity_id AND dof.entity_type = 'node' AND dof.deleted = '0'");
+  $query->fields('dof', array('field_display_on_finder_value'));
+  $query->condition('nodefp.nid', $nid);
+  $query->condition('n.status', '1');
+  $query->condition('n.type', 'program_instance');
+  $query->condition('dof.field_display_on_finder_value', '1');
+  $query->orderBy('fid.field_instance_date_value', 'DESC');
+  $query->range(0,1);
+  $results = $query->execute();
+
+  $faculty_directors = array();
+  foreach ($results as $record) {
+    $instance_wrapper = entity_metadata_wrapper('node', $record->nid);
+    foreach ($instance_wrapper->field_faculty_directors as $key => $director) {
+      if (($director_ref = $director->field_person_fac_single_ref) && $director_ref->getIdentifier()) {
+        $view = $director_ref->view('faculty_leadership');
+        $id = $director_ref->getIdentifier();
+        if (isset($view['node'][$id])) {
+          $faculty_directors[$id] = $view['node'][$id];
+          $faculty_directors[$id]['#weight'] = $key;
+        }
+      }
+    }
+  }
+  if (!empty($faculty_directors)) {
+    $entity->content['gsb_program_program_instance_faculty_fields'] = array(
+        '#type' => 'container',
+        '#attributes' => array(
+          'class' => array(
+            'faculty-author-wrapper',
+          ),
+        ),
+      ) + $faculty_directors;
+  }
 
 }
