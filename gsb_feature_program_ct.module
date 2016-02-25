@@ -317,8 +317,12 @@ function gsb_feature_program_ct_explore_more($entity, $type, $view_mode, $langco
   $query->condition('n.nid', $nid, '<>');
   $query->condition('n.type', 'program');
   $query->condition('n.status', '1');
-  $query->condition('t.tid', $tids, 'IN');
-  $query->condition('kt.tid', $ktids, 'IN');
+  if (!empty($tids)) {
+    $query->condition('t.tid', $tids, 'IN');
+  }
+  if (!empty($ktids)) {
+    $query->condition('kt.tid', $ktids, 'IN');
+  }
   $query->orderBy('created', 'DESC');
   $query->orderBy('nid', 'DESC');
   $results = $query->execute();
@@ -404,6 +408,13 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
   $results = $query->execute();
 
   $node_wrapper = entity_metadata_wrapper('node', $nid);
+
+  // get listing page url from program's program category
+  $program_category = $node_wrapper->field_program_category->value();
+  $program_listing_page_url = '';
+  if (!empty($program_category->field_program_listing_page_url[$language][0]['url'])) {
+    $program_listing_page_url = $program_category->field_program_listing_page_url[$language][0]['url'];
+  }
 
   $topics = array();
 
@@ -504,10 +515,6 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
       $topics[] = $pt;
     }
 
-    // add program category from program - to the categories array
-    $program_category = $node_wrapper->field_program_category->value();
-    $program_listing_page_url = $program_category->field_program_listing_page_url[$language][0]['url'];
-
     $program_instance_markups[$record->nid][] = '</div>';
 
   }
@@ -545,7 +552,6 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
     $instance_wrappers['content'][] = $content_wrapper;
 
   }
-
 
   // create the topics markup
   $topics_markup = array();
