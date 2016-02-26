@@ -509,33 +509,6 @@ function gsb_feature_program_ct_ds_field_settings_info() {
 }
 
 /**
- * Implements hook_ds_custom_fields_info().
- */
-function gsb_feature_program_ct_ds_custom_fields_info() {
-  $export = array();
-
-  $ds_field = new stdClass();
-  $ds_field->api_version = 1;
-  $ds_field->field = 'program_faculty_cta';
-  $ds_field->label = 'Program Faculty CTA';
-  $ds_field->field_type = 5;
-  $ds_field->entities = array(
-    'node' => 'node',
-  );
-  $ds_field->ui_limit = 'program|default';
-  $ds_field->properties = array(
-    'code' => array(
-      'value' => '<div class="program-faculty-cta"><a href="faculty" title="See All Faculty">See All Faculty</a></div>',
-      'format' => 'gsb_html_text',
-    ),
-    'use_token' => 0,
-  );
-  $export['program_faculty_cta'] = $ds_field;
-
-  return $export;
-}
-
-/**
  * Implements hook_ds_layout_settings_info().
  */
 function gsb_feature_program_ct_ds_layout_settings_info() {

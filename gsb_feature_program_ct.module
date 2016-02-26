@@ -18,7 +18,8 @@ function gsb_feature_program_ct_form_node_form_alter(&$form, &$form_state) {
 
   $form['title']['#title'] = 'Program Name';
 
-  $form['field_additional_pages']['und'][0]['#title'] = '';
+  $form['field_additional_pages'][$language][0]['#title'] = '';
+  unset($form['field_additional_pages'][$language][0]['field_page_link'][$language][0]['#title']);
 
   // hide the n/a option for field_image_or_video radio buttons
   unset($form['field_image_or_video']['und']['#options']['_none']);
@@ -75,6 +76,24 @@ function gsb_feature_program_ct_form_node_form_alter(&$form, &$form_state) {
       ),
     ),
   );
+}
+
+/**
+ * Implements hook_field_widget_WIDGET_TYPE_form_alter().
+ */
+function gsb_feature_program_ct_field_widget_link_field_form_alter(&$element, &$form_state, $context) {
+  if ($context['instance']['field_name'] == 'field_page_link') {
+    $element['#after_build'][] = 'gsb_feature_program_instance_ct_program_page_link_after_build';
+  }
+}
+
+
+/**
+ * #after_build callback for changing the link widget text for the program page link.
+ */
+function gsb_feature_program_instance_ct_program_page_link_after_build($element, &$form_state) {
+  $element['title']['#title'] = t('Page Title');
+  return $element;
 }
 
 /**
