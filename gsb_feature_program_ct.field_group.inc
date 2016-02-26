@@ -13,6 +13,35 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_additional_pages|node|program|form';
+  $field_group->group_name = 'group_additional_pages';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'program';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_administration';
+  $field_group->data = array(
+    'label' => 'Link to an Additional Page',
+    'weight' => '5',
+    'children' => array(
+      0 => 'field_additional_pages',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Link to an Additional Page',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'id' => '',
+        'classes' => 'group-additional-pages field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $field_groups['group_additional_pages|node|program|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_administration|node|program|form';
   $field_group->group_name = 'group_administration';
   $field_group->entity_type = 'node';
@@ -25,12 +54,11 @@ function gsb_feature_program_ct_field_group_info() {
     'children' => array(
       0 => 'field_link_single',
       1 => 'field_program_detail',
-      2 => 'field_additional_pages',
-      3 => 'field_additional_page_prefix',
-      4 => 'field_taxonomy_vtab_prefix',
-      5 => 'title',
-      6 => 'workbench_access',
-      7 => 'group_taxonomy',
+      2 => 'field_taxonomy_vtab_prefix',
+      3 => 'title',
+      4 => 'workbench_access',
+      5 => 'group_additional_pages',
+      6 => 'group_taxonomy',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -220,21 +248,21 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_overview_vtab';
   $field_group->data = array(
-    'label' => 'Featured Item',
+    'label' => 'Featured News or Event',
     'weight' => '16',
     'children' => array(
       0 => 'field_featured_event',
       1 => 'field_featured_superhead',
-      2 => 'group_featured_item',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'closed',
+      'label' => 'Featured News or Event',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-featured-item-vtab field-group-tab',
         'required_fields' => 1,
+        'classes' => 'group-featured-item-vtab field-group-tab',
+        'description' => '',
       ),
+      'formatter' => 'closed',
     ),
   );
   $field_groups['group_featured_item_vtab|node|program|form'] = $field_group;
@@ -508,14 +536,14 @@ function gsb_feature_program_ct_field_group_info() {
       0 => 'group_application_requirements',
       1 => 'group_awarded_upon_completion',
       2 => 'group_ctas',
-      3 => 'group_key_benefits',
-      4 => 'group_learn_more',
-      5 => 'group_overview_tab',
-      6 => 'group_program_lead',
-      7 => 'group_related_content',
-      8 => 'group_who_should',
-      9 => 'group_images',
-      10 => 'group_featured_item_vtab',
+      3 => 'group_featured_item_vtab',
+      4 => 'group_images',
+      5 => 'group_key_benefits',
+      6 => 'group_learn_more',
+      7 => 'group_overview_tab',
+      8 => 'group_program_lead',
+      9 => 'group_related_content',
+      10 => 'group_who_should',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -653,7 +681,7 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->parent_name = 'group_administration';
   $field_group->data = array(
     'label' => 'Taxonomy',
-    'weight' => '8',
+    'weight' => '9',
     'children' => array(
       0 => 'group_all_topics',
       1 => 'group_career_level',
@@ -862,14 +890,15 @@ function gsb_feature_program_ct_field_group_info() {
   t('Call-to-Actions (CTAs)');
   t('Career Level');
   t('Curriculum');
-  t('Featured Item');
   t('Featured Item wrapper');
+  t('Featured News or Event');
   t('Images');
   t('Instances');
   t('Key Benefits');
   t('Key Topics');
   t('Leadership Level');
   t('Learn More');
+  t('Link to an Additional Page');
   t('Main');
   t('Overview');
   t('Participants');

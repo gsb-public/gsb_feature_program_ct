@@ -183,95 +183,6 @@ function gsb_feature_program_ct_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-program-field_additional_page_prefix'.
-  $field_instances['node-program-field_additional_page_prefix'] = array(
-    'bundle' => 'program',
-    'custom_add_another' => '',
-    'custom_remove' => '',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 52,
-      ),
-      'field_program_ctas' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'field_program_curriculum' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'field_program_curriculum_one' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'field_program_curriculum_two' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'field_program_director' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'field_program_related' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'idea_story_related' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'program_explore_other' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 52,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 4,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_additional_page_prefix',
-    'label' => 'Additional Page Prefix',
-    'required' => 0,
-    'settings' => array(
-      'custom_add_another' => '',
-      'custom_remove' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'markup',
-      'settings' => array(),
-      'type' => 'markup',
-      'weight' => 5,
-    ),
-    'workbench_access_field' => 0,
-  );
-
   // Exported field_instance: 'node-program-field_additional_pages'.
   $field_instances['node-program-field_additional_pages'] = array(
     'bundle' => 'program',
@@ -357,7 +268,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 6,
+      'weight' => 7,
     ),
     'workbench_access_field' => 0,
   );
@@ -884,7 +795,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'hs_taxonomy',
       'settings' => array(),
       'type' => 'taxonomy_hs',
-      'weight' => 7,
+      'weight' => 50,
     ),
     'workbench_access_field' => 0,
   );
@@ -1124,7 +1035,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 27,
+      'weight' => 28,
     ),
     'workbench_access_field' => 0,
   );
@@ -1286,7 +1197,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 63,
+      'weight' => 64,
     ),
     'workbench_access_field' => 0,
   );
@@ -1448,7 +1359,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 64,
+      'weight' => 65,
     ),
     'workbench_access_field' => 0,
   );
@@ -1987,7 +1898,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 50,
+      'weight' => 52,
     ),
     'workbench_access_field' => 0,
   );
@@ -2143,7 +2054,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 49,
+      'weight' => 51,
     ),
     'workbench_access_field' => 0,
   );
@@ -3665,7 +3576,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 51,
+      'weight' => 52,
     ),
     'workbench_access_field' => 0,
   );
@@ -3827,7 +3738,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 50,
+      'weight' => 51,
     ),
     'workbench_access_field' => 0,
   );
@@ -4592,7 +4503,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_program_detail',
-    'label' => 'Detail Page',
+    'label' => 'Program Pages',
     'required' => 1,
     'settings' => array(
       'checkall' => array(
@@ -5329,7 +5240,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'markup',
       'settings' => array(),
       'type' => 'markup',
-      'weight' => 7,
+      'weight' => 8,
     ),
     'workbench_access_field' => 0,
   );
@@ -5689,7 +5600,6 @@ function gsb_feature_program_ct_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Additional Page');
-  t('Additional Page Prefix');
   t('All Topics');
   t('Application Requirements URL');
   t('Awarded Upon Completion');
@@ -5699,7 +5609,6 @@ function gsb_feature_program_ct_field_default_field_instances() {
   t('Description');
   t('Description 1');
   t('Description 2');
-  t('Detail Page');
   t('Display Image');
   t('Files');
   t('Image');
@@ -5714,6 +5623,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
   t('Program Category');
   t('Program Contact Link');
   t('Program Lead Name');
+  t('Program Pages');
   t('Programs');
   t('Publications and Events');
   t('Search field');
