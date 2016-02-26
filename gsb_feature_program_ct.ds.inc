@@ -17,6 +17,17 @@ function gsb_feature_program_ct_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'program';
   $ds_fieldsetting->view_mode = 'default';
   $ds_fieldsetting->settings = array(
+    'program_faculty_cta' => array(
+      'weight' => '12',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+        ),
+        'conditions' => array(),
+      ),
+    ),
     'field_event_who_attend' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -521,8 +532,8 @@ function gsb_feature_program_ct_ds_layout_settings_info() {
       ),
       'right' => array(
         5 => 'group_wrapper_featured_item',
-        6 => 'field_featured_superhead',
-        7 => 'gsb_program_program_instance_fields',
+        6 => 'gsb_program_program_instance_fields',
+        7 => 'field_featured_superhead',
         8 => 'field_featured_event',
         9 => 'field_program_director_name',
       ),
@@ -531,16 +542,20 @@ function gsb_feature_program_ct_ds_layout_settings_info() {
         11 => 'field_learn_more_video_title',
         12 => 'field_video_description',
       ),
-      'cta' => array(
-        13 => 'field_cta1',
-        14 => 'field_cta2',
+      'faculty' => array(
+        13 => 'gsb_program_program_instance_faculty_fields',
+        14 => 'program_faculty_cta',
       ),
-      'explore' => array(
-        15 => 'gsb_program_explore_more',
+      'cta' => array(
+        15 => 'field_cta1',
+        16 => 'field_cta2',
       ),
       'footer' => array(
-        16 => 'group_wrapper_taxonomy',
         17 => 'field_program_topics',
+        19 => 'group_wrapper_taxonomy',
+      ),
+      'explore' => array(
+        18 => 'gsb_program_explore_more',
       ),
     ),
     'fields' => array(
@@ -550,18 +565,20 @@ function gsb_feature_program_ct_ds_layout_settings_info() {
       'field_key_benefits_description' => 'left',
       'field_event_who_attend' => 'left',
       'group_wrapper_featured_item' => 'right',
-      'field_featured_superhead' => 'right',
       'gsb_program_program_instance_fields' => 'right',
+      'field_featured_superhead' => 'right',
       'field_featured_event' => 'right',
       'field_program_director_name' => 'right',
       'field_video_url' => 'learn',
       'field_learn_more_video_title' => 'learn',
       'field_video_description' => 'learn',
+      'gsb_program_program_instance_faculty_fields' => 'faculty',
+      'program_faculty_cta' => 'faculty',
       'field_cta1' => 'cta',
       'field_cta2' => 'cta',
+      'field_program_topics' => 'footer',
       'gsb_program_explore_more' => 'explore',
       'group_wrapper_taxonomy' => 'footer',
-      'field_program_topics' => 'footer',
     ),
     'classes' => array(),
     'wrappers' => array(

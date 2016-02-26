@@ -367,9 +367,6 @@ function gsb_feature_program_ct_explore_more($entity, $type, $view_mode, $langco
         'class' => array('gsb-program-expore-more-wrapper'),
       ),
     );
-
-    // Add a title.
-    $container['title'] = array('#markup' => '<h3 class="section-title">' . t('Explore Related Programs') . '</h3>');
     $container['content'] = $content_wrapper;
 
     $entity->content['gsb_program_explore_more'] = $container;
@@ -657,13 +654,6 @@ function gsb_feature_program_ct_program_instance_faculty_fields($entity, $type, 
     }
   }
   if (!empty($faculty_directors)) {
-    $entity->content['gsb_program_program_instance_faculty_fields'] = array(
-        '#type' => 'container',
-        '#attributes' => array(
-          'class' => array(
-            'faculty-author-wrapper',
-          ),
-        ),
-      ) + $faculty_directors;
+    $entity->content['gsb_program_program_instance_faculty_fields'] = $faculty_directors;
   }
 }
