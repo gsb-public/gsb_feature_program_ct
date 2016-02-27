@@ -70,6 +70,33 @@ function gsb_feature_program_ct_form_node_form_alter(&$form, &$form_state) {
       ),
     ),
   );
+
+  // set the Edit Curriculum Page markup
+  if (!empty($form['#node'])) {
+    $edit_path = _gsb_feature_program_ct_create_ppp_path($form['#node'], 'curriculum');
+    $edit_path = drupal_lookup_path('source', $edit_path);
+    if ($edit_path) {
+      $edit_path = $edit_path . '/edit';
+      $form['field_edit_curriculum_page'][$language][0]['markup']['#markup'] = '<a href="/' . $edit_path . '" target="_blank">' . t('Edit Curriculum Page') . '</a>';
+    }
+    else {
+      unset($form['field_edit_curriculum_page']);
+    }
+  }
+
+  // set the Edit Participants Page markup
+  if (!empty($form['#node'])) {
+    $edit_path = _gsb_feature_program_ct_create_ppp_path($form['#node'], 'participant');
+    $edit_path = drupal_lookup_path('source', $edit_path);
+    if ($edit_path) {
+      $edit_path = $edit_path . '/edit';
+      $form['field_edit_participants_page'][$language][0]['markup']['#markup'] = '<a href="/' . $edit_path . '" target="_blank">' . t('Edit Participants Page') . '</a>';
+    }
+    else {
+      unset($form['field_edit_participants_page']);
+    }
+  }
+
 }
 
 /**
@@ -147,11 +174,7 @@ function _gsb_feature_program_ct_create_ppp($node, $ppp_type) {
   // Add author of the node
   $ppp_node->uid = 1;
 
-  $program_path_alias = $node->path['alias'];
-  $program_path_alias_title = explode('/', $program_path_alias);
-  $program_path_alias_title = $program_path_alias_title[sizeof($program_path_alias_title) - 1];
-
-  $path = 'exec-ed/programs/' . $program_path_alias_title . '/' . $ppp_type;
+  $path = _gsb_feature_program_ct_create_ppp_path($node, $ppp_type);
   $ppp_node->path = array('alias' => $path);
 
   $path = drupal_lookup_path("source", $path);
@@ -168,6 +191,25 @@ function _gsb_feature_program_ct_create_ppp($node, $ppp_type) {
     node_save($ppp_node);
   }
 
+}
+
+function _gsb_feature_program_ct_create_ppp_path($node, $ppp_type) {
+  $language = $node->language;
+
+  $program_path_alias = $node->path['alias'];
+  $program_path_alias_title = explode('/', $program_path_alias);
+  $program_path_alias_title = $program_path_alias_title[sizeof($program_path_alias_title) - 1];
+
+  $tid = $node->field_program_category['und'][0]['tid'];
+  $term = taxonomy_term_load($tid);
+  $program_base = $term->field_program_listing_page_url[$language][0]['url'];
+  if (strpos($program_base, '/') == 0) {
+    $program_base = ltrim($program_base, '/');
+  }
+
+  $path = $program_base . '/' . $program_path_alias_title . '/' . $ppp_type;
+
+  return $path;
 }
 
 /**

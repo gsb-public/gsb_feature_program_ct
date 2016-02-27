@@ -225,6 +225,7 @@ function gsb_feature_program_ct_field_group_info() {
       0 => 'field_curriculum_description_1',
       1 => 'field_curriculum_description_2',
       2 => 'field_curriculum_intro',
+      3 => 'field_edit_curriculum_page',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -572,6 +573,7 @@ function gsb_feature_program_ct_field_group_info() {
     'children' => array(
       0 => 'field_participant_description',
       1 => 'field_participant_intro',
+      2 => 'field_edit_participants_page',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
