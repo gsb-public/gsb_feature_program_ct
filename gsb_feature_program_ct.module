@@ -32,21 +32,15 @@ function gsb_feature_program_ct_form_node_form_alter(&$form, &$form_state) {
       ),
     ),
   );
-  $form['field_learn_more_video_title']['#states'] = array(
-    'visible' => array(
-      ':input[name="field_image_or_video[' . $language . ']"]' => array(
-        array('value' => 'Video'),
-      ),
-    ),
-  );
-  $form['field_video_description']['#states'] = array(
-    'visible' => array(
-      ':input[name="field_image_or_video[' . $language . ']"]' => array(
-        array('value' => 'Video'),
-      ),
-    ),
-  );
-  $form['field_video_url']['#states'] = array(
+  unset($form['field_learn_more_video_title']);
+  unset($form['field_video_description']);
+  unset($form['field_video_url']);
+  $form['field_video'][$language][0]['field_title'][$language]['#required'] = 0;
+  $form['field_video'][$language][0]['field_title'][$language][0]['#required'] = 0;
+  $form['field_video'][$language][0]['field_title'][$language][0]['value']['#required'] = 0;
+  unset($form['field_video']['und'][0]['remove_button']);
+  unset($form['field_video']['und']['add_more']);
+  $form['field_video']['#states'] = array(
     'visible' => array(
       ':input[name="field_image_or_video[' . $language . ']"]' => array(
         array('value' => 'Video'),
