@@ -422,6 +422,7 @@ function gsb_feature_program_ct_field_group_info() {
       2 => 'field_video_description',
       3 => 'field_video_url',
       4 => 'field_image_or_video',
+      5 => 'field_video',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -832,7 +833,7 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Taxonomy wrapper',
-    'weight' => '16',
+    'weight' => '17',
     'children' => array(
       0 => 'field_program_topics',
     ),

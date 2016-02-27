@@ -18,7 +18,7 @@ function gsb_feature_program_ct_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'default';
   $ds_fieldsetting->settings = array(
     'program_faculty_cta' => array(
-      'weight' => '12',
+      'weight' => '13',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -561,28 +561,29 @@ function gsb_feature_program_ct_ds_layout_settings_info() {
         5 => 'group_wrapper_featured_item',
         6 => 'gsb_program_program_instance_fields',
         7 => 'field_featured_superhead',
-        8 => 'field_featured_event',
-        9 => 'field_program_director_name',
+        8 => 'field_program_director_name',
+        9 => 'field_featured_event',
       ),
       'learn' => array(
         10 => 'field_video_url',
         11 => 'field_learn_more_video_title',
         12 => 'field_video_description',
+        13 => 'field_video',
       ),
       'faculty' => array(
-        13 => 'gsb_program_program_instance_faculty_fields',
-        14 => 'program_faculty_cta',
+        14 => 'gsb_program_program_instance_faculty_fields',
+        15 => 'program_faculty_cta',
       ),
       'cta' => array(
-        15 => 'field_cta1',
-        16 => 'field_cta2',
+        16 => 'field_cta1',
+        17 => 'field_cta2',
       ),
       'footer' => array(
-        17 => 'field_program_topics',
-        19 => 'group_wrapper_taxonomy',
+        18 => 'field_program_topics',
+        20 => 'group_wrapper_taxonomy',
       ),
       'explore' => array(
-        18 => 'gsb_program_explore_more',
+        19 => 'gsb_program_explore_more',
       ),
     ),
     'fields' => array(
@@ -594,11 +595,12 @@ function gsb_feature_program_ct_ds_layout_settings_info() {
       'group_wrapper_featured_item' => 'right',
       'gsb_program_program_instance_fields' => 'right',
       'field_featured_superhead' => 'right',
-      'field_featured_event' => 'right',
       'field_program_director_name' => 'right',
+      'field_featured_event' => 'right',
       'field_video_url' => 'learn',
       'field_learn_more_video_title' => 'learn',
       'field_video_description' => 'learn',
+      'field_video' => 'learn',
       'gsb_program_program_instance_faculty_fields' => 'faculty',
       'program_faculty_cta' => 'faculty',
       'field_cta1' => 'cta',

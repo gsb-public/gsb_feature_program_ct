@@ -158,7 +158,7 @@ function gsb_feature_program_ct_strongarm() {
           'weight' => '2',
         ),
         'path' => array(
-          'weight' => '4',
+          'weight' => '3',
         ),
         'redirect' => array(
           'weight' => '2',
@@ -177,7 +177,7 @@ function gsb_feature_program_ct_strongarm() {
             'visible' => FALSE,
           ),
           'default' => array(
-            'weight' => '15',
+            'weight' => '16',
             'visible' => TRUE,
           ),
           'program_explore_other' => array(
@@ -201,7 +201,7 @@ function gsb_feature_program_ct_strongarm() {
         ),
         'gsb_program_program_instance_faculty_fields' => array(
           'default' => array(
-            'weight' => '11',
+            'weight' => '12',
             'visible' => TRUE,
           ),
         ),
