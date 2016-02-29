@@ -167,6 +167,19 @@ function gsb_feature_program_ct_ds_field_settings_info() {
         ),
       ),
     ),
+    'field_video' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'ow' => TRUE,
+          'ow-el' => 'div',
+          'ow-cl' => '',
+          'ow-def-cl' => TRUE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
+        ),
+      ),
+    ),
   );
   $export['node|program|default'] = $ds_fieldsetting;
 
@@ -559,31 +572,28 @@ function gsb_feature_program_ct_ds_layout_settings_info() {
       ),
       'right' => array(
         5 => 'group_wrapper_featured_item',
-        6 => 'gsb_program_program_instance_fields',
-        7 => 'field_featured_superhead',
-        8 => 'field_program_director_name',
-        9 => 'field_featured_event',
+        6 => 'field_featured_superhead',
+        7 => 'gsb_program_program_instance_fields',
+        8 => 'field_featured_event',
+        9 => 'field_program_director_name',
       ),
       'learn' => array(
-        10 => 'field_video_url',
-        11 => 'field_learn_more_video_title',
-        12 => 'field_video_description',
-        13 => 'field_video',
+        10 => 'field_video',
       ),
       'faculty' => array(
-        14 => 'gsb_program_program_instance_faculty_fields',
-        15 => 'program_faculty_cta',
+        11 => 'gsb_program_program_instance_faculty_fields',
+        12 => 'program_faculty_cta',
       ),
       'cta' => array(
-        16 => 'field_cta1',
-        17 => 'field_cta2',
+        13 => 'field_cta1',
+        14 => 'field_cta2',
       ),
       'footer' => array(
-        18 => 'field_program_topics',
-        20 => 'group_wrapper_taxonomy',
+        15 => 'field_program_topics',
+        17 => 'group_wrapper_taxonomy',
       ),
       'explore' => array(
-        19 => 'gsb_program_explore_more',
+        16 => 'gsb_program_explore_more',
       ),
     ),
     'fields' => array(
@@ -593,13 +603,10 @@ function gsb_feature_program_ct_ds_layout_settings_info() {
       'field_key_benefits_description' => 'left',
       'field_event_who_attend' => 'left',
       'group_wrapper_featured_item' => 'right',
-      'gsb_program_program_instance_fields' => 'right',
       'field_featured_superhead' => 'right',
-      'field_program_director_name' => 'right',
+      'gsb_program_program_instance_fields' => 'right',
       'field_featured_event' => 'right',
-      'field_video_url' => 'learn',
-      'field_learn_more_video_title' => 'learn',
-      'field_video_description' => 'learn',
+      'field_program_director_name' => 'right',
       'field_video' => 'learn',
       'gsb_program_program_instance_faculty_fields' => 'faculty',
       'program_faculty_cta' => 'faculty',
