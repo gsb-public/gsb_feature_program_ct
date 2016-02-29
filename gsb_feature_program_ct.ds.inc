@@ -538,7 +538,7 @@ function gsb_feature_program_ct_ds_custom_fields_info() {
   $ds_field->ui_limit = 'program|default';
   $ds_field->properties = array(
     'code' => array(
-      'value' => '<div class="program-faculty-cta"><a href="faculty" title="See All Faculty">See All Faculty</a></div>',
+      'value' => '<div class="program-faculty-cta-wrapper"><div class="program-faculty-cta"><a href="faculty" title="See All Faculty">See All Faculty</a></div></div>',
       'format' => 'gsb_html_text',
     ),
     'use_token' => 0,
