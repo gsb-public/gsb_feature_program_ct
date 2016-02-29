@@ -137,6 +137,7 @@ features[field_instance][] = node-program-field_video_description
 features[field_instance][] = node-program-field_video_url
 features[node][] = program
 features[variable][] = field_bundle_settings_node__program
+features[variable][] = hs_config_taxonomy-key_program_topic
 features[variable][] = hs_config_taxonomy-program_topic
 features[variable][] = menu_options_program
 features[variable][] = menu_parent_program

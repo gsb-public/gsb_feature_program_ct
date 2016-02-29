@@ -2984,14 +2984,9 @@ function gsb_feature_program_ct_field_default_field_instances() {
     'label' => 'Key Topics',
     'required' => 0,
     'settings' => array(
-      'checkall' => array(
-        'checkall' => 0,
-        'checkall-check-all' => 1,
-        'checkall-toggle' => 1,
-        'checkall-uncheck-all' => 1,
-      ),
       'custom_add_another' => '',
       'custom_remove' => '',
+      'use_hierarchical_select_lite' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
