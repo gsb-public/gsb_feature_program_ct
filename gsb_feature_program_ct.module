@@ -313,6 +313,11 @@ function gsb_feature_program_ct_field_extra_fields() {
       'description' => t('Renders the application_requirements blurb.'),
       'weight' => 0,
     ),
+    'gsb_program_topics_location_category' => array(
+      'label' => t('Topics and Program Location Category'),
+      'description' => t('Renders the topics and program location category.'),
+      'weight' => 0,
+    ),
   );
   return $extra;
 }
@@ -349,6 +354,9 @@ function gsb_feature_program_ct_entity_view($entity, $type, $view_mode, $langcod
   }
   if (!empty($fields['gsb_program_application_requirements_blurb']['visible'])) {
     gsb_feature_program_ct_application_requirements_blurb($entity, $type, $view_mode, $langcode);
+  }
+  if (!empty($fields['gsb_program_topics_location_category']['visible'])) {
+    gsb_feature_program_ct_topics_location_category($entity, $type, $view_mode, $langcode);
   }
 
 }
@@ -425,7 +433,7 @@ function gsb_feature_program_ct_explore_more($entity, $type, $view_mode, $langco
   $programs = array_slice($programs, 0, 3, TRUE);
 
   // Next look-up the most current program instances related to each of these programs
-  $program_instances = _gsb_feature_program_ct_lookup_related_program_instances(array_keys($programs));
+  $program_instances = _gsb_feature_program_ct_get_current_program_instances(array_keys($programs));
 
   // Render the top 3 matching programs instances in the 'expore more' wrapper
   if (!empty($program_instances)) {
@@ -454,35 +462,6 @@ function gsb_feature_program_ct_explore_more($entity, $type, $view_mode, $langco
     $entity->content['gsb_program_explore_more'] = $container;
   }
 
-}
-
-/**
- * Look-up the most current program instances related to each of these programs
- */
-function _gsb_feature_program_ct_lookup_related_program_instances($program_nids) {
-
-  $query = db_select('node', 'n');
-  $query->fields('n', array('nid', 'status', 'type'));
-  $query->join('field_data_field_program', 'fp', "n.nid = fp.entity_id AND fp.entity_type = 'node' AND fp.deleted = '0'");
-  $query->fields('fp', array('entity_id', 'entity_type', 'deleted', 'field_program_target_id'));
-  $query->join('node', 'nodefp', 'fp.field_program_target_id = nodefp.nid');
-  $query->fields('nodefp', array('nid'));
-  $query->join('field_data_field_instance_date', 'fid', "n.nid = fid.entity_id AND fid.entity_type = 'node' AND fid.deleted = '0'");
-  $query->fields('fid', array('field_instance_date_value'));
-  $query->condition('nodefp.nid', $program_nids, 'IN');
-  $query->condition('n.status', '1');
-  $query->condition('n.type', 'program_instance');
-  $query->orderBy('fid.field_instance_date_value', 'DESC');
-  $results = $query->execute();
-
-  $program_instances = array();
-  foreach($results as $instance) {
-    if (empty($program_instances[$instance->field_program_target_id])) {
-      $program_instances[$instance->field_program_target_id] = $instance->nid;
-    }
-  }
-
-  return $program_instances;
 }
 
 /**
@@ -936,3 +915,162 @@ function gsb_feature_program_ct_application_requirements_blurb($entity, $type, $
 
   $entity->content['gsb_program_application_requirements_blurb'] = $content_wrapper;
 }
+
+/**
+ * Implements hook_entity_view().
+ */
+function gsb_feature_program_ct_topics_location_category($entity, $type, $view_mode, $langcode) {
+  // Only go thru this code if we are working with a node
+  if ($type != 'node') {
+    return;
+  }
+  // Only go thru this code if we are working with a program node
+  if ($entity->type != 'program') {
+    return;
+  }
+  // Only go thru this code if we are working with view mode full
+  if ($view_mode != 'full') {
+    return;
+  }
+
+  $nid = $entity->nid;
+  $language = $entity->language;
+
+  $node_wrapper = entity_metadata_wrapper('node', $nid);
+
+  $program_instances = _gsb_feature_program_ct_get_all_program_instances(array($nid));
+
+  // get listing page url from program's program category
+  $program_category = $node_wrapper->field_program_category->value();
+  $program_listing_page_url = '';
+  if (!empty($program_category->field_program_listing_page_url[$language][0]['url'])) {
+    $program_listing_page_url = $program_category->field_program_listing_page_url[$language][0]['url'];
+  }
+
+  // get program's topics
+  $program_topics = $node_wrapper->field_program_topics->value();
+
+  $topics = array();
+  foreach( $program_topics as $item) {
+    $topics[] = $item->name;
+  }
+
+  // create the topics markup
+  $topics_markup = array();
+  $count = count($topics);
+  foreach($topics as $delta => $item) {
+    $path = $program_listing_page_url . '?program-topic=' . str_replace(' ', '-', strtolower($item));
+    $topics_markup[] = '<a href="' . base_path() . $path . '">' . check_plain($item) . '</a>';
+    if ($delta != $count - 1) {
+      $topics_markup[] = '<span class="separator">' . check_plain(', ') . '</span>';
+    }
+  }
+
+  $location_categories = array();
+  foreach ($program_instances as $pi_nid) {
+    $instance_wrapper = entity_metadata_wrapper('node', $pi_nid);
+    $program_location = $instance_wrapper->field_program_location->value();
+    $ewrap_location = entity_metadata_wrapper('field_collection_item', $program_location);
+    $program_location_category = $ewrap_location->field_program_location_category->value();
+    $location_categories[] = $program_location_category->name;
+  }
+
+  // create the program category markup
+  $location_categories_markup = array();
+  $count = count($location_categories);
+  foreach($location_categories as $delta => $item) {
+    $name = str_replace(' ', '-', strtolower($item));
+    $name = str_replace('(', '', $name);
+    $name = str_replace(')', '', $name);
+    $path = $program_listing_page_url . '?program-location=' . $name;
+    $location_categories_markup[] = '<a href="' . base_path() . $path . '">' . $item . '</a>';
+    if ($delta != $count - 1) {
+      $location_categories_markup[] = '<span class="separator">' . check_plain(', ') . '</span>';
+    }
+  }
+
+  // Wrap content in container.
+  $content_wrapper = array(
+    '#type' => 'container',
+    '#attributes' => array(
+      'class' => array('topics-location-category-wrapper'),
+    ),
+  );
+
+  $topics_location_categories_markup = array();
+  if (!empty($topics_markup)) {
+    $topics_location_categories_markup[] = implode('', $topics_markup);
+  }
+  if (!empty($location_categories_markup)) {
+    if (!empty($topics_markup)) {
+      $topics_location_categories_markup[] = '<span class="separator">' . check_plain(', ') . '</span>';
+    }
+    $topics_location_categories_markup[] = implode('', $location_categories_markup);
+  }
+
+  $content_wrapper['content'] = array('#markup' =>
+    '<div class=topics-location-category-">' .
+      implode('', $topics_location_categories_markup) .
+    '</div>'
+  );
+
+  $entity->content['gsb_program_topics_location_category'] = $content_wrapper;
+}
+
+/**
+ * Get all program instances related to each of these programs
+ */
+function _gsb_feature_program_ct_get_all_program_instances($program_nids) {
+
+  $query = db_select('node', 'n');
+  $query->fields('n', array('nid', 'status', 'type'));
+  $query->join('field_data_field_program', 'fp', "n.nid = fp.entity_id AND fp.entity_type = 'node' AND fp.deleted = '0'");
+  $query->fields('fp', array('entity_id', 'entity_type', 'deleted', 'field_program_target_id'));
+  $query->join('node', 'nodefp', 'fp.field_program_target_id = nodefp.nid');
+  $query->fields('nodefp', array('nid'));
+  $query->join('field_data_field_instance_date', 'fid', "n.nid = fid.entity_id AND fid.entity_type = 'node' AND fid.deleted = '0'");
+  $query->fields('fid', array('field_instance_date_value'));
+  $query->condition('nodefp.nid', $program_nids, 'IN');
+  $query->condition('n.status', '1');
+  $query->condition('n.type', 'program_instance');
+  $query->orderBy('fid.field_instance_date_value', 'DESC');
+  $results = $query->execute();
+
+  $program_instances = array();
+  foreach($results as $instance) {
+    $program_instances[] = $instance->nid;
+  }
+
+  return $program_instances;
+}
+
+/**
+ * Get the most current program instances related to each of these programs
+ */
+function _gsb_feature_program_ct_get_current_program_instances($program_nids) {
+
+  $query = db_select('node', 'n');
+  $query->fields('n', array('nid', 'status', 'type'));
+  $query->join('field_data_field_program', 'fp', "n.nid = fp.entity_id AND fp.entity_type = 'node' AND fp.deleted = '0'");
+  $query->fields('fp', array('entity_id', 'entity_type', 'deleted', 'field_program_target_id'));
+  $query->join('node', 'nodefp', 'fp.field_program_target_id = nodefp.nid');
+  $query->fields('nodefp', array('nid'));
+  $query->join('field_data_field_instance_date', 'fid', "n.nid = fid.entity_id AND fid.entity_type = 'node' AND fid.deleted = '0'");
+  $query->fields('fid', array('field_instance_date_value'));
+  $query->condition('nodefp.nid', $program_nids, 'IN');
+  $query->condition('n.status', '1');
+  $query->condition('n.type', 'program_instance');
+  $query->orderBy('fid.field_instance_date_value', 'DESC');
+  $results = $query->execute();
+
+  $program_instances = array();
+  foreach($results as $instance) {
+    if (empty($program_instances[$instance->field_program_target_id])) {
+      $program_instances[$instance->field_program_target_id] = $instance->nid;
+    }
+  }
+
+  return $program_instances;
+}
+
+
