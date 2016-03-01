@@ -497,7 +497,8 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
     // add instance header (label and date) markup as -first item-
     $program_instance_markups[$record->nid][] = '<h2 class="instance-header">' . $instance_label . '<span class="pipe">|</span>' . $formatted_date . '</h2>';
 
-    $program_instance_markups[$record->nid][] = '<div class ="group-left">';
+    $program_instance_markups[$record->nid][] = '<div class="group-left">';
+    $program_instance_markups[$record->nid][] = '<div class="instance-item-wrapper format-wrapper">';
     $program_instance_markups[$record->nid][] = '<h3>Format</h3>';
 
     // add program format markup
@@ -509,7 +510,9 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
     // add time commitment markup
     $time_commitment = $node_wrapper->field_time_commitment->value();
     $program_instance_markups[$record->nid][] = '<div class="time-commitment">' . $time_commitment->name . '</div>';
+    $program_instance_markups[$record->nid][] = '</div>';
 
+    $program_instance_markups[$record->nid][] = '<div class="instance-item-wrapper schedule-wrapper">';
     $program_instance_markups[$record->nid][] = '<h3>Program Schedule</h3>';
 
     // add program schedule markup
@@ -524,18 +527,27 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
         $end_date = new DateTime($program_date['value2']);
         $formatted_date = $formatted_date . ' - ' . $end_date->format('d M Y');
       }
+      $program_instance_markups[$record->nid][] = '<div class="schedule-item-wrapper">';
       $program_instance_markups[$record->nid][] = '<div class="program-schedule-date">' . $formatted_date . '</div>';
       $program_instance_markups[$record->nid][] = '<div class="program-schedule-description">' . $schedule_body . '</div>';
-    }
-
-    // add app_requirements_intro markup from program
-    $app_requirements_intro = $node_wrapper->field_app_requirements_intro->value();
-    if ($app_requirements_intro) {
-      $program_instance_markups[$record->nid][] = '<div class="app-requirements-intro">' . $app_requirements_intro . '</div>';
+      $program_instance_markups[$record->nid][] = '</div>';
     }
 
     $program_instance_markups[$record->nid][] = '</div>';
+
+
+    // add app_requirements_url markup from program
+    $app_requirements_link = $instance_wrapper->field_application_url->value();
+    if ($app_requirements_link) {
+      $program_instance_markups[$record->nid][] = '<div class="instance-item-wrapper application-wrapper">';
+      $program_instance_markups[$record->nid][] = '<h3 class="app-requirements-link"><a href="' . $app_requirements_link['url'] . '">Application Requirements</a></h3>';
+      $program_instance_markups[$record->nid][] = '</div>';
+    }
+
+    $program_instance_markups[$record->nid][] = '</div>';
+
     $program_instance_markups[$record->nid][] = '<div class ="group-right">';
+    $program_instance_markups[$record->nid][] = '<div class="instance-item-wrapper tuition-wrapper">';
     $program_instance_markups[$record->nid][] = '<h3>Program Tuition</h3>';
 
     // add tuition amount markup
@@ -549,6 +561,7 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
     // add optional programming markup
     $optional_programming = $instance_wrapper->field_optional_programming->value();
     if ($optional_programming) {
+      $program_instance_markups[$record->nid][] = '<h4>Additional Leadership Coaching (Optional)</h4>';
       $program_instance_markups[$record->nid][] = '<div class="optional-programing">' . $optional_programming['safe_value'] . '</div>';
     }
 
@@ -560,13 +573,16 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
           '<a href="' . $payment_cancellation['url'] . '">Learn more about payment, financial aid, and cancellation policies.</a>' .
         '</div>';
     }
+    $program_instance_markups[$record->nid][] = '</div>';
 
     // seek in a couple program fields
     // add awarded_upon_completion markup from program
     $awarded_upon_completion = $node_wrapper->field_awarded_upon_completion->value();
     if ($awarded_upon_completion) {
+      $program_instance_markups[$record->nid][] = '<div class="instance-item-wrapper awarded-wrapper">';
       $program_instance_markups[$record->nid][] = '<h3>Awarded</h3>';
       $program_instance_markups[$record->nid][] = '<div class="awarded-upon-completion">' . $awarded_upon_completion . '</div>';
+      $program_instance_markups[$record->nid][] = '</div>';
     }
 
     // add program topics from program - to the topics array
