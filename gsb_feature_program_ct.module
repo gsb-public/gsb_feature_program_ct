@@ -432,6 +432,10 @@ function gsb_feature_program_ct_explore_more($entity, $type, $view_mode, $langco
   // Only keep the top 3
   $programs = array_slice($programs, 0, 3, TRUE);
 
+  if (empty($programs)) {
+    return;
+  }
+
   // Next look-up the most current program instances related to each of these programs
   $program_instances = _gsb_feature_program_ct_get_current_program_instances(array_keys($programs));
 
@@ -824,7 +828,7 @@ function gsb_feature_program_ct_curriculum_blurb($entity, $type, $view_mode, $la
 
   $content_wrapper['content'] = array('#markup' =>
     '<div class="curriculum-blurb">' .
-      $program_category->field_curriculum_blurb[$language][0]['safe_value'] .
+      empty($program_category->field_curriculum_blurb[$language]) ? '' : $program_category->field_curriculum_blurb[$language][0]['safe_value'] .
     '</div>'
   );
 
@@ -867,7 +871,7 @@ function gsb_feature_program_ct_participant_profile_blurb($entity, $type, $view_
   $content_wrapper['content'] = array(
     '#markup' =>
       '<div class="participant-profile-blurb">' .
-      $program_category->field_participant_profile_blurb[$language][0]['safe_value'] .
+        empty($program_category->field_participant_profile_blurb[$language]) ? '' : $program_category->field_participant_profile_blurb[$language][0]['safe_value'] .
       '</div>'
   );
 
@@ -909,7 +913,7 @@ function gsb_feature_program_ct_application_requirements_blurb($entity, $type, $
 
   $content_wrapper['content'] = array('#markup' =>
     '<div class="application-requirements-blurb">' .
-      $program_category->field_application_requirements_b[$language][0]['safe_value'] .
+      empty($program_category->field_application_requirements_b[$language]) ? '' : $program_category->field_application_requirements_b[$language][0]['safe_value'] .
     '</div>'
   );
 
