@@ -502,10 +502,11 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
     $program_instance_markups[$record->nid][] = '<h3>Format</h3>';
 
     // add program format markup
-    $program_location = $instance_wrapper->field_program_location->value();
-    $ewrap_location = entity_metadata_wrapper('field_collection_item', $program_location);
-    $program_format = $ewrap_location->field_program_format->value();
-    $program_instance_markups[$record->nid][] = '<div class="program-format">' . $program_format->name . '</div>';
+    $program_format_location = $instance_wrapper->field_program_location->value();
+    $ewrap_format_location = entity_metadata_wrapper('field_collection_item', $program_format_location);
+    $program_format = $ewrap_format_location->field_program_format->value();
+    $program_location = $ewrap_format_location->field_program_location_link->value();
+    $program_instance_markups[$record->nid][] = '<div class="program-format-location">' . $program_format->name . '<span class="pipe">|</span>' . $program_location['title'] . '</div>';
 
     // add time commitment markup
     $time_commitment = $node_wrapper->field_time_commitment->value();
@@ -541,6 +542,21 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
     if ($app_requirements_link) {
       $program_instance_markups[$record->nid][] = '<div class="instance-item-wrapper application-wrapper">';
       $program_instance_markups[$record->nid][] = '<h3 class="app-requirements-link"><a href="' . $app_requirements_link['url'] . '">Application Requirements</a></h3>';
+      $program_instance_markups[$record->nid][] = '<div class="program-deadline-wrapper">';
+      $program_instance_markups[$record->nid][] = '<h4 class="deadline-header">Deadline</h4>';
+
+      // add program application deadline markup
+      $program_deadline = $instance_wrapper->field_application_deadlines->value();
+      foreach($program_deadline as $pd) {
+        $ewrap_deadline = entity_metadata_wrapper('field_collection_item', $pd);
+        $deadline_text = $ewrap_deadline->field_deadline_text->value();
+        $deadline_date = $ewrap_deadline->field_date->value();
+        // $start_date = new DateTime($deadline_date['value']);
+        // $formatted_date = $start_date->format('d M Y');
+        $program_instance_markups[$record->nid][] = '<div class="program-deadline">' . $deadline_text . '<span class="pipe">|</span></div>';
+      }
+
+      $program_instance_markups[$record->nid][] = '</div>';
       $program_instance_markups[$record->nid][] = '</div>';
     }
 
