@@ -419,11 +419,8 @@ function gsb_feature_program_ct_field_group_info() {
     'weight' => '19',
     'children' => array(
       0 => 'field_learn_more_photo',
-      1 => 'field_learn_more_video_title',
-      2 => 'field_video_description',
-      3 => 'field_video_url',
-      4 => 'field_image_or_video',
-      5 => 'field_video',
+      1 => 'field_image_or_video',
+      2 => 'field_video',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
