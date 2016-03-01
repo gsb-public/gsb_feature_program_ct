@@ -590,8 +590,11 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
         $ewrap_deadline = entity_metadata_wrapper('field_collection_item', $pd);
         $deadline_text = $ewrap_deadline->field_deadline_text->value();
         $deadline_date = $ewrap_deadline->field_date->value();
-        $start_date = DateTime::createFromFormat('U', $deadline_date);
-        $formatted_date = $start_date->format('d M Y');
+        $formatted_date = '';
+        if ($deadline_date) {
+          $start_date = DateTime::createFromFormat('U', $deadline_date);
+          $formatted_date = $start_date->format('d M Y');
+        }
         $program_instance_markups[$record->nid][] = '<div class="program-deadline">' . $deadline_text . '<span class="pipe">|</span>' . $formatted_date . '</div>';
       }
 
@@ -1076,5 +1079,3 @@ function _gsb_feature_program_ct_get_current_program_instances($program_nids) {
 
   return $program_instances;
 }
-
-
