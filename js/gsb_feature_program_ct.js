@@ -5,24 +5,28 @@
 
       $(document).ready(function() {
 
-        // hide all the instance-information sections
-        $('.instance-show-information').each(function() {
-          $(this).next().hide();
-          $(this).next().addClass('hide_this');
-        });
+        if ($('.instance-show-information').length > 1) {
 
-        // show the first instance-information section
-        $('.instance-show-information').first().next().show(1000);
-        $('.instance-show-information').first().next().removeClass('hide_this');
+          // hide all the instance-information sections
+          $('.instance-show-information').each(function() {
+            $(this).next().hide();
+            $(this).next().addClass('hide_this');
+          });
 
-        $('.instance-show-information').click(function (e) {
-          e.preventDefault();
-          if (isHidden($(this))) {
-            hideAll();
-            $(this).next().show(1000);
-            $(this).next().removeClass('hide_this');
-          }
-        });
+          // show the first instance-information section
+          $('.instance-show-information').first().next().show(1000);
+          $('.instance-show-information').first().next().removeClass('hide_this');
+
+          $('.instance-show-information').click(function (e) {
+            e.preventDefault();
+            if (isHidden($(this))) {
+              hideAll();
+              $(this).next().show(1000);
+              $(this).next().removeClass('hide_this');
+            }
+          });
+
+        }
 
       });
 

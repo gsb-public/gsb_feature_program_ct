@@ -699,9 +699,14 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
     // get the header as the first item in the list of markup
     $header = array_shift($pi_markup);
 
+    $show_info = '';
+    if (count($program_instance_nids) > 1) {
+      $show_info = '<div class="instance-show-information">' . t('Show Program Information') . '</div>';
+    }
+
     $content_wrapper['content'] = array('#markup' =>
       $header .
-      '<div class="instance-show-information">' . t('Show Program Information') . '</div>' .
+      $show_info .
       '<div class="instance-information">' .
       implode(" ", $pi_markup) .
       '</div>'
