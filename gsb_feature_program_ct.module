@@ -487,24 +487,13 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
     return;
   }
 
+  drupal_add_js(drupal_get_path('module', 'gsb_feature_program_ct') . '/js/gsb_feature_program_ct.js');
+
   $nid = $entity->nid;
   $language = $entity->language;
 
   // Lookup the program instances for this program
-  $query = db_select('node', 'n');
-  $query->fields('n', array('nid', 'status', 'type'));
-  $query->join('field_data_field_program', 'fp', "n.nid = fp.entity_id AND fp.entity_type = 'node' AND fp.deleted = '0'");
-  $query->fields('fp', array('entity_id', 'entity_type', 'deleted', 'field_program_target_id'));
-  $query->join('node', 'nodefp', 'fp.field_program_target_id = nodefp.nid');
-  $query->fields('nodefp', array('nid'));
-  $query->join('field_data_field_instance_date', 'fid', "n.nid = fid.entity_id AND fid.entity_type = 'node' AND fid.deleted = '0'");
-  $query->fields('fid', array('field_instance_date_value'));
-  $query->condition('nodefp.nid', $nid);
-  $query->condition('n.status', '1');
-  $query->condition('n.type', 'program_instance');
-  $query->orderBy('fid.field_instance_date_value', 'DESC');
-  //$query->range(0,1);
-  $results = $query->execute();
+  $program_instance_nids = _gsb_feature_program_ct_get_all_program_instances(array($nid));
 
   $node_wrapper = entity_metadata_wrapper('node', $nid);
 
@@ -518,8 +507,9 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
   $topics = array();
 
   $program_instance_markups = array();
-  foreach ($results as $record) {
-    $instance_wrapper = entity_metadata_wrapper('node', $record->nid);
+  foreach ($program_instance_nids as $pi_nid) {
+
+    $instance_wrapper = entity_metadata_wrapper('node', $pi_nid);
 
     // get instance label
     $instance_label = $instance_wrapper->field_instance_label->value();
@@ -534,26 +524,26 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
     }
 
     // add instance header (label and date) markup as -first item-
-    $program_instance_markups[$record->nid][] = '<h2 class="instance-header">' . $instance_label . '<span class="pipe">|</span>' . $formatted_date . '</h2>';
+    $program_instance_markups[$pi_nid][] = '<h2 class="instance-header">' . $instance_label . '<span class="pipe">|</span>' . $formatted_date . '</h2>';
 
-    $program_instance_markups[$record->nid][] = '<div class="group-left">';
-    $program_instance_markups[$record->nid][] = '<div class="instance-item-wrapper format-wrapper">';
-    $program_instance_markups[$record->nid][] = '<h3>Format</h3>';
+    $program_instance_markups[$pi_nid][] = '<div class="group-left">';
+    $program_instance_markups[$pi_nid][] = '<div class="instance-item-wrapper format-wrapper">';
+    $program_instance_markups[$pi_nid][] = '<h3>Format</h3>';
 
     // add program format markup
     $program_format_location = $instance_wrapper->field_program_location->value();
     $ewrap_format_location = entity_metadata_wrapper('field_collection_item', $program_format_location);
     $program_format = $ewrap_format_location->field_program_format->value();
     $program_location = $ewrap_format_location->field_program_location_link->value();
-    $program_instance_markups[$record->nid][] = '<div class="program-format-location">' . $program_format->name . '<span class="pipe">|</span>' . $program_location['title'] . '</div>';
+    $program_instance_markups[$pi_nid][] = '<div class="program-format-location">' . $program_format->name . '<span class="pipe">|</span>' . $program_location['title'] . '</div>';
 
     // add time commitment markup
     $time_commitment = $node_wrapper->field_time_commitment->value();
-    $program_instance_markups[$record->nid][] = '<div class="time-commitment">' . $time_commitment->name . '</div>';
-    $program_instance_markups[$record->nid][] = '</div>';
+    $program_instance_markups[$pi_nid][] = '<div class="time-commitment">' . $time_commitment->name . '</div>';
+    $program_instance_markups[$pi_nid][] = '</div>';
 
-    $program_instance_markups[$record->nid][] = '<div class="instance-item-wrapper schedule-wrapper">';
-    $program_instance_markups[$record->nid][] = '<h3>Program Schedule</h3>';
+    $program_instance_markups[$pi_nid][] = '<div class="instance-item-wrapper schedule-wrapper">';
+    $program_instance_markups[$pi_nid][] = '<h3>' . t('Program Schedule') . '</h3>';
 
     // add program schedule markup
     $program_schedule = $instance_wrapper->field_program_schedule->value();
@@ -567,22 +557,22 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
         $end_date = new DateTime($program_date['value2']);
         $formatted_date = $formatted_date . ' - ' . $end_date->format('d M Y');
       }
-      $program_instance_markups[$record->nid][] = '<div class="schedule-item-wrapper">';
-      $program_instance_markups[$record->nid][] = '<div class="program-schedule-date">' . $formatted_date . '</div>';
-      $program_instance_markups[$record->nid][] = '<div class="program-schedule-description">' . $schedule_body . '</div>';
-      $program_instance_markups[$record->nid][] = '</div>';
+      $program_instance_markups[$pi_nid][] = '<div class="schedule-item-wrapper">';
+      $program_instance_markups[$pi_nid][] = '<div class="program-schedule-date">' . $formatted_date . '</div>';
+      $program_instance_markups[$pi_nid][] = '<div class="program-schedule-description">' . $schedule_body . '</div>';
+      $program_instance_markups[$pi_nid][] = '</div>';
     }
 
-    $program_instance_markups[$record->nid][] = '</div>';
+    $program_instance_markups[$pi_nid][] = '</div>';
 
 
     // add app_requirements_url markup from program
     $app_requirements_link = $instance_wrapper->field_application_url->value();
     if ($app_requirements_link) {
-      $program_instance_markups[$record->nid][] = '<div class="instance-item-wrapper application-wrapper">';
-      $program_instance_markups[$record->nid][] = '<h3 class="app-requirements-link"><a href="' . $app_requirements_link['url'] . '">Application Requirements</a></h3>';
-      $program_instance_markups[$record->nid][] = '<div class="program-deadline-wrapper">';
-      $program_instance_markups[$record->nid][] = '<h4 class="deadline-header">Deadline</h4>';
+      $program_instance_markups[$pi_nid][] = '<div class="instance-item-wrapper application-wrapper">';
+      $program_instance_markups[$pi_nid][] = '<h3 class="app-requirements-link"><a href="' . $app_requirements_link['url'] . '">' . t('Application Requirements') . '</a></h3>';
+      $program_instance_markups[$pi_nid][] = '<div class="program-deadline-wrapper">';
+      $program_instance_markups[$pi_nid][] = '<h4 class="deadline-header">Deadline</h4>';
 
       // add program application deadline markup
       $program_deadline = $instance_wrapper->field_application_deadlines->value();
@@ -595,52 +585,52 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
           $start_date = DateTime::createFromFormat('U', $deadline_date);
           $formatted_date = $start_date->format('d M Y');
         }
-        $program_instance_markups[$record->nid][] = '<div class="program-deadline">' . $deadline_text . '<span class="pipe">|</span>' . $formatted_date . '</div>';
+        $program_instance_markups[$pi_nid][] = '<div class="program-deadline">' . $deadline_text . '<span class="pipe">|</span>' . $formatted_date . '</div>';
       }
 
-      $program_instance_markups[$record->nid][] = '</div>';
-      $program_instance_markups[$record->nid][] = '</div>';
+      $program_instance_markups[$pi_nid][] = '</div>';
+      $program_instance_markups[$pi_nid][] = '</div>';
     }
 
-    $program_instance_markups[$record->nid][] = '</div>';
+    $program_instance_markups[$pi_nid][] = '</div>';
 
-    $program_instance_markups[$record->nid][] = '<div class ="group-right">';
-    $program_instance_markups[$record->nid][] = '<div class="instance-item-wrapper tuition-wrapper">';
-    $program_instance_markups[$record->nid][] = '<h3>Program Tuition</h3>';
+    $program_instance_markups[$pi_nid][] = '<div class ="group-right">';
+    $program_instance_markups[$pi_nid][] = '<div class="instance-item-wrapper tuition-wrapper">';
+    $program_instance_markups[$pi_nid][] = '<h3>Program Tuition</h3>';
 
     // add tuition amount markup
     $tuition = $instance_wrapper->field_tuition->value();
-    $program_instance_markups[$record->nid][] = '<div class="tuition-amount">' . $tuition['title'] . '</div>';
+    $program_instance_markups[$pi_nid][] = '<div class="tuition-amount">' . $tuition['title'] . '</div>';
 
     // add included in tuition markup
     $included_in_tuition = $instance_wrapper->field_included_in_tuition->value();
-    $program_instance_markups[$record->nid][] = '<div class="included-in-tuition">' . $included_in_tuition['safe_value'] . '</div>';
+    $program_instance_markups[$pi_nid][] = '<div class="included-in-tuition">' . $included_in_tuition['safe_value'] . '</div>';
 
     // add optional programming markup
     $optional_programming = $instance_wrapper->field_optional_programming->value();
     if ($optional_programming) {
-      $program_instance_markups[$record->nid][] = '<h4>Additional Leadership Coaching (Optional)</h4>';
-      $program_instance_markups[$record->nid][] = '<div class="optional-programing">' . $optional_programming['safe_value'] . '</div>';
+      $program_instance_markups[$pi_nid][] = '<h4>' . t('Additional Leadership Coaching (Optional)') . '</h4>';
+      $program_instance_markups[$pi_nid][] = '<div class="optional-programing">' . $optional_programming['safe_value'] . '</div>';
     }
 
     // add payment cancellation markup
     $payment_cancellation = $instance_wrapper->field_payment_cancellation->value();
     if ($payment_cancellation) {
-      $program_instance_markups[$record->nid][] =
+      $program_instance_markups[$pi_nid][] =
         '<div class="payment-cancellation">' .
-          '<a href="' . $payment_cancellation['url'] . '">Learn more about payment, financial aid, and cancellation policies.</a>' .
+          '<a href="' . $payment_cancellation['url'] . '">' . t('Learn more about payment, financial aid, and cancellation policies.') . '</a>' .
         '</div>';
     }
-    $program_instance_markups[$record->nid][] = '</div>';
+    $program_instance_markups[$pi_nid][] = '</div>';
 
     // seek in a couple program fields
     // add awarded_upon_completion markup from program
     $awarded_upon_completion = $node_wrapper->field_awarded_upon_completion->value();
     if ($awarded_upon_completion) {
-      $program_instance_markups[$record->nid][] = '<div class="instance-item-wrapper awarded-wrapper">';
-      $program_instance_markups[$record->nid][] = '<h3>Awarded</h3>';
-      $program_instance_markups[$record->nid][] = '<div class="awarded-upon-completion">' . $awarded_upon_completion . '</div>';
-      $program_instance_markups[$record->nid][] = '</div>';
+      $program_instance_markups[$pi_nid][] = '<div class="instance-item-wrapper awarded-wrapper">';
+      $program_instance_markups[$pi_nid][] = '<h3>Awarded</h3>';
+      $program_instance_markups[$pi_nid][] = '<div class="awarded-upon-completion">' . $awarded_upon_completion . '</div>';
+      $program_instance_markups[$pi_nid][] = '</div>';
     }
 
     // add program topics from program - to the topics array
@@ -649,7 +639,7 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
       $topics[] = $pt;
     }
 
-    $program_instance_markups[$record->nid][] = '</div>';
+    $program_instance_markups[$pi_nid][] = '</div>';
 
   }
 
@@ -678,6 +668,7 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
 
     $content_wrapper['content'] = array('#markup' =>
       $header .
+      '<div class="instance-show-information">' . t('Show Program Information') . '</div>' .
       '<div class="instance-information">' .
       implode(" ", $pi_markup) .
       '</div>'
