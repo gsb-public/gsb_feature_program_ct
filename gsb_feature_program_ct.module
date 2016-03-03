@@ -524,7 +524,18 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
     }
 
     // add instance header (label and date) markup as -first item-
-    $program_instance_markups[$pi_nid][] = '<h2 class="instance-header">' . $instance_label . '<span class="pipe">|</span>' . $formatted_date . '</h2>';
+    $instance_hdr = '<h2 class="instance-header">';
+    if (!empty($instance_label)) {
+      $instance_hdr .= $instance_label;
+    }
+    if (!empty($formatted_date)) {
+      if (!empty($instance_label)) {
+        $instance_hdr .= '<span class="pipe">|</span>';
+      }
+      $instance_hdr .= $formatted_date;
+    }
+    $instance_hdr .= '</h2>';
+    $program_instance_markups[$pi_nid][] = $instance_hdr;
 
     $program_instance_markups[$pi_nid][] = '<div class="group-left">';
     $program_instance_markups[$pi_nid][] = '<div class="instance-item-wrapper format-wrapper">';
@@ -535,7 +546,18 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
     $ewrap_format_location = entity_metadata_wrapper('field_collection_item', $program_format_location);
     $program_format = $ewrap_format_location->field_program_format->value();
     $program_location = $ewrap_format_location->field_program_location_link->value();
-    $program_instance_markups[$pi_nid][] = '<div class="program-format-location">' . $program_format->name . '<span class="pipe">|</span>' . $program_location['title'] . '</div>';
+    $program_format_out = '<div class="program-format-location">';
+    if (!empty($program_format->name)) {
+      $program_format_out .= $program_format->name;
+    }
+    if (!empty($program_location['title'])) {
+      if (!empty($program_format->name)) {
+        $program_format_out .= '<span class="pipe">|</span>';
+      }
+      $program_format_out .= $program_location['title'];
+    }
+    $program_format_out .= '</div>';
+    $program_instance_markups[$pi_nid][] = $program_format_out;
 
     // add time commitment markup
     $time_commitment = $node_wrapper->field_time_commitment->value();
@@ -585,7 +607,18 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
           $start_date = DateTime::createFromFormat('U', $deadline_date);
           $formatted_date = $start_date->format('d M Y');
         }
-        $program_instance_markups[$pi_nid][] = '<div class="program-deadline">' . $deadline_text . '<span class="pipe">|</span>' . $formatted_date . '</div>';
+        $deadline = '<div class="program-deadline">';
+        if (!empty($deadline_text)) {
+          $deadline .= $deadline_text;
+        }
+        if (!empty($formatted_date)) {
+          if (!empty($deadline_text)) {
+            $deadline .= '<span class="pipe">|</span>';
+          }
+          $deadline .= $formatted_date;
+        }
+        $deadline .= '</div>';
+        $program_instance_markups[$pi_nid][] = $deadline;
       }
 
       $program_instance_markups[$pi_nid][] = '</div>';
