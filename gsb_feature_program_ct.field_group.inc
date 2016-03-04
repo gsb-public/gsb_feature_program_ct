@@ -113,7 +113,6 @@ function gsb_feature_program_ct_field_group_info() {
     'weight' => '22',
     'children' => array(
       0 => 'field_application_requirements',
-      1 => 'field_app_requirements_intro',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
