@@ -17,8 +17,19 @@ function gsb_feature_program_ct_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'program';
   $ds_fieldsetting->view_mode = 'default';
   $ds_fieldsetting->settings = array(
+    'program_programs_cta' => array(
+      'weight' => '14',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+        ),
+        'conditions' => array(),
+      ),
+    ),
     'program_faculty_cta' => array(
-      'weight' => '13',
+      'weight' => '10',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -545,6 +556,24 @@ function gsb_feature_program_ct_ds_custom_fields_info() {
   );
   $export['program_faculty_cta'] = $ds_field;
 
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'program_programs_cta';
+  $ds_field->label = 'Program Programs CTA';
+  $ds_field->field_type = 5;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = 'program|default';
+  $ds_field->properties = array(
+    'code' => array(
+      'value' => '<div class="program-programs-cta-wrapper"><div class="program-programs-cta"><a href="" title="See All Programs">See All Programs</a></div></div>',
+      'format' => 'gsb_html_text',
+    ),
+    'use_token' => 0,
+  );
+  $export['program_programs_cta'] = $ds_field;
+
   return $export;
 }
 
@@ -588,12 +617,13 @@ function gsb_feature_program_ct_ds_layout_settings_info() {
         13 => 'field_cta1',
         14 => 'field_cta2',
       ),
-      'footer' => array(
-        15 => 'field_program_topics',
-        17 => 'group_wrapper_taxonomy',
-      ),
       'explore' => array(
-        16 => 'gsb_program_explore_more',
+        15 => 'gsb_program_explore_more',
+        16 => 'program_programs_cta',
+      ),
+      'footer' => array(
+        17 => 'group_wrapper_taxonomy',
+        18 => 'field_program_topics',
       ),
     ),
     'fields' => array(
@@ -612,9 +642,10 @@ function gsb_feature_program_ct_ds_layout_settings_info() {
       'program_faculty_cta' => 'faculty',
       'field_cta1' => 'cta',
       'field_cta2' => 'cta',
-      'field_program_topics' => 'footer',
       'gsb_program_explore_more' => 'explore',
+      'program_programs_cta' => 'explore',
       'group_wrapper_taxonomy' => 'footer',
+      'field_program_topics' => 'footer',
     ),
     'classes' => array(),
     'wrappers' => array(
