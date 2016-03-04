@@ -41,6 +41,7 @@ features[ds_field_settings][] = node|program|field_program_related
 features[ds_field_settings][] = node|program|idea_story_related
 features[ds_field_settings][] = node|program|program_explore_other
 features[ds_fields][] = program_faculty_cta
+features[ds_fields][] = program_programs_cta
 features[ds_layout_settings][] = node|program|default
 features[ds_layout_settings][] = node|program|field_program_ctas
 features[ds_layout_settings][] = node|program|field_program_curriculum

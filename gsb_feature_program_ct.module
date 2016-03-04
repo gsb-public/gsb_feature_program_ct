@@ -458,7 +458,7 @@ function gsb_feature_program_ct_explore_more($entity, $type, $view_mode, $langco
     $container = array(
       '#type' => 'container',
       '#attributes' => array(
-        'class' => array('gsb-program-expore-more-wrapper'),
+        'class' => array('gsb-program-explore-more-wrapper'),
       ),
     );
     $container['content'] = $content_wrapper;

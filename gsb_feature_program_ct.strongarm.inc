@@ -177,7 +177,7 @@ function gsb_feature_program_ct_strongarm() {
             'visible' => FALSE,
           ),
           'default' => array(
-            'weight' => '16',
+            'weight' => '13',
             'visible' => TRUE,
           ),
           'program_explore_other' => array(
@@ -201,8 +201,32 @@ function gsb_feature_program_ct_strongarm() {
         ),
         'gsb_program_program_instance_faculty_fields' => array(
           'default' => array(
-            'weight' => '12',
+            'weight' => '9',
             'visible' => TRUE,
+          ),
+        ),
+        'gsb_program_curriculum_blurb' => array(
+          'default' => array(
+            'weight' => '19',
+            'visible' => FALSE,
+          ),
+        ),
+        'gsb_program_participant_profile_blurb' => array(
+          'default' => array(
+            'weight' => '24',
+            'visible' => FALSE,
+          ),
+        ),
+        'gsb_program_application_requirements_blurb' => array(
+          'default' => array(
+            'weight' => '23',
+            'visible' => FALSE,
+          ),
+        ),
+        'gsb_program_topics_location_category' => array(
+          'default' => array(
+            'weight' => '25',
+            'visible' => FALSE,
           ),
         ),
       ),
