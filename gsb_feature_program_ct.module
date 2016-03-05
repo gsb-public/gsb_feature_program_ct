@@ -898,13 +898,11 @@ function gsb_feature_program_ct_participant_profile_blurb($entity, $type, $view_
       'class' => array('participant-profile-blurb-wrapper'),
     ),
   );
-
-  $content_wrapper['content'] = array(
-    '#markup' =>
-      '<div class="participant-profile-blurb">' .
-        empty($program_category->field_participant_profile_blurb[$language]) ? '' : $program_category->field_participant_profile_blurb[$language][0]['safe_value'] .
-      '</div>'
-  );
+  
+  $blurb_markup = '<div class="participant-profile-blurb">';
+  $blurb_markup .= empty($program_category->field_participant_profile_blurb[$language]) ? '' : $program_category->field_participant_profile_blurb[$language][0]['safe_value'];
+  $blurb_markup .= '</div>';
+  $content_wrapper['content'] = array('#markup' => $blurb_markup);
 
   $entity->content['gsb_program_participant_profile_blurb'] = $content_wrapper;
 }
@@ -941,12 +939,11 @@ function gsb_feature_program_ct_application_requirements_blurb($entity, $type, $
       'class' => array('application-requirements-blurb-wrapper'),
     ),
   );
-
-  $content_wrapper['content'] = array('#markup' =>
-    '<div class="application-requirements-blurb">' .
-      empty($program_category->field_application_requirements_b[$language]) ? '' : $program_category->field_application_requirements_b[$language][0]['safe_value'] .
-    '</div>'
-  );
+  
+  $blurb_markup = '<div class="application-requirements-blurb">';
+  $blurb_markup .= empty($program_category->field_application_requirements_b[$language]) ? '' : $program_category->field_application_requirements_b[$language][0]['safe_value'];
+  $blurb_markup .= '</div>';
+  $content_wrapper['content'] = array('#markup' => $blurb_markup);
 
   $entity->content['gsb_program_application_requirements_blurb'] = $content_wrapper;
 }
