@@ -329,6 +329,11 @@ function gsb_feature_program_ct_field_extra_fields() {
       'description' => t('Renders the topics and program location category.'),
       'weight' => 0,
     ),
+    'gsb_program_show_all_programs' => array(
+      'label' => t('Show All Programs CTA'),
+      'description' => t('Renders the show all programs cta.'),
+      'weight' => 0,
+    ),
   );
   return $extra;
 }
@@ -337,7 +342,6 @@ function gsb_feature_program_ct_field_extra_fields() {
  * Implements hook_entity_view().
  */
 function gsb_feature_program_ct_entity_view($entity, $type, $view_mode, $langcode) {
-
   // Only go thru this code if we are working with a node
   if ($type != 'node') {
     return;
@@ -369,7 +373,9 @@ function gsb_feature_program_ct_entity_view($entity, $type, $view_mode, $langcod
   if (!empty($fields['gsb_program_topics_location_category']['visible'])) {
     gsb_feature_program_ct_topics_location_category($entity, $type, $view_mode, $langcode);
   }
-
+  if (!empty($fields['gsb_program_show_all_programs']['visible'])) {
+    gsb_feature_program_ct_show_all_programs($entity, $type, $view_mode, $langcode);
+  }
 }
 
 /**
@@ -1058,6 +1064,54 @@ function gsb_feature_program_ct_topics_location_category($entity, $type, $view_m
   );
 
   $entity->content['gsb_program_topics_location_category'] = $content_wrapper;
+}
+
+/**
+ * Implements hook_entity_view().
+ */
+function gsb_feature_program_ct_show_all_programs($entity, $type, $view_mode, $langcode) {
+  // Only go thru this code if we are working with a node
+  if ($type != 'node') {
+    return;
+  }
+  // Only go thru this code if we are working with a program node
+  if ($entity->type != 'program') {
+    return;
+  }
+  // Only go thru this code if we are working with view mode full
+  if ($view_mode != 'full') {
+    return;
+  }
+
+  $nid = $entity->nid;
+  $language = $entity->language;
+
+  $node_wrapper = entity_metadata_wrapper('node', $nid);
+
+  // get listing page url from program's program category
+  $program_category = $node_wrapper->field_program_category->value();
+  $program_listing_page_url = '';
+  if (!empty($program_category->field_program_listing_page_url[$language][0]['url'])) {
+    $program_listing_page_url = $program_category->field_program_listing_page_url[$language][0]['url'];
+  }
+
+  // Wrap content in container.
+  $content_wrapper = array(
+    '#type' => 'container',
+    '#attributes' => array(
+      'class' => array('program-programs-cta-wrapper'),
+    ),
+  );
+
+  $programs_link = '<a href="' . base_path() . $program_listing_page_url . '">' . t('Show All Programs') . '</a>';
+
+  $content_wrapper['content'] = array('#markup' =>
+    '<div class="program-programs-cta">' .
+      $programs_link .
+    '</div>'
+  );
+
+  $entity->content['gsb_program_show_all_programs'] = $content_wrapper;
 }
 
 /**
