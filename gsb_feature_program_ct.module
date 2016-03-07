@@ -522,6 +522,7 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
   }
 
   $topics = array();
+  $locations = array();
 
   $program_instance_markups = array();
   foreach ($program_instance_nids as $pi_nid) {
@@ -692,6 +693,10 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
       $topics[] = $pt;
     }
 
+    // add program location from program instance - to the program locations array
+    $program_location_categories = $ewrap_format_location->field_program_location_category->value();
+    $locations[] = $program_location_categories;
+
     $program_instance_markups[$pi_nid][] = '</div>';
 
   }
@@ -737,13 +742,42 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
   }
 
   // create the topics markup
-  $topics_markup = array();
-  $count = count($topics);
+  $topic_names = array();
   foreach($topics as $delta => $item) {
-    $path = $program_listing_page_url . '?program-topic=' . str_replace(' ', '-', strtolower($item->name));
-    $topics_markup[] = '<a href="' . base_path() . $path . '">' . check_plain($item->name) . '</a>';
+    $topic_names[] = $item->name;
+  }
+  $topic_names = array_unique($topic_names);
+  asort($topic_names);
+  $topic_names = array_values($topic_names);
+  $topics_markup = '';
+  $count = count($topic_names);
+  foreach($topic_names as $delta => $item) {
+    $path = $program_listing_page_url . '?program-topic=' . str_replace(' ', '-', strtolower($item));
+    $topics_markup .= '<a href="' . base_path() . $path . '">' . check_plain($item) . '</a>';
     if ($delta != $count - 1) {
-      $topics_markup[] = '<span class="separator">' . check_plain(', ') . '</span>';
+      $topics_markup .= '<span class="separator">' . check_plain(', ') . '</span>';
+    }
+  }
+
+  // create the locations markup
+  $location_names = array();
+  foreach($locations as $delta => $item) {
+    $location_names[] = $item->name;
+  }
+  $location_names = array_unique($location_names);
+  asort($location_names);
+  $location_names = array_values($location_names);
+  $locations_markup = '';
+  $count = count($location_names);
+  foreach($location_names as $delta => $item) {
+    $name = str_replace(' ', '-', strtolower($item));
+    $name = str_replace('(', '', $name);
+    $name = str_replace(')', '', $name);
+    $name = str_replace('.', '', $name);
+    $path = $program_listing_page_url . '?program-location=' . $name;
+    $locations_markup .= '<a href="' . base_path() . $path . '">' . check_plain($item) . '</a>';
+    if ($delta != $count - 1) {
+      $locations_markup .= '<span class="separator">' . check_plain(', ') . '</span>';
     }
   }
 
@@ -752,17 +786,20 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
   $program_category_markup = array();
   $program_category_markup[] = '<a href="' . base_path() . $path . '">' . $program_category->name . '</a>';
 
-  // Wrap a taxonomy container around the topics and program category links
+  // Wrap a taxonomy container around the topics and program location links
+
+  $topics_locations_markup = $topics_markup;
+  if (!empty($topics_markup)) {
+    $topics_locations_markup .= '<span class="separator">' . check_plain(', ') . '</span>';
+  }
+  $topics_locations_markup .= $locations_markup;
+
   $taxonomy_wrapper = array(
     '#type' => 'container',
     '#attributes' => array(
       'class' => array('instance-taxonomy'),
     ),
-    'content' => array('#markup' =>
-      implode(" ", $topics_markup) .
-      '<span class="separator">' . check_plain(', ') . '</span>' .
-      implode(" ", $program_category_markup)
-    )
+    'content' => array('#markup' => $topics_locations_markup)
   );
 
   $instance_wrappers['content'][] = $taxonomy_wrapper;
@@ -1136,7 +1173,7 @@ function _gsb_feature_program_ct_get_all_program_instances($program_nids) {
   $query->condition('n.status', '1');
   $query->condition('n.type', 'program_instance');
   $query->condition('dof.field_display_on_finder_value', '1');
-  $query->orderBy('fid.field_instance_date_value', 'DESC');
+  $query->orderBy('fid.field_instance_date_value', 'ASC');
   $results = $query->execute();
 
   $program_instances = array();
