@@ -28,6 +28,14 @@
 
         }
 
+        if ($('#edit-field-program-detail-und-1').is(':checked')) {
+          cleanupFieldsets($('#edit-field-program-detail-und-1').val());
+        }
+
+        $("[id^=edit-field-program-detail-und-]").change(function () {
+          cleanupFieldsets($(this).val());
+        });
+
       });
 
       // check if the instance-information section is currently hidden
@@ -42,6 +50,56 @@
           $(this).next().addClass('hide_this');
         });
       };
+
+      var cleanupFieldsets = function($program_detail_checked) {
+
+        // vertical tabs to be hidden
+        var hide_vertical_groups = {
+          LearnMore: "Learn More",
+          CallToActions: "Call-to-Actions (CTAs)",
+          RelatedContent: "Related Content",
+          FeaturedNewsEvent: "Featured News or Event"
+        };
+
+        // horizontal tabs to be hidden
+        var hide_horizontal_groups = {
+          Curriculum: "Curriculum",
+          Participants: "Participants"
+        };
+
+        // show/hide vertical tabs
+
+        $(".field-group-tabs-wrapper  .vertical-tab-button").each(function () {
+          for (var key in hide_vertical_groups) {
+            if ($program_detail_checked == 1) {
+              if ($(this).text().indexOf(hide_vertical_groups[key]) != -1) {
+                $(this).hide();
+              }
+            }
+            else {
+              $(this).show();
+            }
+
+          }
+        });
+
+        // show/hide horizontal tabs
+
+        $(".field-group-htabs-wrapper  .horizontal-tab-button").each(function () {
+          for (var key in hide_horizontal_groups) {
+            if ($program_detail_checked == 1) {
+              if ($(this).text().indexOf(hide_horizontal_groups[key]) != -1) {
+                $(this).hide();
+              }
+            }
+            else {
+              $(this).show();
+            }
+
+          }
+        });
+
+      } // end of cleanupFieldsets
 
     }
   };
