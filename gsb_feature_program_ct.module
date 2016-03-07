@@ -1189,6 +1189,8 @@ function _gsb_feature_program_ct_get_all_program_instances($program_nids) {
  */
 function _gsb_feature_program_ct_get_current_program_instances($program_nids) {
 
+  $today = date('Y-m-d H:i:s', time());
+
   $query = db_select('node', 'n');
   $query->fields('n', array('nid', 'status', 'type'));
   $query->join('field_data_field_program', 'fp', "n.nid = fp.entity_id AND fp.entity_type = 'node' AND fp.deleted = '0'");
@@ -1200,7 +1202,8 @@ function _gsb_feature_program_ct_get_current_program_instances($program_nids) {
   $query->condition('nodefp.nid', $program_nids, 'IN');
   $query->condition('n.status', '1');
   $query->condition('n.type', 'program_instance');
-  $query->orderBy('fid.field_instance_date_value', 'DESC');
+  $query->condition('fid.field_instance_date_value', $today, '>');
+  $query->orderBy('fid.field_instance_date_value', 'ASC');
   $results = $query->execute();
 
   $program_instances = array();
