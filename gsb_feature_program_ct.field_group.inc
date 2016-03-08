@@ -760,6 +760,72 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_wrapper_application_req|node|program|default';
+  $field_group->group_name = 'group_wrapper_application_req';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'program';
+  $field_group->mode = 'default';
+  $field_group->parent_name = 'group_wrapper_learn';
+  $field_group->data = array(
+    'label' => 'Application Req wrapper',
+    'weight' => '65',
+    'children' => array(
+      0 => 'gsb_program_application_requirements_blurb',
+      1 => 'program_application_reqs_header',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Application Req wrapper',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'group-wrapper-application-req field-group-div',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'none',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $field_groups['group_wrapper_application_req|node|program|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_wrapper_curriculum|node|program|default';
+  $field_group->group_name = 'group_wrapper_curriculum';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'program';
+  $field_group->mode = 'default';
+  $field_group->parent_name = 'group_wrapper_learn';
+  $field_group->data = array(
+    'label' => 'Curriculum wrapper',
+    'weight' => '64',
+    'children' => array(
+      0 => 'gsb_program_curriculum_blurb',
+      1 => 'program_curriculum_header',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Curriculum wrapper',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'group-wrapper-curriculum field-group-div',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'none',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $field_groups['group_wrapper_curriculum|node|program|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_wrapper_featured_item|node|program|default';
   $field_group->group_name = 'group_wrapper_featured_item';
   $field_group->entity_type = 'node';
@@ -804,12 +870,9 @@ function gsb_feature_program_ct_field_group_info() {
     'weight' => '9',
     'children' => array(
       0 => 'field_additional_pages',
-      1 => 'gsb_program_curriculum_blurb',
-      2 => 'gsb_program_participant_profile_blurb',
-      3 => 'gsb_program_application_requirements_blurb',
-      4 => 'program_application_reqs_header',
-      5 => 'program_curriculum_header',
-      6 => 'program_participant_header',
+      1 => 'group_wrapper_curriculum',
+      2 => 'group_wrapper_participant',
+      3 => 'group_wrapper_application_req',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -827,6 +890,39 @@ function gsb_feature_program_ct_field_group_info() {
     ),
   );
   $field_groups['group_wrapper_learn|node|program|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_wrapper_participant|node|program|default';
+  $field_group->group_name = 'group_wrapper_participant';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'program';
+  $field_group->mode = 'default';
+  $field_group->parent_name = 'group_wrapper_learn';
+  $field_group->data = array(
+    'label' => 'Participant wrapper',
+    'weight' => '66',
+    'children' => array(
+      0 => 'gsb_program_participant_profile_blurb',
+      1 => 'program_participant_header',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Participant wrapper',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'group-wrapper-participant field-group-div',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'none',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $field_groups['group_wrapper_participant|node|program|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -924,11 +1020,13 @@ function gsb_feature_program_ct_field_group_info() {
   // Included for use with string extractors like potx.
   t('Administration');
   t('All Topics');
+  t('Application Req wrapper');
   t('Application Requirements');
   t('Awarded Upon Completion');
   t('Call-to-Actions (CTAs)');
   t('Career Level');
   t('Curriculum');
+  t('Curriculum wrapper');
   t('Featured Item wrapper');
   t('Featured News or Event');
   t('Images');
@@ -942,6 +1040,7 @@ function gsb_feature_program_ct_field_group_info() {
   t('Main');
   t('Overview');
   t('Overview Text');
+  t('Participant wrapper');
   t('Participants');
   t('Program Category');
   t('Program Contact');

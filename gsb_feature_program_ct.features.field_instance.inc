@@ -200,7 +200,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_fields',
-        'weight' => 6,
+        'weight' => 67,
       ),
       'field_program_ctas' => array(
         'label' => 'above',

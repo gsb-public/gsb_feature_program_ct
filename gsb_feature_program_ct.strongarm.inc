@@ -207,25 +207,31 @@ function gsb_feature_program_ct_strongarm() {
         ),
         'gsb_program_curriculum_blurb' => array(
           'default' => array(
-            'weight' => '1',
+            'weight' => '66',
             'visible' => TRUE,
           ),
         ),
         'gsb_program_participant_profile_blurb' => array(
           'default' => array(
-            'weight' => '3',
+            'weight' => '69',
             'visible' => TRUE,
           ),
         ),
         'gsb_program_application_requirements_blurb' => array(
           'default' => array(
-            'weight' => '5',
+            'weight' => '72',
             'visible' => TRUE,
           ),
         ),
         'gsb_program_topics_location_category' => array(
           'default' => array(
             'weight' => '27',
+            'visible' => FALSE,
+          ),
+        ),
+        'gsb_program_show_all_programs' => array(
+          'default' => array(
+            'weight' => '0',
             'visible' => FALSE,
           ),
         ),
