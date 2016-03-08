@@ -620,7 +620,7 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_overview_vtab';
   $field_group->data = array(
-    'label' => 'Program Lead',
+    'label' => 'Program Contact',
     'weight' => '18',
     'children' => array(
       0 => 'field_program_contact_link',
@@ -902,7 +902,7 @@ function gsb_feature_program_ct_field_group_info() {
   t('Overview');
   t('Participants');
   t('Program Category');
-  t('Program Lead');
+  t('Program Contact');
   t('Related');
   t('Related Content');
   t('Taxonomy');
