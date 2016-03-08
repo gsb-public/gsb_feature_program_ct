@@ -793,6 +793,44 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_wrapper_learn|node|program|default';
+  $field_group->group_name = 'group_wrapper_learn';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'program';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Learn More About the Program',
+    'weight' => '9',
+    'children' => array(
+      0 => 'field_additional_pages',
+      1 => 'gsb_program_curriculum_blurb',
+      2 => 'gsb_program_participant_profile_blurb',
+      3 => 'gsb_program_application_requirements_blurb',
+      4 => 'program_application_reqs_header',
+      5 => 'program_curriculum_header',
+      6 => 'program_participant_header',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Learn More About the Program',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'group-wrapper-learn field-group-div',
+        'description' => '',
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'effect' => 'none',
+        'speed' => 'none',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $field_groups['group_wrapper_learn|node|program|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_wrapper_related|node|program|field_program_related';
   $field_group->group_name = 'group_wrapper_related';
   $field_group->entity_type = 'node';
@@ -833,7 +871,7 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Taxonomy wrapper',
-    'weight' => '15',
+    'weight' => '19',
     'children' => array(
       0 => 'field_program_topics',
     ),
@@ -899,6 +937,7 @@ function gsb_feature_program_ct_field_group_info() {
   t('Key Topics');
   t('Leadership Level');
   t('Learn More');
+  t('Learn More About the Program');
   t('Link to an Additional Page');
   t('Main');
   t('Overview');

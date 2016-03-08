@@ -12,24 +12,64 @@ function gsb_feature_program_ct_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'field_collection_item|field_additional_pages|default';
+  $ds_fieldsetting->entity_type = 'field_collection_item';
+  $ds_fieldsetting->bundle = 'field_additional_pages';
+  $ds_fieldsetting->view_mode = 'default';
+  $ds_fieldsetting->settings = array(
+    'field_overview' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'ow' => TRUE,
+          'ow-el' => 'div',
+          'ow-cl' => '',
+          'ow-def-cl' => TRUE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
+        ),
+      ),
+    ),
+    'field_page_link' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'ow' => TRUE,
+          'ow-el' => 'h3',
+          'ow-cl' => '',
+          'ow-def-cl' => TRUE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
+        ),
+      ),
+    ),
+  );
+  $export['field_collection_item|field_additional_pages|default'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|program|default';
   $ds_fieldsetting->entity_type = 'node';
   $ds_fieldsetting->bundle = 'program';
   $ds_fieldsetting->view_mode = 'default';
   $ds_fieldsetting->settings = array(
-    'program_programs_cta' => array(
-      'weight' => '14',
+    'program_application_reqs_header' => array(
+      'weight' => '4',
       'label' => 'hidden',
       'format' => 'default',
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-        ),
-        'conditions' => array(),
-      ),
+    ),
+    'program_curriculum_header' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'program_participant_header' => array(
+      'weight' => '2',
+      'label' => 'hidden',
+      'format' => 'default',
     ),
     'program_faculty_cta' => array(
-      'weight' => '10',
+      'weight' => '15',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -140,6 +180,19 @@ function gsb_feature_program_ct_ds_field_settings_info() {
           'lb' => 'Contact',
           'lb-el' => 'h3',
           'lb-col' => TRUE,
+          'ow' => TRUE,
+          'ow-el' => 'div',
+          'ow-cl' => '',
+          'ow-def-cl' => TRUE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
+        ),
+      ),
+    ),
+    'field_additional_pages' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
           'ow' => TRUE,
           'ow-el' => 'div',
           'ow-cl' => '',
@@ -540,6 +593,42 @@ function gsb_feature_program_ct_ds_custom_fields_info() {
 
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
+  $ds_field->field = 'program_application_reqs_header';
+  $ds_field->label = 'Program: Application Reqs Header';
+  $ds_field->field_type = 5;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = 'program|default';
+  $ds_field->properties = array(
+    'code' => array(
+      'value' => '<h3><a href="[node:field-application-requirements:url]" title="Application Requirements">Application Requirements</a></h3>',
+      'format' => 'gsb_html_text',
+    ),
+    'use_token' => 1,
+  );
+  $export['program_application_reqs_header'] = $ds_field;
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'program_curriculum_header';
+  $ds_field->label = 'Program: Curriculum Header';
+  $ds_field->field_type = 5;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = 'program|default';
+  $ds_field->properties = array(
+    'code' => array(
+      'value' => '<h3><a href="curriculum" title="Curriculum">Curriculum</a></h3>',
+      'format' => 'gsb_html_text',
+    ),
+    'use_token' => 0,
+  );
+  $export['program_curriculum_header'] = $ds_field;
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
   $ds_field->field = 'program_faculty_cta';
   $ds_field->label = 'Program Faculty CTA';
   $ds_field->field_type = 5;
@@ -555,6 +644,24 @@ function gsb_feature_program_ct_ds_custom_fields_info() {
     'use_token' => 0,
   );
   $export['program_faculty_cta'] = $ds_field;
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'program_participant_header';
+  $ds_field->label = 'Program: Participant Profile Header';
+  $ds_field->field_type = 5;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = 'program|default';
+  $ds_field->properties = array(
+    'code' => array(
+      'value' => '<h3><a href="participant" title="Participant Profile">Participant Profile</a></h3>',
+      'format' => 'gsb_html_text',
+    ),
+    'use_token' => 0,
+  );
+  $export['program_participant_header'] = $ds_field;
 
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
@@ -585,6 +692,37 @@ function gsb_feature_program_ct_ds_layout_settings_info() {
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
+  $ds_layout->id = 'field_collection_item|field_additional_pages|default';
+  $ds_layout->entity_type = 'field_collection_item';
+  $ds_layout->bundle = 'field_additional_pages';
+  $ds_layout->view_mode = 'default';
+  $ds_layout->layout = 'ds_1col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'field_page_link',
+        1 => 'field_overview',
+      ),
+    ),
+    'fields' => array(
+      'field_page_link' => 'ds_content',
+      'field_overview' => 'ds_content',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'ds_content' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
+    'layout_disable_css' => FALSE,
+  );
+  $export['field_collection_item|field_additional_pages|default'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
   $ds_layout->id = 'node|program|default';
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'program';
@@ -594,58 +732,72 @@ function gsb_feature_program_ct_ds_layout_settings_info() {
     'regions' => array(
       'left' => array(
         0 => 'field_overview_intro',
-        1 => 'field_overview_description',
-        2 => 'field_key_benefits_intro',
-        3 => 'field_key_benefits_description',
-        4 => 'field_event_who_attend',
-      ),
-      'right' => array(
-        5 => 'group_wrapper_featured_item',
-        6 => 'field_featured_superhead',
-        7 => 'gsb_program_program_instance_fields',
-        8 => 'field_featured_event',
-        9 => 'field_program_director_name',
+        3 => 'field_overview_description',
+        4 => 'field_key_benefits_intro',
+        7 => 'field_key_benefits_description',
+        9 => 'field_event_who_attend',
       ),
       'learn' => array(
-        10 => 'field_video',
+        1 => 'program_curriculum_header',
+        2 => 'gsb_program_curriculum_blurb',
+        5 => 'program_participant_header',
+        6 => 'gsb_program_participant_profile_blurb',
+        8 => 'program_application_reqs_header',
+        11 => 'gsb_program_application_requirements_blurb',
+        13 => 'field_additional_pages',
+        17 => 'field_video',
+        18 => 'group_wrapper_learn',
+      ),
+      'right' => array(
+        10 => 'group_wrapper_featured_item',
+        12 => 'field_featured_superhead',
+        14 => 'gsb_program_program_instance_fields',
+        15 => 'field_program_director_name',
+        16 => 'field_featured_event',
       ),
       'faculty' => array(
-        11 => 'gsb_program_program_instance_faculty_fields',
-        12 => 'program_faculty_cta',
-      ),
-      'cta' => array(
-        13 => 'field_cta1',
-        14 => 'field_cta2',
-      ),
-      'explore' => array(
-        15 => 'gsb_program_explore_more',
-        16 => 'program_programs_cta',
+        19 => 'gsb_program_program_instance_faculty_fields',
+        20 => 'program_faculty_cta',
       ),
       'footer' => array(
-        17 => 'group_wrapper_taxonomy',
-        18 => 'field_program_topics',
+        21 => 'field_program_topics',
+        25 => 'group_wrapper_taxonomy',
+      ),
+      'cta' => array(
+        22 => 'field_cta1',
+        23 => 'field_cta2',
+      ),
+      'explore' => array(
+        24 => 'gsb_program_explore_more',
       ),
     ),
     'fields' => array(
       'field_overview_intro' => 'left',
+      'program_curriculum_header' => 'learn',
+      'gsb_program_curriculum_blurb' => 'learn',
       'field_overview_description' => 'left',
       'field_key_benefits_intro' => 'left',
+      'program_participant_header' => 'learn',
+      'gsb_program_participant_profile_blurb' => 'learn',
       'field_key_benefits_description' => 'left',
+      'program_application_reqs_header' => 'learn',
       'field_event_who_attend' => 'left',
       'group_wrapper_featured_item' => 'right',
+      'gsb_program_application_requirements_blurb' => 'learn',
       'field_featured_superhead' => 'right',
+      'field_additional_pages' => 'learn',
       'gsb_program_program_instance_fields' => 'right',
-      'field_featured_event' => 'right',
       'field_program_director_name' => 'right',
+      'field_featured_event' => 'right',
       'field_video' => 'learn',
+      'group_wrapper_learn' => 'learn',
       'gsb_program_program_instance_faculty_fields' => 'faculty',
       'program_faculty_cta' => 'faculty',
+      'field_program_topics' => 'footer',
       'field_cta1' => 'cta',
       'field_cta2' => 'cta',
       'gsb_program_explore_more' => 'explore',
-      'program_programs_cta' => 'explore',
       'group_wrapper_taxonomy' => 'footer',
-      'field_program_topics' => 'footer',
     ),
     'classes' => array(),
     'wrappers' => array(
