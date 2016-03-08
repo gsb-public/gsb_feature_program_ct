@@ -58,7 +58,8 @@
           LearnMore: "Learn More",
           CallToActions: "Call-to-Actions (CTAs)",
           RelatedContent: "Related Content",
-          FeaturedNewsEvent: "Featured News or Event"
+          FeaturedNewsEvent: "Featured News or Event",
+          ApplicationRequirements: "Application Requirements"
         };
 
         // horizontal tabs to be hidden
