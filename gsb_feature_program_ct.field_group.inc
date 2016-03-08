@@ -500,7 +500,7 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_overview_vtab';
   $field_group->data = array(
-    'label' => 'Overview',
+    'label' => 'Overview Text',
     'weight' => '13',
     'children' => array(
       0 => 'field_overview_description',
@@ -508,12 +508,13 @@ function gsb_feature_program_ct_field_group_info() {
     ),
     'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'closed',
+      'label' => 'Overview Text',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-overview-tab field-group-tab',
         'required_fields' => 1,
+        'classes' => 'group-overview-tab field-group-tab',
+        'description' => '',
       ),
+      'formatter' => 'closed',
     ),
   );
   $field_groups['group_overview_tab|node|program|form'] = $field_group;
@@ -628,12 +629,13 @@ function gsb_feature_program_ct_field_group_info() {
     ),
     'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'closed',
+      'label' => 'Program Contact',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
         'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
       ),
+      'formatter' => 'closed',
     ),
   );
   $field_groups['group_program_lead|node|program|form'] = $field_group;
@@ -900,6 +902,7 @@ function gsb_feature_program_ct_field_group_info() {
   t('Link to an Additional Page');
   t('Main');
   t('Overview');
+  t('Overview Text');
   t('Participants');
   t('Program Category');
   t('Program Contact');
