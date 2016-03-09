@@ -11,11 +11,13 @@
           $('.instance-show-information').each(function() {
             $(this).next().hide();
             $(this).next().addClass('hide_this');
+            $(this).removeClass('hide_this');
           });
 
           // show the first instance-information section
           $('.instance-show-information').first().next().show(1000);
           $('.instance-show-information').first().next().removeClass('hide_this');
+          $('.instance-show-information').first().addClass('hide_this');
 
           $('.instance-show-information').click(function (e) {
             e.preventDefault();
@@ -23,6 +25,7 @@
               hideAll();
               $(this).next().show(1000);
               $(this).next().removeClass('hide_this');
+              $(this).addClass('hide_this');
             }
           });
 
@@ -48,6 +51,7 @@
         $('.instance-show-information').each(function() {
           $(this).next().hide(1000);
           $(this).next().addClass('hide_this');
+          $(this).removeClass('hide_this');
         });
       };
 
