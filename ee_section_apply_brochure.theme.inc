@@ -33,13 +33,42 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_ee_section_app
     $display_on_finder = $instance_wrapper->field_display_on_finder->value();
     $is_application_open = $instance_wrapper->field_is_application_open->value();
     $link_apply_button = $instance_wrapper->field_link_apply_button->value();
+    $brochure_option = $instance_wrapper->field_brochure_options->value();
+    $download_brochure_link = $instance_wrapper->field_download_brochure_link->value();
+    $brochure_pdf = $instance_wrapper->field_brochure_pdf->value();
+    $link_options = array(
+      'brochure_link_pdf',
+      'brochure_link_ee_lead_form',
+      'brochure_link_other'
+    );
+    if (in_array($brochure_option, $link_options)) {
+      $link = array();
+      $link['text'] = 'Download Brochure';
+      $link['options']['attributes'] = array();
+      if ($brochure_option == 'brochure_link_pdf') {
+        $link['path'] = $brochure_pdf['uri'];
+      }
+      if ($brochure_option == 'brochure_link_ee_lead_form') {
+        $link['path'] = '/exec-ed/programs/download-brochure';
+      }
+      else {
+        $link['options']['attributes'] = $download_brochure_link['attributes'];
+        $link['path'] = $download_brochure_link['url'];
+      }
+      $link['options']['html'] = null;
+      $link['options']['attributes']['class'] = array('ee-section-apply-brochure-download-link');
+      $vars['ee_section_apply_brochure_brochure_download_link'] = theme('link', $link);
+    }
+    else {
+      $vars['ee_section_apply_brochure_brochure_download_link'] = null;
+    }
     if ($display_on_finder && $is_application_open) {
       $link = array();
       $link['text'] = 'Apply';
       $link['path'] = $link_apply_button['url'];
       $link['options']['html'] = null;
       $link['options']['attributes'] = $link_apply_button['attributes'];
-      $link['options']['attributes'] = array('class' => array('ee-section-apply-brochure-apply-button-link'));
+      $link['options']['attributes']['class'] = array('ee-section-apply-brochure-apply-button-link');
       $vars['ee_section_apply_brochure_apply_button'] = theme('link', $link);
     } else {
       $vars['ee_section_apply_brochure_apply_button'] = null;
