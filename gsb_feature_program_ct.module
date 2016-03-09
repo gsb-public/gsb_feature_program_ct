@@ -726,7 +726,7 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
 
     $show_info = '';
     if (count($program_instance_nids) > 1) {
-      $show_info = '<div class="instance-show-information">' . t('Show Program Information') . '</div>';
+      $show_info = '<span class="instance-show-information">' . t('Show Program Information') . '</span>';
     }
 
     $content_wrapper['content'] = array('#markup' =>
