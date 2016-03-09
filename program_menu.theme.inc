@@ -25,7 +25,7 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_program_menu(&
   $program_links = array(
     'Overview' => '',
     'Curriculum' => 'curriculum',
-    'Faculty & Speakers' => 'faculty',
+    'Faculty' => 'faculty',
     'Participant Profile' => 'participant'
   );
   
