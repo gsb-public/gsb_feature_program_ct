@@ -389,7 +389,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 56,
+      'weight' => 11,
     ),
     'workbench_access_field' => 0,
   );
@@ -880,7 +880,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 28,
+      'weight' => 27,
     ),
     'workbench_access_field' => 0,
   );
@@ -2422,7 +2422,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'checkall' => FALSE,
       ),
       'type' => 'options_buttons',
-      'weight' => 43,
+      'weight' => 29,
     ),
     'workbench_access_field' => 0,
   );
@@ -4436,7 +4436,108 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 49,
+      'weight' => 30,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance: 'node-program-field_program_contact_options'.
+  $field_instances['node-program-field_program_contact_options'] = array(
+    'bundle' => 'program',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'conditions' => array(),
+        ),
+        'type' => 'list_default',
+        'weight' => 68,
+      ),
+      'field_program_ctas' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'field_program_curriculum' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'field_program_curriculum_one' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'field_program_curriculum_two' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'field_program_director' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'field_program_related' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'idea_story_related' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'program_explore_other' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_program_contact_options',
+    'label' => 'Program Contact',
+    'required' => 0,
+    'settings' => array(
+      'checkall' => array(
+        'checkall' => 0,
+        'checkall-check-all' => 1,
+        'checkall-toggle' => 1,
+        'checkall-uncheck-all' => 1,
+      ),
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'checkall' => FALSE,
+      ),
+      'type' => 'options_buttons',
+      'weight' => 28,
     ),
     'workbench_access_field' => 0,
   );
@@ -4642,7 +4743,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 48,
+      'weight' => 29,
     ),
     'workbench_access_field' => 0,
   );
@@ -5437,7 +5538,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 48,
+      'weight' => 31,
     ),
   );
 
@@ -5467,6 +5568,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
   t('Page Link');
   t('Part-Time Details');
   t('Program Category');
+  t('Program Contact');
   t('Program Contact Link');
   t('Program Lead Name');
   t('Program Pages');
