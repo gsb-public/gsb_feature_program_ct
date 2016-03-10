@@ -114,6 +114,7 @@ function gsb_feature_program_ct_field_group_info() {
     'children' => array(
       0 => 'field_application_requirements',
       1 => 'field_link_apply_button',
+      2 => 'field_prequalification_url',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
