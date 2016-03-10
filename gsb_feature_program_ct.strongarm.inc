@@ -226,7 +226,7 @@ function gsb_feature_program_ct_strongarm() {
         'gsb_program_topics_location_category' => array(
           'default' => array(
             'weight' => '27',
-            'visible' => FALSE,
+            'visible' => TRUE,
           ),
         ),
         'gsb_program_show_all_programs' => array(

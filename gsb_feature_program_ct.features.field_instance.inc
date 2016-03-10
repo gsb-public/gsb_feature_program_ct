@@ -389,7 +389,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 11,
+      'weight' => 56,
     ),
     'workbench_access_field' => 0,
   );
@@ -880,7 +880,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 27,
+      'weight' => 28,
     ),
     'workbench_access_field' => 0,
   );
@@ -2422,7 +2422,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'checkall' => FALSE,
       ),
       'type' => 'options_buttons',
-      'weight' => 29,
+      'weight' => 43,
     ),
     'workbench_access_field' => 0,
   );
@@ -3067,7 +3067,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 28,
+        'weight' => 25,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -3406,7 +3406,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'configurable_class' => 0,
         'configurable_title' => 0,
         'rel' => '',
-        'target' => 'user',
+        'target' => 'default',
         'title' => '',
       ),
       'custom_add_another' => '',
@@ -4743,7 +4743,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 29,
+      'weight' => 48,
     ),
     'workbench_access_field' => 0,
   );
@@ -4759,15 +4759,8 @@ function gsb_feature_program_ct_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'gsb_field_formatter',
-        'settings' => array(
-          'conditions' => array(),
-          'limit_depth' => FALSE,
-          'path_prefix' => 'taxonomy/term/',
-          'separator' => ', ',
-          'tid_or_name' => 'tid',
-        ),
-        'type' => 'gsb_field_formatter_path_term_separator',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 15,
       ),
       'field_program_ctas' => array(

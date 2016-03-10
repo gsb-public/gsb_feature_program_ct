@@ -871,9 +871,9 @@ function gsb_feature_program_ct_field_group_info() {
     'weight' => '9',
     'children' => array(
       0 => 'field_additional_pages',
-      1 => 'group_wrapper_curriculum',
-      2 => 'group_wrapper_participant',
-      3 => 'group_wrapper_application_req',
+      1 => 'group_wrapper_application_req',
+      2 => 'group_wrapper_curriculum',
+      3 => 'group_wrapper_participant',
     ),
     'format_type' => 'div',
     'format_settings' => array(
