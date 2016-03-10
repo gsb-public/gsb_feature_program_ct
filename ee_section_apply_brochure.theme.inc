@@ -8,6 +8,10 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_ee_section_app
     return;
   }
 
+  if ($node->type != 'program') {
+    return;
+  }
+
   $language = $node->language;
 
   $nid = $node->nid;
