@@ -11,6 +11,8 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_ee_section_app
   $language = $node->language;
 
   $nid = $node->nid;
+  $node_wrapper = entity_metadata_wrapper('node', $nid);
+  $link_apply_button = $node_wrapper->field_link_apply_button->value();
 
   // Lookup the program instances for this program
   $query = db_select('node', 'n');
@@ -32,7 +34,6 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_ee_section_app
     $instance_wrapper = entity_metadata_wrapper('node', $record->nid);
     $display_on_finder = $instance_wrapper->field_display_on_finder->value();
     $is_application_open = $instance_wrapper->field_is_application_open->value();
-    $link_apply_button = $instance_wrapper->field_link_apply_button->value();
     $brochure_option = $instance_wrapper->field_brochure_options->value();
     $download_brochure_link = $instance_wrapper->field_download_brochure_link->value();
     $brochure_pdf = $instance_wrapper->field_brochure_pdf->value();
@@ -62,9 +63,9 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_ee_section_app
     else {
       $vars['ee_section_apply_brochure_brochure_download_link'] = null;
     }
-    if ($display_on_finder && $is_application_open) {
+    if ($display_on_finder && $is_application_open && !empty($link_apply_button['url'])) {
       $link = array();
-      $link['text'] = 'Apply';
+      $link['text'] = t('Apply');
       $link['path'] = $link_apply_button['url'];
       $link['options']['html'] = null;
       $link['options']['attributes'] = $link_apply_button['attributes'];
