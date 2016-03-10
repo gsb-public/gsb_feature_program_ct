@@ -626,6 +626,7 @@ function gsb_feature_program_ct_field_group_info() {
     'children' => array(
       0 => 'field_program_contact_link',
       1 => 'field_program_director_name',
+      2 => 'field_program_contact_options',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
