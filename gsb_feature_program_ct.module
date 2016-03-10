@@ -639,10 +639,18 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
     }
 
     // add app_requirements_url markup from program
-    $app_requirements_link = $instance_wrapper->field_application_url->value();
+    $app_requirements_link = $node_wrapper->field_application_requirements->value();
     if ($app_requirements_link) {
+
+      // build the Application Requirements link
+      $link = array();
+      $link['text'] = t('Application Requirements');
+      $link['path'] = $app_requirements_link['url'];
+      $link['options']['attributes'] = $app_requirements_link['attributes'];
+      $link['options']['html'] = null;
+
       $program_instance_markups[$pi_nid][] = '<div class="instance-item-wrapper application-wrapper">';
-      $program_instance_markups[$pi_nid][] = '<h3 class="app-requirements-link"><a href="' . $app_requirements_link['url'] . '">' . t('Application Requirements') . '</a></h3>';
+      $program_instance_markups[$pi_nid][] = '<h3 class="app-requirements-link">' . theme('link', $link) . '</h3>';
       $program_instance_markups[$pi_nid][] = '<div class="program-deadline-wrapper">';
       $program_instance_markups[$pi_nid][] = '<h4 class="deadline-header">Deadline</h4>';
 
