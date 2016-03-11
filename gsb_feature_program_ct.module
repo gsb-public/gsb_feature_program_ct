@@ -691,7 +691,15 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
 
     // add tuition amount markup
     $tuition = $instance_wrapper->field_tuition->value();
-    $program_instance_markups[$pi_nid][] = '<div class="tuition-amount">' . $tuition['title'] . '</div>';
+    $tuition_markup = '<div class="tuition-amount">';
+    if (!empty($tuition['url'])) {
+      $tuition_markup .= l($tuition['title'], $tuition['url'], array('attributes' => $tuition['attributes']));
+    }
+    else {
+      $tuition_markup .= $tuition['title'];
+    }
+    $tuition_markup .= '</div>';
+    $program_instance_markups[$pi_nid][] = $tuition_markup;
 
     // add included in tuition markup
     $included_in_tuition = $instance_wrapper->field_included_in_tuition->value();
