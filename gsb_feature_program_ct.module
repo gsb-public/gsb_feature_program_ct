@@ -603,6 +603,7 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
       }
       $location = $program_location['title'];
       if (!empty($program_location['url'])) {
+        $program_location['attributes']['target'] = $program_location['attributes']['target'] == 0 ? '' : $program_location['attributes']['target'];
         $location = l($program_location['title'], $program_location['url'], array('attributes' => $program_location['attributes']));
       }
       $program_format_out .= $location;
@@ -697,6 +698,7 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
     $tuition = $instance_wrapper->field_tuition->value();
     $tuition_markup = '<div class="tuition-amount">';
     if (!empty($tuition['url'])) {
+      $tuition['attributes']['target'] = $tuition['attributes']['target'] == 0 ? '' : $tuition['attributes']['target'];
       $tuition_markup .= l($tuition['title'], $tuition['url'], array('attributes' => $tuition['attributes']));
     }
     else {
