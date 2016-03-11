@@ -148,6 +148,12 @@ function gsb_feature_program_ct_strongarm() {
       'guest_speakers_advisors' => array(
         'custom_settings' => FALSE,
       ),
+      'field_program_participants_desc' => array(
+        'custom_settings' => TRUE,
+      ),
+      'field_program_participants_intro' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -184,6 +190,18 @@ function gsb_feature_program_ct_strongarm() {
             'weight' => '22',
             'visible' => FALSE,
           ),
+          'field_program_participants_desc' => array(
+            'weight' => '34',
+            'visible' => FALSE,
+          ),
+          'field_program_participants_intro' => array(
+            'weight' => '18',
+            'visible' => FALSE,
+          ),
+          'field_program_curriculum' => array(
+            'weight' => '0',
+            'visible' => FALSE,
+          ),
         ),
         'gsb_program_program_instance_fields' => array(
           'teaser' => array(
@@ -198,11 +216,35 @@ function gsb_feature_program_ct_strongarm() {
             'weight' => '23',
             'visible' => FALSE,
           ),
+          'field_program_participants_desc' => array(
+            'weight' => '26',
+            'visible' => FALSE,
+          ),
+          'field_program_participants_intro' => array(
+            'weight' => '6',
+            'visible' => FALSE,
+          ),
+          'field_program_curriculum' => array(
+            'weight' => '0',
+            'visible' => FALSE,
+          ),
         ),
         'gsb_program_program_instance_faculty_fields' => array(
           'default' => array(
             'weight' => '14',
             'visible' => TRUE,
+          ),
+          'field_program_participants_desc' => array(
+            'weight' => '30',
+            'visible' => FALSE,
+          ),
+          'field_program_participants_intro' => array(
+            'weight' => '14',
+            'visible' => FALSE,
+          ),
+          'field_program_curriculum' => array(
+            'weight' => '0',
+            'visible' => FALSE,
           ),
         ),
         'gsb_program_curriculum_blurb' => array(
@@ -210,11 +252,35 @@ function gsb_feature_program_ct_strongarm() {
             'weight' => '66',
             'visible' => TRUE,
           ),
+          'field_program_participants_desc' => array(
+            'weight' => '63',
+            'visible' => FALSE,
+          ),
+          'field_program_participants_intro' => array(
+            'weight' => '66',
+            'visible' => FALSE,
+          ),
+          'field_program_curriculum' => array(
+            'weight' => '0',
+            'visible' => FALSE,
+          ),
         ),
         'gsb_program_participant_profile_blurb' => array(
           'default' => array(
             'weight' => '69',
             'visible' => TRUE,
+          ),
+          'field_program_participants_desc' => array(
+            'weight' => '64',
+            'visible' => FALSE,
+          ),
+          'field_program_participants_intro' => array(
+            'weight' => '69',
+            'visible' => FALSE,
+          ),
+          'field_program_curriculum' => array(
+            'weight' => '0',
+            'visible' => FALSE,
           ),
         ),
         'gsb_program_application_requirements_blurb' => array(
@@ -222,15 +288,51 @@ function gsb_feature_program_ct_strongarm() {
             'weight' => '72',
             'visible' => TRUE,
           ),
+          'field_program_participants_desc' => array(
+            'weight' => '65',
+            'visible' => FALSE,
+          ),
+          'field_program_participants_intro' => array(
+            'weight' => '72',
+            'visible' => FALSE,
+          ),
+          'field_program_curriculum' => array(
+            'weight' => '0',
+            'visible' => FALSE,
+          ),
         ),
         'gsb_program_topics_location_category' => array(
           'default' => array(
             'weight' => '27',
             'visible' => TRUE,
           ),
+          'field_program_participants_desc' => array(
+            'weight' => '45',
+            'visible' => FALSE,
+          ),
+          'field_program_participants_intro' => array(
+            'weight' => '27',
+            'visible' => FALSE,
+          ),
+          'field_program_curriculum' => array(
+            'weight' => '0',
+            'visible' => FALSE,
+          ),
         ),
         'gsb_program_show_all_programs' => array(
           'default' => array(
+            'weight' => '0',
+            'visible' => FALSE,
+          ),
+          'field_program_participants_desc' => array(
+            'weight' => '19',
+            'visible' => FALSE,
+          ),
+          'field_program_participants_intro' => array(
+            'weight' => '0',
+            'visible' => FALSE,
+          ),
+          'field_program_curriculum' => array(
             'weight' => '0',
             'visible' => FALSE,
           ),
