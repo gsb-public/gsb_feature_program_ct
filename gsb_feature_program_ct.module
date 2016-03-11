@@ -601,7 +601,11 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
       if (!empty($program_format->name)) {
         $program_format_out .= '<span class="pipe">|</span>';
       }
-      $program_format_out .= $program_location['title'];
+      $location = $program_location['title'];
+      if (!empty($program_location['url'])) {
+        $location = l($program_location['title'], $program_location['url'], array('attributes' => $program_location['attributes']));
+      }
+      $program_format_out .= $location;
     }
     $program_format_out .= '</div>';
     $program_instance_markups[$pi_nid][] = $program_format_out;
