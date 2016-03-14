@@ -302,7 +302,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 30,
+        'weight' => 32,
       ),
       'field_program_ctas' => array(
         'label' => 'hidden',
@@ -431,7 +431,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 46,
+        'weight' => 45,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -598,7 +598,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 39,
+        'weight' => 38,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -709,7 +709,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
           'conditions' => array(),
         ),
         'type' => 'link_default',
-        'weight' => 16,
+        'weight' => 13,
       ),
       'field_program_ctas' => array(
         'label' => 'hidden',
@@ -841,7 +841,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
           'conditions' => array(),
         ),
         'type' => 'link_default',
-        'weight' => 17,
+        'weight' => 14,
       ),
       'field_program_ctas' => array(
         'label' => 'hidden',
@@ -970,7 +970,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 56,
+        'weight' => 54,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -1144,7 +1144,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 57,
+        'weight' => 55,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -1318,7 +1318,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 29,
+        'weight' => 31,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -1491,7 +1491,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 45,
+        'weight' => 44,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -1623,7 +1623,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 60,
+        'weight' => 58,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -1724,7 +1724,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 61,
+        'weight' => 59,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -2274,7 +2274,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 54,
+        'weight' => 52,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -2404,7 +2404,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 44,
+        'weight' => 43,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -2546,7 +2546,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 58,
+        'weight' => 56,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -3000,7 +3000,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 40,
+        'weight' => 39,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -3103,7 +3103,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 38,
+        'weight' => 37,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -3207,10 +3207,23 @@ function gsb_feature_program_ct_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 48,
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'conditions' => array(
+            0 => array(
+              'condition' => 'hide_if_string',
+              'configuration' => array(
+                'string' => 'Video',
+                'target' => 'field_image_or_video',
+              ),
+            ),
+          ),
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 8,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -3343,7 +3356,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 69,
+        'weight' => 61,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -3469,7 +3482,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 37,
+        'weight' => 36,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -3595,7 +3608,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 52,
+        'weight' => 51,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -4068,7 +4081,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 43,
+        'weight' => 42,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -4233,7 +4246,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 35,
+        'weight' => 34,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -4407,7 +4420,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 34,
+        'weight' => 33,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -4581,7 +4594,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 70,
+        'weight' => 62,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -4707,7 +4720,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 41,
+        'weight' => 40,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -4817,7 +4830,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 47,
+        'weight' => 46,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -4943,7 +4956,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 68,
+        'weight' => 60,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -5057,7 +5070,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 36,
+        'weight' => 35,
       ),
       'field_program_ctas' => array(
         'label' => 'hidden',
@@ -5391,7 +5404,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 49,
+        'weight' => 48,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -5502,7 +5515,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 50,
+        'weight' => 49,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -5608,7 +5621,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 51,
+        'weight' => 50,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -5718,7 +5731,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 55,
+        'weight' => 53,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -5859,7 +5872,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 59,
+        'weight' => 57,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -5961,7 +5974,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 42,
+        'weight' => 41,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -6063,11 +6076,19 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'field_collection',
         'settings' => array(
-          'conditions' => array(),
+          'conditions' => array(
+            0 => array(
+              'condition' => 'hide_if_string',
+              'configuration' => array(
+                'string' => 'Image',
+                'target' => 'field_image_or_video',
+              ),
+            ),
+          ),
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_fields',
-        'weight' => 8,
+        'weight' => 9,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
