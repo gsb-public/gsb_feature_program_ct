@@ -21,7 +21,7 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->parent_name = 'group_administration';
   $field_group->data = array(
     'label' => 'Link to an Additional Page',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_additional_pages',
     ),
@@ -55,10 +55,11 @@ function gsb_feature_program_ct_field_group_info() {
       0 => 'field_link_single',
       1 => 'field_program_detail',
       2 => 'field_taxonomy_vtab_prefix',
-      3 => 'title',
-      4 => 'workbench_access',
-      5 => 'group_additional_pages',
-      6 => 'group_taxonomy',
+      3 => 'field_pathauto_title_alias',
+      4 => 'title',
+      5 => 'workbench_access',
+      6 => 'group_additional_pages',
+      7 => 'group_taxonomy',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -115,6 +116,7 @@ function gsb_feature_program_ct_field_group_info() {
       0 => 'field_application_requirements',
       1 => 'field_link_apply_button',
       2 => 'field_prequalification_url',
+      3 => 'field_sample_application_file',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -685,7 +687,7 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->parent_name = 'group_administration';
   $field_group->data = array(
     'label' => 'Taxonomy',
-    'weight' => '9',
+    'weight' => '8',
     'children' => array(
       0 => 'group_all_topics',
       1 => 'group_career_level',
