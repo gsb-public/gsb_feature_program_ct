@@ -1,5 +1,5 @@
 <div class="ee-section-apply-brochure">
-  <?php if (!empty(ee_section_pre_qualification_link)) : ?>
+  <?php if (!empty($ee_section_pre_qualification_link)) : ?>
     <div class="pre-qualication-link">
       <?php print $ee_section_pre_qualification_link; ?>
     </div>
