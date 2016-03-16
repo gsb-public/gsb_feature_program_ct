@@ -17,6 +17,7 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_ee_section_app
   $nid = $node->nid;
   $node_wrapper = entity_metadata_wrapper('node', $nid);
   $link_apply_button = $node_wrapper->field_link_apply_button->value();
+  $prequalification_url = $node_wrapper->field_prequalification_url->value();
 
   // Lookup the program instances for this program
   $query = db_select('node', 'n');
@@ -77,6 +78,18 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_ee_section_app
       $vars['ee_section_apply_brochure_apply_button'] = theme('link', $link);
     } else {
       $vars['ee_section_apply_brochure_apply_button'] = null;
+    }
+    if (!empty($prequalification_url['url'])) {
+      $link = array();
+      $link['text'] = $prequalification_url['title'];
+      $link['path'] = $prequalification_url['url'];
+      $link['options']['html'] = $prequalification_url['html'];
+      $link['options']['attributes'] = $prequalification_url['attributes'];
+      $link['options']['attributes']['class'] = array('ee-section-pre-qualification-link');
+      $vars['ee_section_pre_qualification_link'] = theme('link', $link);
+    }
+    else {
+      $vars['ee_section_pre_qualification_link'] = null;
     }
   }
 }
