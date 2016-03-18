@@ -215,7 +215,10 @@ function _gsb_feature_program_ct_create_ppp($node, $ppp_type) {
   $ppp_node->uid = 1;
 
   $path = _gsb_feature_program_ct_create_ppp_path($node, $ppp_type);
-  $ppp_node->path = array('alias' => $path);
+  $ppp_node->path = array(
+    'alias' => $path,
+    'pathauto' => 0
+  );
 
   $path = drupal_lookup_path("source", $path);
   $found_node = menu_get_object("node", 1, $path);
