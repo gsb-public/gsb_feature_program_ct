@@ -1,3 +1,5 @@
 <div class="program-menu">
-  <?php print $program_menu; ?>
+  <?php if (!empty($program_menu)) : ?>
+    <?php print $program_menu; ?>
+  <?php endif; ?>
 </div>
