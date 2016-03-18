@@ -4597,11 +4597,8 @@ function gsb_feature_program_ct_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'pathauto_title_alias',
-        'settings' => array(
-          'conditions' => array(),
-        ),
-        'type' => 'pathauto_title_alias_default',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 71,
       ),
       'field_program_ctas' => array(
@@ -4937,9 +4934,20 @@ function gsb_feature_program_ct_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'link',
+        'settings' => array(
+          'conditions' => array(
+            0 => array(
+              'condition' => 'hide_if_string',
+              'configuration' => array(
+                'string' => 'Display a person',
+                'target' => 'field_program_contact_options',
+              ),
+            ),
+          ),
+        ),
+        'type' => 'link_default',
         'weight' => 46,
       ),
       'field_program_ctas' => array(
@@ -5290,7 +5298,15 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'label' => 'above',
         'module' => 'gsb_feature_existing_node_list_fpp',
         'settings' => array(
-          'conditions' => array(),
+          'conditions' => array(
+            0 => array(
+              'condition' => 'hide_if_string',
+              'configuration' => array(
+                'string' => 'Link to page',
+                'target' => 'field_program_contact_options',
+              ),
+            ),
+          ),
           'links' => 0,
           'view_mode' => 'program_contact',
         ),
@@ -5839,11 +5855,8 @@ function gsb_feature_program_ct_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'file',
-        'settings' => array(
-          'conditions' => array(),
-        ),
-        'type' => 'file_default',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 72,
       ),
       'field_program_ctas' => array(
