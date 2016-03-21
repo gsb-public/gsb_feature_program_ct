@@ -111,6 +111,36 @@ function gsb_feature_program_ct_form_node_form_alter(&$form, &$form_state) {
     ),
   );
 
+  $form['field_brochure_pdf'][$language][0]['#description'] = '';
+
+  if ($form['field_brochure_options']['und']['#default_value'] == null) {
+    $form['field_brochure_options']['und']['#default_value'] = 'no_brochure_download';
+  }
+
+  // Remove the n/a option for brochure options radio buttons
+  unset($form['field_brochure_options'][$language]['#options']['_none']);
+
+  // Visible state settings for the Brochure PDF upload and link fields
+
+  $form['field_brochure_pdf']['#states'] = array(
+    'invisible' => array(
+      ':input[name="field_brochure_options[' . $language . ']"],value="brochure_link_pdf"' => array(
+        '!value' => 'brochure_link_pdf',
+      ),
+      ':input[name="field_brochure_options[' . $language . ']"],value="brochure_link_ee_lead_form"' => array(
+        '!value' => 'brochure_link_ee_lead_form',
+      )
+    ),
+  );
+  // 'value' => 'brochure_link_ee_lead_form',
+  $form['field_download_brochure_link']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_brochure_options[' . $language . ']"]' => array(
+        'value' => 'brochure_link_other',
+      )
+    ),
+  );
+
   // set the Edit Curriculum Page markup
   if (!empty($form['#node'])) {
     $edit_path = _gsb_feature_program_ct_create_ppp_path($form['#node'], 'curriculum');
@@ -239,11 +269,15 @@ function _gsb_feature_program_ct_create_ppp($node, $ppp_type) {
 function _gsb_feature_program_ct_create_ppp_path($node, $ppp_type) {
   $language = $node->language;
 
+  if (empty($node->nid)) {
+    return '';
+  }
+
   $program_path_alias = $node->path['alias'];
   $program_path_alias_title = explode('/', $program_path_alias);
   $program_path_alias_title = $program_path_alias_title[sizeof($program_path_alias_title) - 1];
 
-  $tid = $node->field_program_category['und'][0]['tid'];
+  $tid = $node->field_program_category[$language][0]['tid'];
   $term = taxonomy_term_load($tid);
   $program_base = $term->field_program_listing_page_url[$language][0]['url'];
   if (strpos($program_base, '/') == 0) {

@@ -160,6 +160,35 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_brochure|node|program|form';
+  $field_group->group_name = 'group_brochure';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'program';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_overview_vtab';
+  $field_group->data = array(
+    'label' => 'Brochure & Download Link',
+    'weight' => '23',
+    'children' => array(
+      0 => 'field_brochure_options',
+      1 => 'field_brochure_pdf',
+      2 => 'field_download_brochure_link',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-brochure field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_brochure|node|program|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_career_level|node|program|form';
   $field_group->group_name = 'group_career_level';
   $field_group->entity_type = 'node';
@@ -536,17 +565,18 @@ function gsb_feature_program_ct_field_group_info() {
     'label' => '',
     'weight' => '9',
     'children' => array(
-      0 => 'group_application_requirements',
-      1 => 'group_awarded_upon_completion',
-      2 => 'group_ctas',
-      3 => 'group_featured_item_vtab',
-      4 => 'group_images',
-      5 => 'group_key_benefits',
-      6 => 'group_learn_more',
-      7 => 'group_overview_tab',
-      8 => 'group_program_lead',
-      9 => 'group_related_content',
-      10 => 'group_who_should',
+      0 => 'group_brochure',
+      1 => 'group_application_requirements',
+      2 => 'group_awarded_upon_completion',
+      3 => 'group_ctas',
+      4 => 'group_featured_item_vtab',
+      5 => 'group_images',
+      6 => 'group_key_benefits',
+      7 => 'group_learn_more',
+      8 => 'group_overview_tab',
+      9 => 'group_program_lead',
+      10 => 'group_related_content',
+      11 => 'group_who_should',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -1028,6 +1058,7 @@ function gsb_feature_program_ct_field_group_info() {
   t('Application Req wrapper');
   t('Application Requirements');
   t('Awarded Upon Completion');
+  t('Brochure & Download Link');
   t('Call-to-Actions (CTAs)');
   t('Career Level');
   t('Curriculum');
