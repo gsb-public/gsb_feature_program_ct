@@ -111,6 +111,7 @@ features[field_instance][] = node-program-field_application_requirements
 features[field_instance][] = node-program-field_awarded_upon_completion
 features[field_instance][] = node-program-field_brochure_options
 features[field_instance][] = node-program-field_brochure_pdf
+features[field_instance][] = node-program-field_brochure_program_topics
 features[field_instance][] = node-program-field_career_level
 features[field_instance][] = node-program-field_cta1
 features[field_instance][] = node-program-field_cta2
