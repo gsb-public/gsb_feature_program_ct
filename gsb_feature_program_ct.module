@@ -132,7 +132,6 @@ function gsb_feature_program_ct_form_node_form_alter(&$form, &$form_state) {
       )
     ),
   );
-  // 'value' => 'brochure_link_ee_lead_form',
   $form['field_download_brochure_link']['#states'] = array(
     'visible' => array(
       ':input[name="field_brochure_options[' . $language . ']"]' => array(
@@ -140,6 +139,14 @@ function gsb_feature_program_ct_form_node_form_alter(&$form, &$form_state) {
       )
     ),
   );
+  $form['field_brochure_program_topics']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_brochure_options[' . $language . ']"]' => array(
+        'value' => 'brochure_link_ee_lead_form',
+      )
+    ),
+  );
+
 
   // set the Edit Curriculum Page markup
   if (!empty($form['#node'])) {

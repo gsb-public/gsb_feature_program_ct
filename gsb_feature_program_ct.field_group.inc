@@ -173,6 +173,7 @@ function gsb_feature_program_ct_field_group_info() {
       0 => 'field_brochure_options',
       1 => 'field_brochure_pdf',
       2 => 'field_download_brochure_link',
+      3 => 'field_brochure_program_topics',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
