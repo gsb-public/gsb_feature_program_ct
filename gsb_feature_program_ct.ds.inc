@@ -1293,7 +1293,7 @@ function gsb_feature_program_ct_ds_view_modes_info() {
   $ds_view_mode = new stdClass();
   $ds_view_mode->api_version = 1;
   $ds_view_mode->view_mode = 'field_program_director';
-  $ds_view_mode->label = 'Program Contact Director';
+  $ds_view_mode->label = 'Program Contact';
   $ds_view_mode->entities = array(
     'node' => 'node',
   );
