@@ -84,7 +84,7 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->parent_name = 'group_taxonomy';
   $field_group->data = array(
     'label' => 'All Topics',
-    'weight' => '57',
+    'weight' => '56',
     'children' => array(
       0 => 'field_program_topics',
     ),
@@ -395,7 +395,7 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->parent_name = 'group_taxonomy';
   $field_group->data = array(
     'label' => 'Key Topics',
-    'weight' => '56',
+    'weight' => '55',
     'children' => array(
       0 => 'field_key_program_topics',
     ),
@@ -410,6 +410,33 @@ function gsb_feature_program_ct_field_group_info() {
     ),
   );
   $field_groups['group_key_topics|node|program|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_keyword|node|program|form';
+  $field_group->group_name = 'group_keyword';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'program';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_taxonomy';
+  $field_group->data = array(
+    'label' => 'Keyword',
+    'weight' => '57',
+    'children' => array(
+      0 => 'field_tag',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-keyword field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_keyword|node|program|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -726,6 +753,7 @@ function gsb_feature_program_ct_field_group_info() {
       3 => 'group_leadership_level',
       4 => 'group_program_category',
       5 => 'group_time_commitment',
+      6 => 'group_keyword',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -749,7 +777,7 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->parent_name = 'group_taxonomy';
   $field_group->data = array(
     'label' => 'Time Commitment',
-    'weight' => '55',
+    'weight' => '54',
     'children' => array(
       0 => 'field_part_time_details',
       1 => 'field_time_commitment',
@@ -1070,6 +1098,7 @@ function gsb_feature_program_ct_field_group_info() {
   t('Instances');
   t('Key Benefits');
   t('Key Topics');
+  t('Keyword');
   t('Leadership Level');
   t('Learn More');
   t('Learn More About the Program');
