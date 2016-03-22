@@ -147,7 +147,6 @@ function gsb_feature_program_ct_form_node_form_alter(&$form, &$form_state) {
     ),
   );
 
-
   // set the Edit Curriculum Page markup
   if (!empty($form['#node'])) {
     $edit_path = _gsb_feature_program_ct_create_ppp_path($form['#node'], 'curriculum');
