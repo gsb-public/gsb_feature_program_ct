@@ -30,7 +30,7 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_program_menu(&
     'Overview' => '',
     'Curriculum' => 'curriculum',
     'Faculty' => 'faculty',
-    'Participant Profile' => 'participant'
+    'Participant Profile' => 'participant-profile'
   );
   
   $links = array();

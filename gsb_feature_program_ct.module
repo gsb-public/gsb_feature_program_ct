@@ -189,7 +189,7 @@ function _gsb_feature_program_ct_node_save($node) {
 
   _gsb_feature_program_ct_create_ppp($node, 'curriculum');
   _gsb_feature_program_ct_create_ppp($node, 'faculty');
-  _gsb_feature_program_ct_create_ppp($node, 'participant');
+  _gsb_feature_program_ct_create_ppp($node, 'participant-profile');
 
   //if ($node->field_program_small_teams['und'][0]['value'] == '1') {
     //_gsb_feature_program_ct_create_ppp($node, 'team');
