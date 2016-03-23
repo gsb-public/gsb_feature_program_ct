@@ -16,6 +16,10 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_program_menu(&
     return;
   }
 
+  if (empty($program_node)) {
+    return;
+  }
+
   $program_path_alias = $program_node->path['alias'];
   $program_path_alias_title = explode('/', $program_path_alias);
   $program_path_alias_title = $program_path_alias_title[sizeof($program_path_alias_title) - 1];
