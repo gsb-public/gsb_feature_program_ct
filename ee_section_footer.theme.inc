@@ -4,12 +4,19 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_ee_section_foo
 
   $node = menu_get_object();
 
+  $language = $node->language;
+
   if ($node->type == 'program_panelized_page') {
-    $program_nid = $node->field_program['und'][0]['target_id'];
+    if (empty($node->field_program[$language][0]['target_id'])) {
+      return;
+    }
+    $program_nid = $node->field_program[$language][0]['target_id'];
     $node = node_load($program_nid);
   }
 
-  $language = $node->language;
+  if (empty($node)) {
+    return;
+  }
 
   $vars['ee_section_footer_subject_to_change'] = t('Program dates, fees, and faculty subject to change.');
   $vars['ee_section_footer_title'] = $node->title;

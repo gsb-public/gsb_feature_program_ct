@@ -199,6 +199,8 @@ function _gsb_feature_program_ct_node_save($node) {
 
 function _gsb_feature_program_ct_create_ppp($node, $ppp_type) {
 
+  $language = $node->language;
+
   $ppp_node = new stdClass();  // Create a new node object
   $ppp_node->type = 'program_panelized_page';  // Content type
   $ppp_node->language = LANGUAGE_NONE;
@@ -229,15 +231,26 @@ function _gsb_feature_program_ct_create_ppp($node, $ppp_type) {
     // Resave the Program Panelized Page node
     // With the in-place editor option
     $ppp_node = node_load($ppp_node->nid);
-    $ppp_node->field_program['und'][0]['target_id'] = $node->nid;
+    $ppp_node->field_program[$language][0]['target_id'] = $node->nid;
     $ppp_node->panelizer['page_manager']->pipeline = 'ipe';
     node_save($ppp_node);
+  }
+  else {
+    $ppp_node = $found_node;
+    if (empty($ppp_node->field_program[$language][0]['target_id']) || $ppp_node->field_program[$language][0]['target_id'] != $node->nid) {
+      $ppp_node->field_program[$language][0]['target_id'] = $node->nid;
+      node_save($ppp_node);
+    }
   }
 
 }
 
 function _gsb_feature_program_ct_create_ppp_path($node, $ppp_type) {
   $language = $node->language;
+
+  if (empty($node->path['alias'])) {
+    return '';
+  }
 
   $program_path_alias = $node->path['alias'];
   $program_path_alias_title = explode('/', $program_path_alias);
