@@ -1,7 +1,7 @@
 <div class="ee-section-footer">
     <?php if (!empty($ee_section_footer_subject_to_change)) : ?>
       <div class="ee-section-footer-subject-to-change">
-        <?php print $ee_section_footer_subject_to_change; ?>
+        <em><?php print $ee_section_footer_subject_to_change; ?></em>
       </div>
     <?php endif; ?>
   <div class="ee-section-footer-overlay">
