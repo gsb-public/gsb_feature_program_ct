@@ -162,7 +162,7 @@ function gsb_feature_program_ct_form_node_form_alter(&$form, &$form_state) {
 
   // set the Edit Participants Page markup
   if (!empty($form['#node'])) {
-    $edit_path = _gsb_feature_program_ct_create_ppp_path($form['#node'], 'participant');
+    $edit_path = _gsb_feature_program_ct_create_ppp_path($form['#node'], 'participant-profile');
     $edit_path = drupal_lookup_path('source', $edit_path);
     if ($edit_path) {
       $edit_path = $edit_path . '/edit';
