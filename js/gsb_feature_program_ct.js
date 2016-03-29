@@ -3,44 +3,6 @@
   Drupal.behaviors.gsb_feature_program_ct = {
     attach: function (context, settings) {
 
-      $(document).ready(function() {
-
-        if ($('.instance-show-information').length > 1) {
-
-          // hide all the instance-information sections
-          $('.instance-show-information').each(function() {
-            $(this).next().hide();
-            $(this).next().addClass('hide_this');
-            $(this).removeClass('hide_this');
-          });
-
-          // show the first instance-information section
-          $('.instance-show-information').first().next().show(1000);
-          $('.instance-show-information').first().next().removeClass('hide_this');
-          $('.instance-show-information').first().addClass('hide_this');
-
-          $('.instance-show-information').click(function (e) {
-            e.preventDefault();
-            if (isHidden($(this))) {
-              hideAll();
-              $(this).next().show(1000);
-              $(this).next().removeClass('hide_this');
-              $(this).addClass('hide_this');
-            }
-          });
-
-        }
-
-        if ($('#edit-field-program-detail-und-1').is(':checked')) {
-          cleanupFieldsets($('#edit-field-program-detail-und-1').val());
-        }
-
-        $("[id^=edit-field-program-detail-und-]").change(function () {
-          cleanupFieldsets($(this).val());
-        });
-
-      });
-
       // check if the instance-information section is currently hidden
       var isHidden = function(target) {
         return $(target).next().hasClass('hide_this');
@@ -104,7 +66,41 @@
           }
         });
 
-      } // end of cleanupFieldsets
+      }; // end of cleanupFieldsets
+
+      if ($('.instance-show-information').length > 1) {
+
+        // hide all the instance-information sections
+        $('.instance-show-information').each(function() {
+          $(this).next().hide();
+          $(this).next().addClass('hide_this');
+          $(this).removeClass('hide_this');
+        });
+
+        // show the first instance-information section
+        $('.instance-show-information').first().next().show(1000);
+        $('.instance-show-information').first().next().removeClass('hide_this');
+        $('.instance-show-information').first().addClass('hide_this');
+
+        $('.instance-show-information').click(function (e) {
+          e.preventDefault();
+          if (isHidden($(this))) {
+            hideAll();
+            $(this).next().show(1000);
+            $(this).next().removeClass('hide_this');
+            $(this).addClass('hide_this');
+          }
+        });
+
+      }
+
+      if ($('#edit-field-program-detail-und-1').is(':checked')) {
+        cleanupFieldsets($('#edit-field-program-detail-und-1').val());
+      }
+
+      $("[id^=edit-field-program-detail-und-]").change(function () {
+        cleanupFieldsets($(this).val());
+      });
 
     }
   };
