@@ -31,7 +31,8 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_ee_section_app
     $attributes = array();
     $query = array();
     if ($brochure_option == 'brochure_link_pdf') {
-      $path = $brochure_pdf['uri'];
+      $path = file_create_url($brochure_pdf['uri']);
+      $attributes['target'] = 'blank';
     } elseif ($brochure_option == 'brochure_link_ee_lead_form') {
       $path = '/exec-ed/programs/download-brochure';
       $query['pid'] = $nid;
