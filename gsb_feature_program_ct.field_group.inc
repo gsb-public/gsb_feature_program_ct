@@ -172,8 +172,8 @@ function gsb_feature_program_ct_field_group_info() {
     'children' => array(
       0 => 'field_brochure_options',
       1 => 'field_brochure_pdf',
-      2 => 'field_download_brochure_link',
-      3 => 'field_brochure_program_topics',
+      2 => 'field_brochure_program_topics',
+      3 => 'field_download_brochure_link',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -593,9 +593,9 @@ function gsb_feature_program_ct_field_group_info() {
     'label' => '',
     'weight' => '9',
     'children' => array(
-      0 => 'group_brochure',
-      1 => 'group_application_requirements',
-      2 => 'group_awarded_upon_completion',
+      0 => 'group_application_requirements',
+      1 => 'group_awarded_upon_completion',
+      2 => 'group_brochure',
       3 => 'group_ctas',
       4 => 'group_featured_item_vtab',
       5 => 'group_images',
@@ -750,10 +750,10 @@ function gsb_feature_program_ct_field_group_info() {
       0 => 'group_all_topics',
       1 => 'group_career_level',
       2 => 'group_key_topics',
-      3 => 'group_leadership_level',
-      4 => 'group_program_category',
-      5 => 'group_time_commitment',
-      6 => 'group_keyword',
+      3 => 'group_keyword',
+      4 => 'group_leadership_level',
+      5 => 'group_program_category',
+      6 => 'group_time_commitment',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(

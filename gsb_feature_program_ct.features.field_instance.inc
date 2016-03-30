@@ -816,7 +816,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'replace_existing_files' => 0,
         'retroactive_update' => 0,
       ),
-      'filefield_paths_enabled' => 1,
+      'filefield_paths_enabled' => 0,
       'max_filesize' => '',
       'user_register_form' => FALSE,
     ),
