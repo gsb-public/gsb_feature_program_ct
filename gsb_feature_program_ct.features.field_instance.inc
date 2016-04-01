@@ -795,7 +795,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'custom_add_another' => '',
       'custom_remove' => '',
       'description_field' => 0,
-      'file_directory' => 'program-instance-brochure',
+      'file_directory' => 'program-brochure',
       'file_extensions' => 'pdf',
       'filefield_paths' => array(
         'active_updating' => 0,
