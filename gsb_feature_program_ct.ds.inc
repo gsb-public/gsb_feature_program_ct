@@ -731,7 +731,7 @@ function gsb_feature_program_ct_ds_custom_fields_info() {
   $ds_field->ui_limit = 'program|default';
   $ds_field->properties = array(
     'code' => array(
-      'value' => '<h3><a href="curriculum" title="Curriculum">Curriculum</a></h3>',
+      'value' => '<h3><a href="/[node:url:path]/curriculum" title="Curriculum">Curriculum</a></h3>',
       'format' => 'gsb_html_text',
     ),
     'use_token' => 0,
@@ -767,7 +767,7 @@ function gsb_feature_program_ct_ds_custom_fields_info() {
   $ds_field->ui_limit = 'program|default';
   $ds_field->properties = array(
     'code' => array(
-      'value' => '<h3><a href="participant" title="Participant Profile">Participant Profile</a></h3>',
+      'value' => '<h3><a href="/[node:url:path]/participant" title="Participant Profile">Participant Profile</a></h3>',
       'format' => 'gsb_html_text',
     ),
     'use_token' => 0,
