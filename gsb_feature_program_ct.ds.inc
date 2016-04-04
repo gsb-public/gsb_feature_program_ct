@@ -734,7 +734,7 @@ function gsb_feature_program_ct_ds_custom_fields_info() {
       'value' => '<h3><a href="/[node:url:path]/curriculum" title="Curriculum">Curriculum</a></h3>',
       'format' => 'gsb_html_text',
     ),
-    'use_token' => 0,
+    'use_token' => 1,
   );
   $export['program_curriculum_header'] = $ds_field;
 
@@ -770,7 +770,7 @@ function gsb_feature_program_ct_ds_custom_fields_info() {
       'value' => '<h3><a href="/[node:url:path]/participant" title="Participant Profile">Participant Profile</a></h3>',
       'format' => 'gsb_html_text',
     ),
-    'use_token' => 0,
+    'use_token' => 1,
   );
   $export['program_participant_header'] = $ds_field;
 
