@@ -931,7 +931,7 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Learn More About the Program',
-    'weight' => '10',
+    'weight' => '11',
     'children' => array(
       0 => 'field_additional_pages',
       1 => 'group_wrapper_application_req',
@@ -1031,7 +1031,7 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Taxonomy wrapper',
-    'weight' => '26',
+    'weight' => '28',
     'children' => array(
       0 => 'field_program_topics',
     ),
