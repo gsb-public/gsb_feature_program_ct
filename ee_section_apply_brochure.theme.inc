@@ -27,22 +27,32 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_ee_section_app
     'brochure_link_ee_lead_form',
     'brochure_link_other'
   );
+  $display_brochure = FALSE;
   if (in_array($brochure_option, $link_options)) {
     $attributes = array();
     $query = array();
-    if ($brochure_option == 'brochure_link_pdf') {
+    if ($brochure_option == 'brochure_link_pdf' && !empty($brochure_pdf)) {
       $path = file_create_url($brochure_pdf['uri']);
       $attributes['target'] = 'blank';
-    } elseif ($brochure_option == 'brochure_link_ee_lead_form') {
+      $display_brochure = TRUE;
+    } elseif ($brochure_option == 'brochure_link_ee_lead_form' && !empty($brochure_pdf)) {
       $path = '/exec-ed/programs/download-brochure';
       $query['pid'] = $nid;
+      //$attributes['target'] = 'blank';
+      $display_brochure = TRUE;
     }
-    else {
+    elseif (!empty($download_brochure_link['url'])) {
       $attributes = $download_brochure_link['attributes'];
       $path = $download_brochure_link['url'];
+      $display_brochure = TRUE;
     }
-    $attributes['class'] = array('ee-section-apply-brochure-download-link');
-    $vars['ee_section_apply_brochure_brochure_download_link'] = l(t('Download Brochure'), $path, array('attributes' => $attributes, 'query' => $query));
+    if ($display_brochure) {
+      $attributes['class'] = array('ee-section-apply-brochure-download-link');
+      $vars['ee_section_apply_brochure_brochure_download_link'] = l(t('Download Brochure'), $path, array(
+        'attributes' => $attributes,
+        'query' => $query
+      ));
+    }
   }
   else {
     $vars['ee_section_apply_brochure_brochure_download_link'] = null;
