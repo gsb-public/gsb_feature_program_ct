@@ -1277,7 +1277,7 @@ function gsb_feature_program_ct_show_all_programs($entity, $type, $view_mode, $l
     ),
   );
 
-  $programs_link = '<a href="' . base_path() . $program_listing_page_url . '">' . t('Show All Programs') . '</a>';
+  $programs_link = '<a href="' . base_path() . $program_listing_page_url . '">' . t('See All Programs') . '</a>';
 
   $content_wrapper['content'] = array('#markup' =>
     '<div class="program-programs-cta">' .
