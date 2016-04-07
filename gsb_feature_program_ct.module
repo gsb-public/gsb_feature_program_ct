@@ -1323,7 +1323,7 @@ function _gsb_feature_program_ct_get_all_program_instances($program_nids) {
  */
 function _gsb_feature_program_ct_get_current_program_instances($program_nids) {
 
-  $today = date('Y-m-d H:i:s', time());
+  $today = date('Y-m-d H:i:s', mktime(0,0,0));
 
   $query = db_select('node', 'n');
   $query->fields('n', array('nid', 'status', 'type'));
@@ -1336,7 +1336,7 @@ function _gsb_feature_program_ct_get_current_program_instances($program_nids) {
   $query->condition('nodefp.nid', $program_nids, 'IN');
   $query->condition('n.status', '1');
   $query->condition('n.type', 'program_instance');
-  $query->condition('fid.field_instance_date_value', $today, '>');
+  $query->condition('fid.field_instance_date_value', $today, '>=');
   $query->orderBy('fid.field_instance_date_value', 'ASC');
   $results = $query->execute();
 
