@@ -7,6 +7,19 @@
 include_once 'gsb_feature_program_ct.features.inc';
 
 /**
+ * Implementation of hook_module_implements_alter()
+ */
+function gsb_feature_program_ct_module_implements_alter(&$implementations, $hook) {
+  if ($hook == 'entity_view') {
+    if (isset($implementations['gsb_feature_program_ct'])) {
+      $group = $implementations['gsb_feature_program_ct'];
+      unset($implementations['gsb_feature_program_ct']);
+      $implementations['gsb_feature_program_ct'] = $group;
+    }
+  }
+}
+
+/**
  * Implements hook_form_FORM_ID_alter().
  */
 function gsb_feature_program_ct_form_node_form_alter(&$form, &$form_state) {
@@ -450,6 +463,27 @@ function gsb_feature_program_ct_field_extra_fields() {
  * Implements hook_entity_view().
  */
 function gsb_feature_program_ct_entity_view($entity, $type, $view_mode, $langcode) {
+
+  // For field_video fields used in the Overview Program page
+  // we don't want to have the video title shown as a link
+  if ($type == 'field_collection_item') {
+    if ($entity->field_name == 'field_video') {
+      $current_path = current_path();
+      $current_path = explode('/', $current_path);
+      if (!empty($current_path[0]) && $current_path[0] == 'node') {
+        $node = node_load($current_path[1]);
+        if ($node && $node->type == 'program') {
+          if (!empty($entity->content['field_title']['#prefix'])) {
+            unset($entity->content['field_title']['#prefix']);
+          }
+          if (!empty($entity->content['field_title']['#suffix'])) {
+            unset($entity->content['field_title']['#suffix']);
+          }
+        }
+      }
+    }
+  }
+
   // Only go thru this code if we are working with a node
   if ($type != 'node') {
     return;
