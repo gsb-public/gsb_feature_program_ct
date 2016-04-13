@@ -911,28 +911,19 @@ function gsb_feature_program_ct_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_brochure_program_topics',
-    'label' => 'Topic',
+    'label' => 'Brochure Category',
     'required' => 0,
     'settings' => array(
-      'checkall' => array(
-        'checkall' => 0,
-        'checkall-check-all' => 1,
-        'checkall-toggle' => 1,
-        'checkall-uncheck-all' => 1,
-      ),
       'custom_add_another' => '',
       'custom_remove' => '',
+      'use_hierarchical_select_lite' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'taxonomy',
-      'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
-        'checkall' => FALSE,
-        'size' => 60,
-      ),
-      'type' => 'taxonomy_autocomplete',
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
       'weight' => 15,
     ),
     'workbench_access_field' => 0,
@@ -7019,6 +7010,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
   t('Apply Button URL');
   t('Awarded Upon Completion');
   t('Brochure');
+  t('Brochure Category');
   t('CTA #1');
   t('CTA #2');
   t('Career Level');
@@ -7055,7 +7047,6 @@ function gsb_feature_program_ct_field_default_field_instances() {
   t('Taxonomy VTab Prefix');
   t('Time Commitment');
   t('Title');
-  t('Topic');
   t('URL');
   t('URL Alias');
   t('Video');
