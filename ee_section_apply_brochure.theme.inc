@@ -8,8 +8,13 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_ee_section_app
     return;
   }
 
-  if ($node->type != 'program') {
+  if ($node->type != 'program' && $node->type != 'program_panelized_page') {
     return;
+  }
+
+  if ($node->type == 'program_panelized_page') {
+    $program_id = $node->field_program[$node->language][0]['target_id'];
+    $node = node_load($program_id);
   }
 
   $language = $node->language;
