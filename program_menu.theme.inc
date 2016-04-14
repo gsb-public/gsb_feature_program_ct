@@ -41,6 +41,9 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_program_menu(&
     if (stripos($node->path['alias'], $path_suffix) !== false) {
       $link['options']['attributes'] = array('class' => array('program_menu_item', 'active'));
     }
+    else if ($node->type == 'program' && $link_title == 'Overview') {
+      $link['options']['attributes'] = array('class' => array('program_menu_item', 'active'));
+    }
     else {
       $link['options']['attributes'] = array('class' => array('program_menu_item'));
     }
@@ -55,7 +58,12 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_program_menu(&
     $link = array();
     $link['text'] = $additional_pages->field_page_link['und'][0]['title'];
     $link['path'] = $additional_pages->field_page_link['und'][0]['url'];
-    $link['options']['attributes'] = array('class' => array('program_menu_item'));
+    if ($link['path'] == $node->path['alias']) {
+      $link['options']['attributes'] = array('class' => array('program_menu_item', 'active'));
+    }
+    else {
+      $link['options']['attributes'] = array('class' => array('program_menu_item'));
+    }
     $link['options']['html'] = null;
     $links[] = theme('link', $link);
   }
