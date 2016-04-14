@@ -38,7 +38,12 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_program_menu(&
   foreach($program_links as $link_title => $path_suffix) {
     $link['text'] = $link_title;
     $link['path'] = $path . '/' . $path_suffix;
-    $link['options']['attributes'] = array('class' => array('program_menu_item'));
+    if (stripos($node->path['alias'], $path_suffix) !== false) {
+      $link['options']['attributes'] = array('class' => array('program_menu_item', 'active'));
+    }
+    else {
+      $link['options']['attributes'] = array('class' => array('program_menu_item'));
+    }
     $link['options']['html'] = null;
     $links[] = theme('link', $link);
   }
