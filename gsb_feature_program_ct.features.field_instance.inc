@@ -296,7 +296,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
     'custom_remove' => '',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'For Exec-Ed, leave this field empty',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -377,7 +377,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_application_requirements',
-    'label' => 'Application Requirements URL',
+    'label' => 'Admission Page URL',
     'required' => 0,
     'settings' => array(
       'absolute_url' => 1,
@@ -7005,8 +7005,8 @@ function gsb_feature_program_ct_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Additional Page');
+  t('Admission Page URL');
   t('All Topics');
-  t('Application Requirements URL');
   t('Apply Button URL');
   t('Awarded Upon Completion');
   t('Brochure');
@@ -7022,6 +7022,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
   t('Edit Curriculum Page');
   t('Edit Participants Page');
   t('Files');
+  t('For Exec-Ed, leave this field empty');
   t('Image');
   t('Image or Video');
   t('Intro');
