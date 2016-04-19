@@ -22,6 +22,10 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_ee_section_app
   $nid = $node->nid;
   $node_wrapper = entity_metadata_wrapper('node', $nid);
   $link_apply_button = $node_wrapper->field_link_apply_button->value();
+  $program_category = $node_wrapper->field_program_category->value();
+  if ($program_category) {
+    $program_category = $program_category->name;
+  }
   $prequalification_url = $node_wrapper->field_prequalification_url->value();
 
   $brochure_option = $node_wrapper->field_brochure_options->value();
@@ -83,10 +87,22 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_ee_section_app
     $instance_wrapper = entity_metadata_wrapper('node', $record->nid);
     $display_on_finder = $instance_wrapper->field_display_on_finder->value();
     $is_application_open = $instance_wrapper->field_is_application_open->value();
-    if ($display_on_finder && $is_application_open && !empty($link_apply_button['url'])) {
+    if ($display_on_finder && $is_application_open) {
+      $apply_button_url = '';
+      $query = '';
+      if ($program_category == 'Exec Ed Program') {
+        $apply_button_url = '/exec-ed/admission';
+        $query = array('program' => $nid);
+      }
+      else if (!empty($link_apply_button['url'])) {
+        $apply_button_url = $link_apply_button['url'];
+      }
       $link = array();
       $link['text'] = t('Apply');
-      $link['path'] = $link_apply_button['url'];
+      $link['path'] = $apply_button_url;
+      if ($query != '') {
+        $link['options']['query'] = $query;
+      }
       $link['options']['html'] = null;
       $link['options']['attributes'] = $link_apply_button['attributes'];
       $link['options']['attributes']['class'] = array('ee-section-apply-brochure-apply-button-link');
