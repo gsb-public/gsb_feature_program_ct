@@ -110,7 +110,7 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_overview_vtab';
   $field_group->data = array(
-    'label' => 'Application Requirements',
+    'label' => 'Admission & Application',
     'weight' => '22',
     'children' => array(
       0 => 'field_application_requirements',
@@ -120,12 +120,13 @@ function gsb_feature_program_ct_field_group_info() {
     ),
     'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'closed',
+      'label' => 'Admission & Application',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-application-requirements field-group-tab',
         'required_fields' => 1,
+        'classes' => 'group-application-requirements field-group-tab',
+        'description' => '',
       ),
+      'formatter' => 'closed',
     ),
   );
   $field_groups['group_application_requirements|node|program|form'] = $field_group;
@@ -1083,9 +1084,9 @@ function gsb_feature_program_ct_field_group_info() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Administration');
+  t('Admission & Application');
   t('All Topics');
   t('Application Req wrapper');
-  t('Application Requirements');
   t('Awarded Upon Completion');
   t('Brochure & Download Link');
   t('Call-to-Actions (CTAs)');
