@@ -296,7 +296,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
     'custom_remove' => '',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'For Exec-Ed, leave this field empty',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -377,7 +377,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_application_requirements',
-    'label' => 'Admission Page URL',
+    'label' => 'Application Requirements URL',
     'required' => 0,
     'settings' => array(
       'absolute_url' => 1,
@@ -3820,7 +3820,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
     'custom_remove' => '',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This field will be auto-populated for Executive Education programs.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -3898,7 +3898,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_link_apply_button',
-    'label' => 'Apply Button URL',
+    'label' => 'Admission Page URL',
     'required' => 0,
     'settings' => array(
       'absolute_url' => 1,
@@ -7007,7 +7007,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
   t('Additional Page');
   t('Admission Page URL');
   t('All Topics');
-  t('Apply Button URL');
+  t('Application Requirements URL');
   t('Awarded Upon Completion');
   t('Brochure');
   t('Brochure Category');
@@ -7022,7 +7022,6 @@ function gsb_feature_program_ct_field_default_field_instances() {
   t('Edit Curriculum Page');
   t('Edit Participants Page');
   t('Files');
-  t('For Exec-Ed, leave this field empty');
   t('Image');
   t('Image or Video');
   t('Intro');
@@ -7046,6 +7045,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
   t('Stories and Announcements');
   t('Superhead');
   t('Taxonomy VTab Prefix');
+  t('This field will be auto-populated for Executive Education programs.');
   t('Time Commitment');
   t('Title');
   t('URL');
