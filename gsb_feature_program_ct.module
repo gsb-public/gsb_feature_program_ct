@@ -749,15 +749,15 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
     // add time commitment markup
     $time_commitment = $node_wrapper->field_time_commitment->value();
     $program_instance_markups[$pi_nid][] = '<div class="time-commitment">' . $time_commitment->name . '</div>';
-    $program_instance_markups[$pi_nid][] = '</div>';
 
     // if the time commit is 'Part-Time', then add parttime details
     if ($time_commitment->name == 'Part-Time') {
       $part_time_details = $node_wrapper->field_part_time_details->value();
       $program_instance_markups[$pi_nid][] = '<div class="parttime-details">' . $part_time_details . '</div>';
-      $program_instance_markups[$pi_nid][] = '</div>';
     }
-    
+
+    $program_instance_markups[$pi_nid][] = '</div>';
+
     // add program schedule markup
     $program_schedule = $instance_wrapper->field_program_schedule->value();
 
