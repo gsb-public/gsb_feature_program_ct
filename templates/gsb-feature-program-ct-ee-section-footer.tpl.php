@@ -14,6 +14,11 @@
           <?php print $ee_section_footer_menu; ?>
         </div>
       <?php endif; ?>
+      <?php if (!empty($ee_section_footer_social_buttons)) : ?>
+        <div class="ee-section-footer-social-buttons">
+          <?php print $ee_section_footer_social_buttons; ?>
+        </div>
+      <?php endif; ?>
     </div>
   </div>
 </div>
