@@ -698,11 +698,14 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
 
     // get instance date
     $instance_date = $instance_wrapper->field_instance_date->value();
-    $start_date = new DateTime($instance_date['value']);
-    $formatted_date = $start_date->format('d M Y');
-    if (!empty($instance_date['value2'])) {
-      $end_date = new DateTime($instance_date['value2']);
-      $formatted_date = $formatted_date . ' – ' . $end_date->format('d M Y');
+    $formatted_date = '';
+    if ($instance_date != null) {
+      $start_date = new DateTime($instance_date['value']);
+      $formatted_date = $start_date->format('d M Y');
+      if (!empty($instance_date['value2'])) {
+        $end_date = new DateTime($instance_date['value2']);
+        $formatted_date = $formatted_date . ' – ' . $end_date->format('d M Y');
+      }
     }
 
     // add instance header (label and date) markup as -first item-
@@ -1362,7 +1365,7 @@ function _gsb_feature_program_ct_get_all_program_instances($program_nids) {
   $query->fields('fp', array('entity_id', 'entity_type', 'deleted', 'field_program_target_id'));
   $query->join('node', 'nodefp', 'fp.field_program_target_id = nodefp.nid');
   $query->fields('nodefp', array('nid'));
-  $query->join('field_data_field_instance_date', 'fid', "n.nid = fid.entity_id AND fid.entity_type = 'node' AND fid.deleted = '0'");
+  $query->leftJoin('field_data_field_instance_date', 'fid', "n.nid = fid.entity_id AND fid.entity_type = 'node' AND fid.deleted = '0'");
   $query->fields('fid', array('field_instance_date_value'));
   $query->join('field_data_field_display_on_finder', 'dof', "n.nid = dof.entity_id AND dof.entity_type = 'node' AND dof.deleted = '0'");
   $query->fields('dof', array('field_display_on_finder_value'));
@@ -1374,8 +1377,19 @@ function _gsb_feature_program_ct_get_all_program_instances($program_nids) {
   $results = $query->execute();
 
   $program_instances = array();
+  $program_instances_no_date = array();
   foreach($results as $instance) {
-    $program_instances[] = $instance->nid;
+    if ($instance->field_instance_date_value == null) {
+      $program_instances_no_date[] = $instance->nid;
+    }
+    else {
+      $program_instances[] = $instance->nid;
+    }
+  }
+
+  // we need to add the instance with no date to the end of the list of instances
+  if (!empty($program_instances_no_date)) {
+    $program_instances = array_merge($program_instances, $program_instances_no_date);
   }
 
   return $program_instances;
