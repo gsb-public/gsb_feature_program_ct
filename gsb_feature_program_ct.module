@@ -1271,6 +1271,7 @@ function gsb_feature_program_ct_topics_location_category($entity, $type, $view_m
     $name = str_replace(' ', '-', strtolower($item));
     $name = str_replace('(', '', $name);
     $name = str_replace(')', '', $name);
+    $name = str_replace('.', '', $name);
     $path = $program_listing_page_url . '?program-location=' . $name;
     $location_categories_markup[] = '<a href="' . base_path() . $path . '">' . $item . '</a>';
     if ($delta != $count - 1) {
@@ -1296,7 +1297,6 @@ function gsb_feature_program_ct_topics_location_category($entity, $type, $view_m
     }
     $topics_location_categories_markup[] = implode('', $location_categories_markup);
   }
-
   $content_wrapper['content'] = array('#markup' =>
     '<div class=topics-location-category-">' .
       implode('', $topics_location_categories_markup) .
