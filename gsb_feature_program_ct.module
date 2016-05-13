@@ -842,7 +842,7 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
 
     $program_instance_markups[$pi_nid][] = '<div class ="group-right">';
     $program_instance_markups[$pi_nid][] = '<div class="instance-item-wrapper tuition-wrapper">';
-    $program_instance_markups[$pi_nid][] = '<h3>Program Tuition</h3>';
+    $program_instance_markups[$pi_nid][] = '<h3>Program Fee</h3>';
 
     // add tuition amount markup
     $tuition = $instance_wrapper->field_tuition->value();
