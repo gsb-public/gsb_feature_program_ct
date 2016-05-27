@@ -76,9 +76,12 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_ee_section_app
   $query->fields('nodefp', array('nid'));
   $query->join('field_data_field_instance_date', 'fid', "n.nid = fid.entity_id AND fid.entity_type = 'node' AND fid.deleted = '0'");
   $query->fields('fid', array('field_instance_date_value'));
+  $query->join('field_data_field_display_on_finder', 'dof', "n.nid = dof.entity_id AND dof.entity_type = 'node' AND dof.deleted = '0'");
+  $query->fields('dof', array('field_display_on_finder_value'));
   $query->condition('nodefp.nid', $nid);
   $query->condition('n.status', '1');
   $query->condition('n.type', 'program_instance');
+  $query->condition('dof.field_display_on_finder_value', '1');
   $query->orderBy('fid.field_instance_date_value', 'ASC');
   $query->range(0,1);
   $results = $query->execute();
