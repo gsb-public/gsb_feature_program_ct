@@ -3,13 +3,14 @@
 function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_program_menu(&$vars) {
 
   $node = menu_get_object();
+  $language = $node->language;
 
   $program_node = null;
   if ($node->type == 'program') {
     $program_node = $node;
   }
   else if ($node->type == 'program_instance' || $node->type == 'program_panelized_page') {
-    $program_nid = $node->field_program['und'][0]['target_id'];
+    $program_nid = $node->field_program[$language][0]['target_id'];
     $program_node = node_load($program_nid);
   }
   else {
@@ -20,11 +21,16 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_program_menu(&
     return;
   }
 
+  $wrapper = entity_metadata_wrapper('node', $program_node->nid);
+
   $program_path_alias = $program_node->path['alias'];
   $program_path_alias_title = explode('/', $program_path_alias);
   $program_path_alias_title = $program_path_alias_title[sizeof($program_path_alias_title) - 1];
 
-  $path = 'exec-ed/programs/' . $program_path_alias_title;
+  $program_category = $wrapper->field_program_category->value();
+  $program_listing_page_url = $program_category->field_program_listing_page_url[$language][0]['url'];
+
+  $path = $program_listing_page_url . '/' . $program_path_alias_title;
 
   $program_links = array(
     'Overview' => '',
@@ -51,13 +57,12 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_program_menu(&
     $links[] = theme('link', $link);
   }
 
-  $wrapper = entity_metadata_wrapper('node', $program_node->nid);
   $additional_pages = $wrapper->field_additional_pages->value();
 
-  if (!empty($additional_pages->field_page_link['und'])) {
+  if (!empty($additional_pages->field_page_link[$language])) {
     $link = array();
-    $link['text'] = $additional_pages->field_page_link['und'][0]['title'];
-    $link['path'] = $additional_pages->field_page_link['und'][0]['url'];
+    $link['text'] = $additional_pages->field_page_link[$language][0]['title'];
+    $link['path'] = $additional_pages->field_page_link[$language][0]['url'];
     if ($link['path'] == $node->path['alias']) {
       $link['options']['attributes'] = array('class' => array('program_menu_item', 'active'));
     }
