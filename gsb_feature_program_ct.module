@@ -1069,6 +1069,11 @@ function gsb_feature_program_ct_program_instance_faculty_fields($entity, $type, 
     }
   }
   if (!empty($faculty_directors)) {
+    foreach ($faculty_directors as $key => $fci) {
+      if (empty($faculty_directors[$key]['field_other_name'])) {
+        unset($faculty_directors[$key]['field_image_single_public']);
+      }
+    }
     $entity->content['gsb_program_program_instance_faculty_fields'] = array(
       '#type' => 'container',
       '#attributes' => array(
