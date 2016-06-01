@@ -436,6 +436,13 @@ function gsb_feature_program_ct_element_info_alter(&$type) {
  */
 function gsb_feature_program_ct_field_extra_fields() {
   $extra = array();
+  $extra['node']['faculty']['display'] = array(
+    'gsb_program_faculty_courses' => array(
+      'label' => t('Executive Education & other Non-degree courses'),
+      'description' => t('Programs taught by Faculty'),
+      'weight' => 0,
+    )
+  );
   $extra['node']['program']['display'] = array(
     'gsb_program_explore_more' => array(
       'label' => t('Explore Other Programs'),
@@ -510,6 +517,11 @@ function gsb_feature_program_ct_entity_view($entity, $type, $view_mode, $langcod
   if ($type != 'node') {
     return;
   }
+  // Only go thru this code if we are working with a faculty node
+  if ($entity->type == 'faculty') {
+    gsb_program_ct_faculty_courses($entity, $type, $view_mode, $langcode);
+    return;
+  }
   // Only go thru this code if we are working with a program node
   if ($entity->type != 'program') {
     return;
@@ -540,6 +552,156 @@ function gsb_feature_program_ct_entity_view($entity, $type, $view_mode, $langcod
   if (!empty($fields['gsb_program_show_all_programs']['visible'])) {
     gsb_feature_program_ct_show_all_programs($entity, $type, $view_mode, $langcode);
   }
+}
+
+/**
+ * Implements hook_entity_view().
+ *
+ * Renders the extra fields for program faculty courses
+ *   'Executive Education & other Non-degree courses'
+ */
+function gsb_program_ct_faculty_courses($entity, $type, $view_mode, $langcode) {
+
+  // Only go thru this code if we are working with a node
+  if ($type != 'node') {
+    return;
+  }
+  // Only go thru this code if we are working with a program node
+  if ($entity->type != 'faculty') {
+    return;
+  }
+
+  if ($view_mode != 'full') {
+    return;
+  }
+
+  // Only go thru this code if the 'program faculty courses' field is visible
+  $fields = field_extra_fields_get_display('node', $entity->type, $view_mode);
+  if (empty($fields['gsb_program_faculty_courses']['visible'])) {
+    return;
+  }
+
+  // Get the faculty node id
+  $nid = $entity->nid;
+
+  $programs_found = array();
+
+  // Run thru all the faculty ref fields found in a program instance
+  $faculty_lookups = array(
+    'field_data_field_faculty_directors' => 'field_faculty_directors_value',
+    'field_data_field_faculty_1' => 'field_faculty_1_value',
+    'field_data_field_faculty_2' => 'field_faculty_2_value',
+  );
+
+  foreach($faculty_lookups as $data_name => $value_name) {
+
+    // get program instances
+
+    $query = db_select('node', 'n');
+    $query->fields('n', array('nid', 'status', 'type', 'created'));
+    $query->condition('n.status', 1);
+    $query->condition('n.type', 'program_instance');
+
+    $query->leftJoin('field_data_field_program', 'p', 'n.nid = p.entity_id AND p.deleted = 0');
+
+    // with faculty lookup
+
+    $query->leftJoin($data_name, 'fx', 'n.nid = fx.entity_id AND fx.deleted = 0');
+    $query->addField('fx', $value_name);
+
+    // matching the faculty nid
+
+    $query->leftJoin('field_data_field_person_fac_single_ref', 'fr', 'fx.' . $value_name . ' = fr.entity_id AND fr.deleted = 0');
+    $query->addField('fr', 'field_person_fac_single_ref_target_id');
+    $query->condition('fr.field_person_fac_single_ref_target_id', $nid, '=');
+
+    // get the program overview intro
+
+    $query->leftJoin('field_data_field_overview_intro', 'oi', 'oi.entity_id = p.field_program_target_id');
+    $query->addField('oi', 'field_overview_intro_value');
+
+    // get the program url alias
+
+    $query->leftJoin('url_alias', 'ua', "ua.source = CONCAT('node/', p.field_program_target_id)");
+    $query->addField('ua', 'alias');
+
+    // and with program lookup
+
+    $query->leftJoin('node', 'pn', 'pn.nid = p.field_program_target_id');
+    $query->addField('pn', 'title', 'program_title');
+    $query->addField('pn', 'nid', 'program_nid');
+    $query->condition('pn.status', '1');
+
+    $query->orderBy('created', 'DESC');
+    $query->orderBy('nid', 'DESC');
+
+    $results = $query->execute();
+
+    foreach ($results as $record) {
+      $programs_found[] = $record;
+    }
+
+  }
+
+  // Remove any duplicate programs
+  $programs_list = array();
+  foreach($programs_found as $program) {
+    if (empty($programs_list[$program->program_nid])) {
+      $programs_list[$program->program_nid] = $program;
+    }
+  }
+
+  // If the list is empty, then nothing for us to render
+  if (empty($programs_list)) {
+    return;
+  }
+
+  // Create a content wrapper
+  $content_wrapper = array(
+    '#type' => 'container',
+    '#attributes' => array(
+      'class' => array('program-faculty-courses show-more-less'),
+    ),
+    '#suffix' => '<div>&nbsp;</div>',
+  );
+
+  // Create the label
+  $label = array(
+    '#markup' => t('Executive Education & other Non-degree courses')
+  );
+
+  // Create the list of program items - with link and overview intro text
+  $list_items = array();
+  foreach($programs_list as $program) {
+    $list_items[] = l($program->program_title, $program->alias, array('attributes' => array('class' => array('gsb-program-faculty-courses-program-link'), 'target' => '_blank')));
+    $list_items[] = t($program->field_overview_intro_value);
+  }
+
+  $items[] = array(
+    '#theme' => 'item_list',
+    '#items' => $list_items,
+    '#type' => 'ul',
+    '#attributes' => array('class' => 'list-class'),
+  );
+
+  $content = array(
+    $label,
+    $items,
+  );
+
+  $content_wrapper['content'] = $content;
+
+  // Wrap content and title in container.
+  $container = array(
+    '#type' => 'container',
+    '#attributes' => array(
+      'class' => array('gsb-program-faculty-courses-wrapper'),
+    ),
+  );
+  $container['content'] = $content_wrapper;
+
+  $entity->content['gsb_program_faculty_courses'] = $container;
+
 }
 
 /**
