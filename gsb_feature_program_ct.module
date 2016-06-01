@@ -441,6 +441,11 @@ function gsb_feature_program_ct_field_extra_fields() {
       'label' => t('Executive Education & other Non-degree courses'),
       'description' => t('Programs taught by Faculty'),
       'weight' => 0,
+    ),
+    'gsb_program_faculty_director_titles' => array(
+      'label' => t('Program Faculty Director Titles'),
+      'description' => t('Programs where Faculty is the director.'),
+      'weight' => 0,
     )
   );
   $extra['node']['program']['display'] = array(
@@ -520,6 +525,7 @@ function gsb_feature_program_ct_entity_view($entity, $type, $view_mode, $langcod
   // Only go thru this code if we are working with a faculty node
   if ($entity->type == 'faculty') {
     gsb_program_ct_faculty_courses($entity, $type, $view_mode, $langcode);
+    gsb_program_ct_faculty_director_titles($entity, $type, $view_mode, $langcode);
     return;
   }
   // Only go thru this code if we are working with a program node
@@ -702,6 +708,170 @@ function gsb_program_ct_faculty_courses($entity, $type, $view_mode, $langcode) {
 
   $entity->content['gsb_program_faculty_courses'] = $container;
 
+}
+
+/**
+ * Implements hook_entity_view().
+ *
+ * Renders the extra fields for program faculty director titles
+ */
+function gsb_program_ct_faculty_director_titles($entity, $type, $view_mode, $langcode) {
+
+  // Only go thru this code if we are working with a node
+  if ($type != 'node') {
+    return;
+  }
+  // Only go thru this code if we are working with a program node
+  if ($entity->type != 'faculty') {
+    return;
+  }
+
+  if ($view_mode != 'full') {
+    return;
+  }
+
+  // Only go thru this code if the 'program faculty director titles' field is visible
+  $fields = field_extra_fields_get_display('node', $entity->type, $view_mode);
+  if (empty($fields['gsb_program_faculty_director_titles']['visible'])) {
+    return;
+  }
+
+  // Get the faculty node id
+  $nid = $entity->nid;
+
+  $programs_found = array();
+
+  // Run thru directors with the faculty ref fields found in a program instance
+  $faculty_lookups = array(
+    'field_data_field_faculty_directors' => 'field_faculty_directors_value',
+  );
+
+  foreach ($faculty_lookups as $data_name => $value_name) {
+
+    // get program instances
+
+    $query = db_select('node', 'n');
+    $query->fields('n', array('nid', 'status', 'type', 'created'));
+    $query->condition('n.status', 1);
+    $query->condition('n.type', 'program_instance');
+
+    $query->leftJoin('field_data_field_program', 'p', 'n.nid = p.entity_id AND p.deleted = 0');
+
+    // with faculty lookup
+
+    $query->leftJoin($data_name, 'fx', 'n.nid = fx.entity_id AND fx.deleted = 0');
+    $query->addField('fx', $value_name);
+
+    // matching the faculty nid
+
+    $query->leftJoin('field_data_field_person_fac_single_ref', 'fr', 'fx.' . $value_name . ' = fr.entity_id AND fr.deleted = 0');
+    $query->addField('fr', 'field_person_fac_single_ref_target_id');
+    $query->condition('fr.field_person_fac_single_ref_target_id', $nid, '=');
+
+    // matching the faculty director title
+
+    $query->leftJoin('field_data_field_faculty_director_title', 'ft', 'fx.' . $value_name . ' = ft.entity_id AND ft.deleted = 0');
+    $query->addField('ft', 'field_faculty_director_title_value');
+
+    // matching the director title other
+
+    $query->leftJoin('field_data_field_director_title_other', 'fto', 'fx.' . $value_name . ' = fto.entity_id AND fto.deleted = 0');
+    $query->addField('fto', 'field_director_title_other_value');
+
+    // get the program director
+
+    $query->leftJoin('url_alias', 'ua', "ua.source = CONCAT('node/', p.field_program_target_id)");
+    $query->addField('ua', 'alias');
+
+    // and with program lookup
+
+    $query->leftJoin('node', 'pn', 'pn.nid = p.field_program_target_id');
+    $query->addField('pn', 'title', 'program_title');
+    $query->addField('pn', 'nid', 'program_nid');
+    $query->condition('pn.status', '1');
+
+    $query->orderBy('created', 'DESC');
+    $query->orderBy('nid', 'DESC');
+
+    $results = $query->execute();
+
+    foreach ($results as $record) {
+      $programs_found[] = $record;
+    }
+
+  }
+
+  // Remove any duplicate programs
+  $programs_list = array();
+  foreach ($programs_found as $program) {
+    if (empty($programs_list[$program->program_nid])) {
+      $programs_list[$program->program_nid] = $program;
+    }
+  }
+
+  // If the list is empty, then nothing for us to render
+  if (empty($programs_list)) {
+    return;
+  }
+
+  // Create temporary list of program items - with title, director title and other title
+  $items = array();
+  foreach($programs_list as $program) {
+    $items[$program->program_nid] = array(
+      'title' => $program->program_title,
+      'director_title' => $program->field_faculty_director_title_value,
+      'other_title' => $program->field_director_title_other_value
+    );
+  }
+
+  // Sort the programs by their title
+  asort($items);
+
+  // Create a content wrapper
+  $content_wrapper = array(
+    '#type' => 'container',
+    '#attributes' => array(
+      'class' => array('program-faculty-director-title'),
+    ),
+    '#suffix' => '<div>&nbsp;</div>',
+  );
+
+  // Create the rendering list of program items - with either...
+  //   title and director title
+  //   or title and other title
+  $list_items = array();
+  foreach($items as $program) {
+    if ($program['director_title'] == 'Other') {
+      $list_items[] = $program['other_title'] . ', ' . $program['title'];
+    }
+    else {
+      $list_items[] = $program['director_title'] . ', ' . $program['title'];
+    }
+  }
+
+  $items[] = array(
+    '#theme' => 'item_list',
+    '#items' => $list_items,
+    '#type' => 'ul',
+    '#attributes' => array('class' => 'list-class'),
+  );
+
+  $content = array(
+    $items,
+  );
+
+  $content_wrapper['content'] = $content;
+
+  // Wrap content and title in container.
+  $container = array(
+    '#type' => 'container',
+    '#attributes' => array(
+      'class' => array('gsb-program-faculty-director-title-wrapper'),
+    ),
+  );
+  $container['content'] = $content_wrapper;
+
+  $entity->content['gsb_program_faculty_director_titles'] = $container;
 }
 
 /**
