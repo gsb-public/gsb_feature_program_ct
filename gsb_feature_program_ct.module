@@ -833,7 +833,6 @@ function gsb_program_ct_faculty_director_titles($entity, $type, $view_mode, $lan
     '#attributes' => array(
       'class' => array('program-faculty-director-title'),
     ),
-    '#suffix' => '<div>&nbsp;</div>',
   );
 
   // Create the rendering list of program items - with either...
