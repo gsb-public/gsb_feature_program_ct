@@ -666,7 +666,7 @@ function gsb_program_ct_faculty_courses($entity, $type, $view_mode, $langcode) {
   $content_wrapper = array(
     '#type' => 'container',
     '#attributes' => array(
-      'class' => array('program-faculty-courses show-more-less'),
+      'class' => array('program-faculty-courses show-more-less-wrapper'),
     ),
     '#suffix' => '<div>&nbsp;</div>',
   );
@@ -687,7 +687,7 @@ function gsb_program_ct_faculty_courses($entity, $type, $view_mode, $langcode) {
     '#theme' => 'item_list',
     '#items' => $list_items,
     '#type' => 'ul',
-    '#attributes' => array('class' => 'list-class'),
+    '#attributes' => array('class' => ''),
   );
 
   $content = array(
@@ -701,7 +701,7 @@ function gsb_program_ct_faculty_courses($entity, $type, $view_mode, $langcode) {
   $container = array(
     '#type' => 'container',
     '#attributes' => array(
-      'class' => array('gsb-program-faculty-courses-wrapper'),
+      'class' => array('gsb-program-faculty-courses-wrapper show-more-less show-more-less-min-9 show-more-less-num-6'),
     ),
   );
   $container['content'] = $content_wrapper;
