@@ -673,7 +673,7 @@ function gsb_program_ct_faculty_courses($entity, $type, $view_mode, $langcode) {
 
   // Create the label
   $label = array(
-    '#markup' => t('Executive Education & Other Non-Degree Programs')
+    '#markup' => '<div class="label-above">' . t('Executive Education & Other Non-Degree Programs') . '</div>'
   );
 
   // Create the list of program items - with link and overview intro text
