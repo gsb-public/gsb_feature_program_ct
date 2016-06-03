@@ -732,7 +732,7 @@ function gsb_program_ct_faculty_director_titles($entity, $type, $view_mode, $lan
     return;
   }
 
-  if ($view_mode != 'full') {
+  if ($view_mode != 'full' && $view_mode != 'faculty_leadership') {
     return;
   }
 
