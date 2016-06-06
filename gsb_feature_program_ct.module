@@ -644,8 +644,7 @@ function gsb_program_ct_faculty_courses($entity, $type, $view_mode, $langcode) {
     $query->condition('pn.status', '1');
     $query->condition('dof.field_display_on_finder_value', '1');
 
-    $query->orderBy('created', 'DESC');
-    $query->orderBy('nid', 'DESC');
+    $query->orderBy('pn.title', 'ASC');
 
     $results = $query->execute();
 
@@ -802,8 +801,7 @@ function gsb_program_ct_faculty_director_titles($entity, $type, $view_mode, $lan
     $query->condition('pn.status', '1');
     $query->condition('dof.field_display_on_finder_value', '1');
 
-    $query->orderBy('created', 'DESC');
-    $query->orderBy('nid', 'DESC');
+    $query->orderBy('pn.title', 'ASC');
 
     $results = $query->execute();
 
