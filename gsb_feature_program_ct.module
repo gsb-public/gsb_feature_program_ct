@@ -631,12 +631,18 @@ function gsb_program_ct_faculty_courses($entity, $type, $view_mode, $langcode) {
     $query->leftJoin('url_alias', 'ua', "ua.source = CONCAT('node/', p.field_program_target_id)");
     $query->addField('ua', 'alias');
 
+    // get the display flag
+
+    $query->join('field_data_field_display_on_finder', 'dof', "n.nid = dof.entity_id AND dof.entity_type = 'node' AND dof.deleted = '0'");
+    $query->fields('dof', array('field_display_on_finder_value'));
+
     // and with program lookup
 
     $query->leftJoin('node', 'pn', 'pn.nid = p.field_program_target_id');
     $query->addField('pn', 'title', 'program_title');
     $query->addField('pn', 'nid', 'program_nid');
     $query->condition('pn.status', '1');
+    $query->condition('dof.field_display_on_finder_value', '1');
 
     $query->orderBy('created', 'DESC');
     $query->orderBy('nid', 'DESC');
@@ -783,12 +789,18 @@ function gsb_program_ct_faculty_director_titles($entity, $type, $view_mode, $lan
     $query->leftJoin('url_alias', 'ua', "ua.source = CONCAT('node/', p.field_program_target_id)");
     $query->addField('ua', 'alias');
 
+    // get the display flag
+
+    $query->join('field_data_field_display_on_finder', 'dof', "n.nid = dof.entity_id AND dof.entity_type = 'node' AND dof.deleted = '0'");
+    $query->fields('dof', array('field_display_on_finder_value'));
+
     // and with program lookup
 
     $query->leftJoin('node', 'pn', 'pn.nid = p.field_program_target_id');
     $query->addField('pn', 'title', 'program_title');
     $query->addField('pn', 'nid', 'program_nid');
     $query->condition('pn.status', '1');
+    $query->condition('dof.field_display_on_finder_value', '1');
 
     $query->orderBy('created', 'DESC');
     $query->orderBy('nid', 'DESC');
