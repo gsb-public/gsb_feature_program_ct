@@ -644,8 +644,6 @@ function gsb_program_ct_faculty_courses($entity, $type, $view_mode, $langcode) {
     $query->condition('pn.status', '1');
     $query->condition('dof.field_display_on_finder_value', '1');
 
-    $query->orderBy('pn.title', 'ASC');
-
     $results = $query->execute();
 
     foreach ($results as $record) {
@@ -667,6 +665,22 @@ function gsb_program_ct_faculty_courses($entity, $type, $view_mode, $langcode) {
     return;
   }
 
+  // Create temporary list of program items - with a sort title
+  $items = array();
+  foreach($programs_list as $program) {
+    $sort_title = $program->program_title;
+    $sort_title = preg_replace("/^The /",'',$sort_title,1);
+    $sort_title = preg_replace("/^A /",'',$sort_title,1);
+    $sort_title = preg_replace("/^An /",'',$sort_title,1);
+    $items[$program->program_nid] = array(
+      'sort_title' => $sort_title,
+      'program' => $program,
+    );
+  }
+
+  // Sort the programs by their title
+  asort($items);
+
   // Create a content wrapper
   $content_wrapper = array(
     '#type' => 'container',
@@ -683,11 +697,13 @@ function gsb_program_ct_faculty_courses($entity, $type, $view_mode, $langcode) {
 
   // Create the list of program items - with link and overview intro text
   $list_items = array();
-  foreach($programs_list as $program) {
+  foreach($items as $program_item) {
+    $program = $program_item['program'];
     $list_items[] = l($program->program_title, $program->alias, array('attributes' => array('class' => array('gsb-program-faculty-courses-program-link'), 'target' => '_blank')));
     $list_items[] = t($program->field_overview_intro_value);
   }
 
+  $items = array();
   $items[] = array(
     '#theme' => 'item_list',
     '#items' => $list_items,
@@ -801,8 +817,6 @@ function gsb_program_ct_faculty_director_titles($entity, $type, $view_mode, $lan
     $query->condition('pn.status', '1');
     $query->condition('dof.field_display_on_finder_value', '1');
 
-    $query->orderBy('pn.title', 'ASC');
-
     $results = $query->execute();
 
     foreach ($results as $record) {
@@ -827,7 +841,12 @@ function gsb_program_ct_faculty_director_titles($entity, $type, $view_mode, $lan
   // Create temporary list of program items - with title, director title and other title
   $items = array();
   foreach($programs_list as $program) {
+    $sort_title = $program->program_title;
+    $sort_title = preg_replace("/^The /",'',$sort_title,1);
+    $sort_title = preg_replace("/^A /",'',$sort_title,1);
+    $sort_title = preg_replace("/^An /",'',$sort_title,1);
     $items[$program->program_nid] = array(
+      'sort_title' => $sort_title,
       'title' => $program->program_title,
       'director_title' => $program->field_faculty_director_title_value,
       'other_title' => $program->field_director_title_other_value
