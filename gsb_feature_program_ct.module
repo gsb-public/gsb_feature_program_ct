@@ -838,9 +838,12 @@ function gsb_program_ct_faculty_director_titles($entity, $type, $view_mode, $lan
     return;
   }
 
+  $field_info_director_title = field_info_field('field_faculty_director_title');
+
   // Create temporary list of program items - with title, director title and other title
   $items = array();
   foreach($programs_list as $program) {
+    $director_title = $field_info_director_title['settings']['allowed_values'][$program->field_faculty_director_title_value];
     $sort_title = $program->program_title;
     $sort_title = preg_replace("/^The /",'',$sort_title,1);
     $sort_title = preg_replace("/^A /",'',$sort_title,1);
@@ -848,7 +851,7 @@ function gsb_program_ct_faculty_director_titles($entity, $type, $view_mode, $lan
     $items[$program->program_nid] = array(
       'sort_title' => $sort_title,
       'title' => $program->program_title,
-      'director_title' => $program->field_faculty_director_title_value,
+      'director_title' => $director_title,
       'other_title' => $program->field_director_title_other_value
     );
   }
