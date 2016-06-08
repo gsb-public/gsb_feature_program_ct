@@ -1632,6 +1632,7 @@ function gsb_feature_program_ct_topics_location_category($entity, $type, $view_m
 
   // create the program category markup
   $location_categories_markup = array();
+  $location_categories = array_unique($location_categories);
   $count = count($location_categories);
   foreach($location_categories as $delta => $item) {
     $name = str_replace(' ', '-', strtolower($item));
