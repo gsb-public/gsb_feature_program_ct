@@ -951,6 +951,7 @@ function gsb_feature_program_ct_explore_more($entity, $type, $view_mode, $langco
   $query->fields('n', array('nid', 'status', 'type', 'created'));
   $query->join('field_data_field_career_level', 'cl', "n.nid = cl.entity_id AND cl.entity_type = 'node'");
   $query->join('taxonomy_term_data', 't', "t.tid = cl.field_career_level_tid");
+  $query->fields('t', array('tid'));
   $query->join('field_data_field_key_program_topics', 'kpt', "n.nid = kpt.entity_id AND kpt.entity_type = 'node'");
   $query->fields('kt', array('tid'));
   $query->join('taxonomy_term_data', 'kt', "kt.tid = kpt.field_key_program_topics_tid");
@@ -972,45 +973,74 @@ function gsb_feature_program_ct_explore_more($entity, $type, $view_mode, $langco
   foreach ($results as $record) {
     $programs[$record->nid] = (empty($programs[$record->nid])) ? 1 : $programs[$record->nid] + 1;
   }
-  // Sort descending so we can find the programs with the most matches
-  arsort($programs);
-  // Only keep the top 3
-  $programs = array_slice($programs, 0, 3, TRUE);
-
-  if (empty($programs)) {
-    return;
-  }
 
   // Next look-up the most current program instances related to each of these programs
   $program_instances = _gsb_feature_program_ct_get_current_program_instances(array_keys($programs));
 
-  // Render the top 3 matching programs instances in the 'expore more' wrapper
-  if (!empty($program_instances)) {
-
-    $nodes = node_load_multiple(array_values($program_instances));
-    $content = node_view_multiple($nodes, 'program_explore_other');
-
-    // Wrap content in container.
-    $content_wrapper = array(
-      '#type' => 'container',
-      '#attributes' => array(
-        'class' => array('explore-more-content'),
-      ),
+  $pi_data = array();
+  foreach($program_instances as $pi) {
+    $pi_data[$pi->nid] = array(
+      'program_instance_nid' => $pi->nid,
+      'program_nid' => $pi->field_program_target_id,
+      'match_count' => $programs[$pi->field_program_target_id],
+      'instance_date' => $pi->field_instance_date_value
     );
-    $content_wrapper['content'] = $content;
-
-    // Wrap content and title in container.
-    $container = array(
-      '#type' => 'container',
-      '#attributes' => array(
-        'class' => array('gsb-program-explore-more-wrapper'),
-      ),
-    );
-    $container['content'] = $content_wrapper;
-
-    $entity->content['gsb_program_explore_more'] = $container;
   }
 
+  usort($pi_data, "_gsb_feature_program_ct_match_priority_sort");
+
+  // Only keep the top 3
+  $pi_data = array_slice($pi_data, 0, 3, TRUE);
+
+  if (empty($pi_data)) {
+    return;
+  }
+
+  $program_instances = array();
+  foreach($pi_data as $data) {
+    $program_instances[] = $data['program_instance_nid'];
+  }
+
+  // Render the top 3 matching programs instances in the 'expore more' wrapper
+
+  $nodes = node_load_multiple(array_values($program_instances));
+  $content = node_view_multiple($nodes, 'program_explore_other');
+
+  // Wrap content in container.
+  $content_wrapper = array(
+    '#type' => 'container',
+    '#attributes' => array(
+      'class' => array('explore-more-content'),
+    ),
+  );
+  $content_wrapper['content'] = $content;
+
+  // Wrap content and title in container.
+  $container = array(
+    '#type' => 'container',
+    '#attributes' => array(
+      'class' => array('gsb-program-explore-more-wrapper'),
+    ),
+  );
+  $container['content'] = $content_wrapper;
+
+  $entity->content['gsb_program_explore_more'] = $container;
+
+}
+
+function _gsb_feature_program_ct_match_priority_sort($a, $b) {
+  if ($a['match_count'] == $b['match_count']) {
+    if ($a['instance_date'] > $b['instance_date']) {
+      return 1;
+    }
+    else {
+      return 0;
+    }
+  }
+  if ($a['match_count'] < $b['match_count']) {
+    return 1;
+  }
+  return -1;
 }
 
 /**
@@ -1768,6 +1798,23 @@ function _gsb_feature_program_ct_get_all_program_instances($program_nids) {
 /**
  * Get the most current program instances related to each of these programs
  */
+function _gsb_feature_program_ct_get_current_program_instances_ids($program_nids) {
+
+  $results = _gsb_feature_program_ct_get_current_program_instances($program_nids);
+
+  $program_instances = array();
+  foreach($results as $instance) {
+    if (empty($program_instances[$instance->field_program_target_id])) {
+      $program_instances[$instance->field_program_target_id] = $instance->nid;
+    }
+  }
+
+  return $program_instances;
+}
+
+/**
+ * Get the most current program instances related to each of these programs
+ */
 function _gsb_feature_program_ct_get_current_program_instances($program_nids) {
 
   $today = date('Y-m-d H:i:s', mktime(0,0,0));
@@ -1791,9 +1838,7 @@ function _gsb_feature_program_ct_get_current_program_instances($program_nids) {
 
   $program_instances = array();
   foreach($results as $instance) {
-    if (empty($program_instances[$instance->field_program_target_id])) {
-      $program_instances[$instance->field_program_target_id] = $instance->nid;
-    }
+    $program_instances[] = $instance;
   }
 
   return $program_instances;
