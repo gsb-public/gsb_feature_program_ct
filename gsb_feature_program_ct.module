@@ -1255,12 +1255,6 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
     $included_in_tuition = $instance_wrapper->field_included_in_tuition->value();
     $program_instance_markups[$pi_nid][] = '<div class="included-in-tuition">' . $included_in_tuition['safe_value'] . '</div>';
 
-    // add optional programming markup
-    $optional_programming = $instance_wrapper->field_optional_programming->value();
-    if ($optional_programming) {
-      $program_instance_markups[$pi_nid][] = '<div class="optional-programing">' . $optional_programming['safe_value'] . '</div>';
-    }
-
     // add payment cancellation markup
     $payment_cancellation = $instance_wrapper->field_payment_cancellation->value();
     if ($payment_cancellation) {
@@ -1268,6 +1262,12 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
         '<div class="payment-cancellation">' .
           '<a href="' . $payment_cancellation['url'] . '">' . t('Learn more about payment, financial aid, and cancellation policies') . '</a>' .
         '</div>';
+    }
+
+    // add optional programming markup
+    $optional_programming = $instance_wrapper->field_optional_programming->value();
+    if ($optional_programming) {
+      $program_instance_markups[$pi_nid][] = '<div class="optional-programing">' . $optional_programming['safe_value'] . '</div>';
     }
     $program_instance_markups[$pi_nid][] = '</div>';
 
