@@ -78,14 +78,19 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_ee_section_app
   $query->fields('fid', array('field_instance_date_value'));
   $query->join('field_data_field_display_on_finder', 'dof', "n.nid = dof.entity_id AND dof.entity_type = 'node' AND dof.deleted = '0'");
   $query->fields('dof', array('field_display_on_finder_value'));
+  $query->join('field_data_field_is_application_open', 'ao', "n.nid = ao.entity_id AND ao.entity_type = 'node' AND ao.deleted = '0'");
+  $query->fields('ao', array('field_is_application_open_value'));
   $query->condition('nodefp.nid', $nid);
   $query->condition('n.status', '1');
   $query->condition('n.type', 'program_instance');
   $query->condition('dof.field_display_on_finder_value', '1');
+  $query->condition('ao.field_is_application_open_value', '1');
   $query->orderBy('fid.field_instance_date_value', 'ASC');
   $query->range(0,1);
   $results = $query->execute();
 
+  $vars['ee_section_apply_brochure_apply_button'] = null;
+  $vars['ee_section_pre_qualification_link'] = null;
   foreach ($results as $record) {
     $instance_wrapper = entity_metadata_wrapper('node', $record->nid);
     $display_on_finder = $instance_wrapper->field_display_on_finder->value();
@@ -110,8 +115,6 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_ee_section_app
       $link['options']['attributes'] = $link_apply_button['attributes'];
       $link['options']['attributes']['class'] = array('ee-section-apply-brochure-apply-button-link');
       $vars['ee_section_apply_brochure_apply_button'] = theme('link', $link);
-    } else {
-      $vars['ee_section_apply_brochure_apply_button'] = null;
     }
     if (!empty($prequalification_url['url'])) {
       $link = array();
@@ -121,9 +124,6 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_ee_section_app
       $link['options']['attributes'] = $prequalification_url['attributes'];
       $link['options']['attributes']['class'] = array('ee-section-pre-qualification-link');
       $vars['ee_section_pre_qualification_link'] = theme('link', $link);
-    }
-    else {
-      $vars['ee_section_pre_qualification_link'] = null;
     }
   }
 }
