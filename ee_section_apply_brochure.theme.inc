@@ -84,17 +84,19 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_ee_section_app
   $query->condition('n.status', '1');
   $query->condition('n.type', 'program_instance');
   $query->condition('dof.field_display_on_finder_value', '1');
-  $query->condition('ao.field_is_application_open_value', '1');
   $query->orderBy('fid.field_instance_date_value', 'ASC');
-  $query->range(0,1);
   $results = $query->execute();
 
   $vars['ee_section_apply_brochure_apply_button'] = null;
   $vars['ee_section_pre_qualification_link'] = null;
+  $countDisplay = 0;
   foreach ($results as $record) {
     $instance_wrapper = entity_metadata_wrapper('node', $record->nid);
     $display_on_finder = $instance_wrapper->field_display_on_finder->value();
     $is_application_open = $instance_wrapper->field_is_application_open->value();
+    if ($display_on_finder) {
+      $countDisplay++;
+    }
     if ($display_on_finder && $is_application_open) {
       $apply_button_url = '';
       $query = '';
@@ -115,9 +117,10 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_ee_section_app
       $link['options']['attributes'] = $link_apply_button['attributes'];
       $link['options']['attributes']['class'] = array('ee-section-apply-brochure-apply-button-link');
       $vars['ee_section_apply_brochure_apply_button'] = theme('link', $link);
+      break;
     }
   }
-  if (!empty($prequalification_url['url']) && empty($vars['ee_section_pre_qualification_link'])) {
+  if ($countDisplay > 0 && !empty($prequalification_url['url']) && empty($vars['ee_section_pre_qualification_link'])) {
     $link = array();
     $link['text'] = $prequalification_url['title'];
     $link['path'] = $prequalification_url['url'];
