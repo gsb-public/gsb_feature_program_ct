@@ -116,14 +116,14 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_ee_section_app
       $link['options']['attributes']['class'] = array('ee-section-apply-brochure-apply-button-link');
       $vars['ee_section_apply_brochure_apply_button'] = theme('link', $link);
     }
-    if (!empty($prequalification_url['url'])) {
-      $link = array();
-      $link['text'] = $prequalification_url['title'];
-      $link['path'] = $prequalification_url['url'];
-      $link['options']['html'] = $prequalification_url['html'];
-      $link['options']['attributes'] = $prequalification_url['attributes'];
-      $link['options']['attributes']['class'] = array('ee-section-pre-qualification-link');
-      $vars['ee_section_pre_qualification_link'] = theme('link', $link);
-    }
+  }
+  if (!empty($prequalification_url['url']) && empty($vars['ee_section_pre_qualification_link'])) {
+    $link = array();
+    $link['text'] = $prequalification_url['title'];
+    $link['path'] = $prequalification_url['url'];
+    $link['options']['html'] = $prequalification_url['html'];
+    $link['options']['attributes'] = $prequalification_url['attributes'];
+    $link['options']['attributes']['class'] = array('ee-section-pre-qualification-link');
+    $vars['ee_section_pre_qualification_link'] = theme('link', $link);
   }
 }
