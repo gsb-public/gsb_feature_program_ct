@@ -1268,7 +1268,7 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
     if ($payment_cancellation) {
       $program_instance_markups[$pi_nid][] =
         '<div class="payment-cancellation">' .
-          '<a href="' . $payment_cancellation['url'] . '">' . t('Learn more about payment, financial aid, and cancellation policies') . '</a>' .
+          '<a href="/' . $payment_cancellation['url'] . '">' . t('Learn more about payment, financial aid, and cancellation policies') . '</a>' .
         '</div>';
     }
 
