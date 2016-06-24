@@ -1134,8 +1134,9 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
         $program_format_out .= '<span class="pipe">|</span>';
       }
       $location = $program_location['title'];
+
       if (!empty($program_location['url'])) {
-        $program_location['attributes']['target'] = $program_location['attributes']['target'] == 0 ? '' : $program_location['attributes']['target'];
+        $program_location['attributes']['target'] = (string)$program_location['attributes']['target'] == '0' ? '' : $program_location['attributes']['target'];
         $location = l($program_location['title'], $program_location['url'], array('attributes' => $program_location['attributes']));
       }
       $program_format_out .= $location;
