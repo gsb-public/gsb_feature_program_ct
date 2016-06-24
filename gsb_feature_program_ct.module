@@ -1113,6 +1113,13 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
       }
       $instance_hdr .= $formatted_date;
     }
+    else {
+      $instance_text = $instance_wrapper->field_instance_text->value();
+      if (!empty($instance_label)) {
+        $instance_hdr .= '<span class="pipe">|</span>';
+      }
+      $instance_hdr .= $instance_text;
+    }
     $instance_hdr .= '</h2>';
     $program_instance_markups[$pi_nid][] = $instance_hdr;
 
