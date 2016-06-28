@@ -252,7 +252,7 @@ function gsb_feature_program_ct_entity_update($node, $type) {
  * Helper for hook_node_insert() and hook_node_update().
  */
 function _gsb_feature_program_ct_node_save($node) {
-
+  $lang = $node->language;
   if ($node->type != 'program') {
     return;
   }
@@ -260,6 +260,23 @@ function _gsb_feature_program_ct_node_save($node) {
     return;
   }
 
+  //Removing the thumbnail before loading
+  if ($node->field_image_or_video[$lang][0]['value'] == 'Video' && !empty($node->field_video)) {
+    // get field collection details
+    $fc_entity_id = $node->field_video[$lang][0]['value'];
+    $image_video_fc = entity_load('field_collection_item', array($fc_entity_id));
+    //get the path of the thumbnail
+    $uri = resources_resource_youtube_parse($image_video_fc[$fc_entity_id]->field_video_url[$lang][0]['video_url']);
+    $stream_wrapper = new ResourcesYouTubeStreamWrapper();
+    $stream_wrapper->setUri($uri);
+    $path = $stream_wrapper->getLocalThumbnailPath($uri);
+
+    if ($path) {
+      //remove original image and image from image cache
+      image_path_flush($path);
+      file_unmanaged_delete($path);
+    }
+  }
   _gsb_feature_program_ct_create_ppp($node, 'curriculum');
   _gsb_feature_program_ct_create_ppp($node, 'faculty');
   _gsb_feature_program_ct_create_ppp($node, 'participant-profile');
