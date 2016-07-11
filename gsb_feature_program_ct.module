@@ -1201,12 +1201,14 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
             $formatted_date = $formatted_date . ' – ' . $end_date->format('d M Y');
           }
         }
-        $program_instance_markups[$pi_nid][] = '<div class="schedule-item-wrapper">';
         if (!empty($formatted_date)) {
+          $program_instance_markups[$pi_nid][] = '<div class="schedule-item-wrapper">';
           $program_instance_markups[$pi_nid][] = '<div class="program-schedule-date">' . $formatted_date . '</div>';
+          if (!empty($schedule_body)) {
+            $program_instance_markups[$pi_nid][] = '<div class="program-schedule-description">' . $schedule_body . '</div>';
+          }
+          $program_instance_markups[$pi_nid][] = '</div>';
         }
-        $program_instance_markups[$pi_nid][] = '<div class="program-schedule-description">' . $schedule_body . '</div>';
-        $program_instance_markups[$pi_nid][] = '</div>';
       }
 
       $program_instance_markups[$pi_nid][] = '</div>';
