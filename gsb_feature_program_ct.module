@@ -1294,7 +1294,7 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
     // add optional programming markup
     $optional_programming = $instance_wrapper->field_optional_programming->value();
     if ($optional_programming) {
-      $program_instance_markups[$pi_nid][] = '<div class="optional-programing">' . $optional_programming['safe_value'] . '</div>';
+      $program_instance_markups[$pi_nid][] = '<div class="optional-programming">' . $optional_programming['safe_value'] . '</div>';
     }
     $program_instance_markups[$pi_nid][] = '</div>';
 
