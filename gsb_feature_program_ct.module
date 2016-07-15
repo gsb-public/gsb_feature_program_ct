@@ -24,11 +24,9 @@ function gsb_feature_program_ct_module_implements_alter(&$implementations, $hook
  */
 function gsb_feature_program_ct_form_node_form_alter(&$form, &$form_state) {
   $language = $form['language']['#value'];
-
   if ($form['type']['#value'] != 'program') {
     return;
   }
-
   drupal_add_js(drupal_get_path('module', 'gsb_feature_program_ct') . '/js/gsb_feature_program_ct.js');
 
   $form['title']['#title'] = 'Program Name';
@@ -193,7 +191,6 @@ function gsb_feature_program_ct_form_node_form_alter(&$form, &$form_state) {
       unset($form['field_edit_participants_page']);
     }
   }
-
 }
 
 /**
@@ -443,10 +440,19 @@ function gsb_feature_program_ct_theme($existing, $type , $theme, $path) {
  * Implements hook_element_info_alter().
  */
 function gsb_feature_program_ct_element_info_alter(&$type) {
-  if (isset($type['fieldset'])) {
+  $node_type = '';
+  if (preg_match('(\/node\/\d{3,}\/edit)',$type['form']['#action'])) {
+    $action_fragment = explode('/',$type['form']['#action'] );
+    $nid = $action_fragment[2];
+    $node = node_load($nid);
+    $node_type = $node->type;
+  }
+
+  if (($type['form']['#action'] == '/node/add/program' || $node_type == 'program') && isset($type['fieldset'])) {
     $type['fieldset']['#theme_wrappers'] = array('gsb_feature_program_ct_fieldset_wrapper', 'fieldset'); //array_unshift($type['fieldset']['#theme_wrappers'], 'gsb_feature_program_ct_fieldset_wrapper');
   }
 }
+
 
 /**
  * Implements hook_field_extra_fields().
