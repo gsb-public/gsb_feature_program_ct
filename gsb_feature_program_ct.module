@@ -943,6 +943,7 @@ function gsb_feature_program_ct_explore_more($entity, $type, $view_mode, $langco
   }
   // Only go thru this code if the 'explore more' field is visible
   $fields = field_extra_fields_get_display('node', $entity->type, $view_mode);
+
   if (empty($fields['gsb_program_explore_more']['visible'])) {
     return;
   }
@@ -1021,7 +1022,6 @@ function gsb_feature_program_ct_explore_more($entity, $type, $view_mode, $langco
   foreach($pi_data as $data) {
     $program_instances[] = $data['program_instance_nid'];
   }
-
   // Render the top 3 matching programs instances in the 'expore more' wrapper
 
   $nodes = node_load_multiple(array_values($program_instances));
@@ -1045,6 +1045,19 @@ function gsb_feature_program_ct_explore_more($entity, $type, $view_mode, $langco
   );
   $container['content'] = $content_wrapper;
 
+  foreach ($nodes as $node) {
+    $language = $container['content']['content']['nodes'][$node->nid]['field_program']['#language'];
+    $detail_page = $container['content']['content']['nodes'][$node->nid]['field_program']['#object']->field_program[$language][0]['entity']->field_program_detail['und'][0]['value'];
+
+    if ($detail_page == 1) {
+      $program_obj = $container['content']['content']['nodes'][$node->nid]['field_program']['#object'];
+      $url = $program_obj->field_program[$language][0]['entity']->field_link_single[$language][0]['url'];
+      $title = $program_obj->field_program[$language][0]['entity']->title;
+      $new_window = $program_obj->field_program['und'][0]['entity']->field_link_single['und'][0]['attributes']['target'];
+      $target = ($new_window == 1) ?  ' target="_blank"' : '';
+      $container['content']['content']['nodes'][$node->nid]['field_program'][0]['#markup'] = '<a href=/' . $url . $target . '>' . $title . '</a>';
+    }
+  }
   $entity->content['gsb_program_explore_more'] = $container;
 
 }
