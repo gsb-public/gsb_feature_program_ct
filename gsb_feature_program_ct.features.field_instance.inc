@@ -250,6 +250,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 7,
       ),
+      'field_program_who_should_attend' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 19,
+      ),
       'idea_story_related' => array(
         'label' => 'above',
         'settings' => array(),
@@ -354,6 +360,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 26,
+      ),
+      'field_program_who_should_attend' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 33,
       ),
       'idea_story_related' => array(
         'label' => 'above',
@@ -480,6 +492,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 15,
+      ),
+      'field_program_who_should_attend' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 46,
       ),
       'idea_story_related' => array(
         'label' => 'above',
@@ -652,6 +670,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'field_program_who_should_attend' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 64,
+      ),
       'idea_story_related' => array(
         'label' => 'above',
         'settings' => array(),
@@ -760,6 +784,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'field_program_who_should_attend' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 65,
       ),
       'idea_story_related' => array(
         'label' => 'above',
@@ -889,6 +919,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'field_program_who_should_attend' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 67,
+      ),
       'idea_story_related' => array(
         'label' => 'above',
         'settings' => array(),
@@ -991,6 +1027,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 31,
+      ),
+      'field_program_who_should_attend' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 39,
       ),
       'idea_story_related' => array(
         'label' => 'above',
@@ -1105,6 +1147,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 24,
+      ),
+      'field_program_who_should_attend' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 13,
       ),
       'idea_story_related' => array(
         'label' => 'above',
@@ -1238,6 +1286,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 25,
       ),
+      'field_program_who_should_attend' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 14,
+      ),
       'idea_story_related' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1366,6 +1420,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'field_program_who_should_attend' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 53,
       ),
       'idea_story_related' => array(
         'label' => 'above',
@@ -1541,6 +1601,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'field_program_who_should_attend' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 54,
+      ),
       'idea_story_related' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1715,6 +1781,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'field_program_who_should_attend' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 32,
+      ),
       'idea_story_related' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1885,6 +1957,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 41,
       ),
+      'field_program_who_should_attend' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 45,
+      ),
       'idea_story_related' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2018,6 +2096,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'field_program_who_should_attend' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 66,
+      ),
       'idea_story_related' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2143,6 +2227,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'field_program_who_should_attend' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 57,
+      ),
       'idea_story_related' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2243,6 +2333,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'field_program_who_should_attend' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 58,
       ),
       'idea_story_related' => array(
         'label' => 'above',
@@ -2348,6 +2444,15 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 8,
+      ),
+      'field_program_who_should_attend' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(
+          'conditions' => array(),
+        ),
+        'type' => 'text_default',
+        'weight' => 3,
       ),
       'idea_story_related' => array(
         'label' => 'above',
@@ -2521,6 +2626,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 27,
       ),
+      'field_program_who_should_attend' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
+      ),
       'idea_story_related' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2629,6 +2740,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 18,
+      ),
+      'field_program_who_should_attend' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
       ),
       'idea_story_related' => array(
         'label' => 'above',
@@ -2797,6 +2914,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'file_default',
         'weight' => 5,
       ),
+      'field_program_who_should_attend' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 51,
+      ),
       'idea_story_related' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2923,6 +3046,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 40,
+      ),
+      'field_program_who_should_attend' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 44,
       ),
       'idea_story_related' => array(
         'label' => 'above',
@@ -3066,6 +3195,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'field_program_who_should_attend' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 55,
+      ),
       'idea_story_related' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3178,6 +3313,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 44,
+      ),
+      'field_program_who_should_attend' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
       ),
       'idea_story_related' => array(
         'label' => 'above',
@@ -3348,6 +3489,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'field_program_who_should_attend' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
       ),
       'idea_story_related' => array(
         'label' => 'above',
@@ -3520,6 +3667,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 34,
       ),
+      'field_program_who_should_attend' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 40,
+      ),
       'idea_story_related' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3622,6 +3775,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 30,
+      ),
+      'field_program_who_should_attend' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 38,
       ),
       'idea_story_related' => array(
         'label' => 'above',
@@ -3742,6 +3901,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 20,
+      ),
+      'field_program_who_should_attend' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 10,
       ),
       'idea_story_related' => array(
         'label' => 'above',
@@ -3876,6 +4041,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'field_program_who_should_attend' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 60,
+      ),
       'idea_story_related' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4001,6 +4172,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 29,
+      ),
+      'field_program_who_should_attend' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 37,
       ),
       'idea_story_related' => array(
         'label' => 'above',
@@ -4131,6 +4308,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'link_default',
         'weight' => 4,
       ),
+      'field_program_who_should_attend' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 50,
+      ),
       'idea_story_related' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4259,6 +4442,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 42,
+      ),
+      'field_program_who_should_attend' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 1,
       ),
       'idea_story_related' => array(
         'label' => 'above',
@@ -4426,6 +4615,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
       ),
       'field_program_related' => array(
         'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'field_program_who_should_attend' => array(
+        'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
@@ -4601,6 +4796,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 37,
       ),
+      'field_program_who_should_attend' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 43,
+      ),
       'idea_story_related' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4768,6 +4969,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'field_program_who_should_attend' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 35,
       ),
       'idea_story_related' => array(
         'label' => 'above',
@@ -4942,6 +5149,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'field_program_who_should_attend' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 34,
       ),
       'idea_story_related' => array(
         'label' => 'above',
@@ -5119,6 +5332,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'field_program_who_should_attend' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 62,
+      ),
       'idea_story_related' => array(
         'label' => 'above',
         'settings' => array(),
@@ -5220,6 +5439,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'field_program_who_should_attend' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 61,
       ),
       'idea_story_related' => array(
         'label' => 'above',
@@ -5347,6 +5572,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 35,
       ),
+      'field_program_who_should_attend' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 41,
+      ),
       'idea_story_related' => array(
         'label' => 'hidden',
         'module' => 'ds',
@@ -5467,6 +5698,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 17,
+      ),
+      'field_program_who_should_attend' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
       ),
       'idea_story_related' => array(
         'label' => 'above',
@@ -5594,6 +5831,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'field_program_who_should_attend' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 59,
+      ),
       'idea_story_related' => array(
         'label' => 'above',
         'settings' => array(),
@@ -5707,6 +5950,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 28,
+      ),
+      'field_program_who_should_attend' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 36,
       ),
       'idea_story_related' => array(
         'label' => 'hidden',
@@ -5836,6 +6085,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 16,
       ),
+      'field_program_who_should_attend' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
       'idea_story_related' => array(
         'label' => 'above',
         'settings' => array(),
@@ -5941,6 +6196,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 33,
+      ),
+      'field_program_who_should_attend' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 28,
       ),
       'idea_story_related' => array(
         'label' => 'above',
@@ -6055,6 +6316,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'entityreference_entity_view',
         'weight' => 1,
       ),
+      'field_program_who_should_attend' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 47,
+      ),
       'idea_story_related' => array(
         'label' => 'above',
         'settings' => array(),
@@ -6165,6 +6432,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'gsb_field_formatter_related_items_field_collection',
         'weight' => 2,
       ),
+      'field_program_who_should_attend' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 48,
+      ),
       'idea_story_related' => array(
         'label' => 'above',
         'settings' => array(),
@@ -6272,6 +6545,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'entityreference_entity_view',
         'weight' => 3,
       ),
+      'field_program_who_should_attend' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 49,
+      ),
       'idea_story_related' => array(
         'label' => 'above',
         'settings' => array(),
@@ -6376,6 +6655,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'field_program_who_should_attend' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 63,
       ),
       'idea_story_related' => array(
         'label' => 'above',
@@ -6504,6 +6789,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 46,
       ),
+      'field_program_who_should_attend' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 52,
+      ),
       'idea_story_related' => array(
         'label' => 'above',
         'settings' => array(),
@@ -6533,58 +6824,41 @@ function gsb_feature_program_ct_field_default_field_instances() {
       'custom_remove' => '',
       'selected_fields' => array(
         'concat_field_entity_label' => 'concat_field_entity_label',
-        'field_additional_pages' => 0,
+        'field_application_open' => 0,
         'field_application_requirements' => 0,
         'field_awarded_upon_completion' => 'field_awarded_upon_completion',
-        'field_brochure_options' => 0,
-        'field_brochure_pdf' => 0,
-        'field_brochure_program_topics' => 0,
         'field_career_level' => 'field_career_level',
         'field_cta1' => 0,
         'field_cta2' => 0,
-        'field_curriculum_description_1' => 'field_curriculum_description_1',
-        'field_curriculum_description_2' => 'field_curriculum_description_2',
-        'field_curriculum_intro' => 'field_curriculum_intro',
         'field_display_image' => 0,
-        'field_download_brochure_link' => 0,
-        'field_edit_curriculum_page' => 0,
-        'field_edit_participants_page' => 0,
         'field_event_who_attend' => 'field_event_who_attend',
         'field_featured_event' => 0,
         'field_featured_superhead' => 'field_featured_superhead',
         'field_file_unlimited_public' => 0,
+        'field_financial_assist_statement' => 'field_financial_assist_statement',
         'field_image_key_image' => 0,
-        'field_image_or_video' => 0,
         'field_key_benefits_description' => 'field_key_benefits_description',
-        'field_key_benefits_intro' => 'field_key_benefits_intro',
+        'field_key_benefits_teaser' => 'field_key_benefits_teaser',
         'field_key_program_topics' => 'field_key_program_topics',
         'field_leadership_level' => 'field_leadership_level',
         'field_learn_more_photo' => 0,
         'field_learn_more_video_title' => 'field_learn_more_video_title',
-        'field_link_apply_button' => 0,
         'field_link_single' => 0,
         'field_link_unlimited' => 0,
         'field_overview_description' => 'field_overview_description',
-        'field_overview_intro' => 'field_overview_intro',
+        'field_overview_teaser' => 'field_overview_teaser',
         'field_part_time_details' => 'field_part_time_details',
-        'field_participant_description' => 'field_participant_description',
-        'field_participant_intro' => 'field_participant_intro',
         'field_pathauto_title_alias' => 0,
-        'field_prequalification_url' => 0,
         'field_program_category' => 'field_program_category',
         'field_program_contact_link' => 0,
-        'field_program_contact_options' => 0,
         'field_program_detail' => 'field_program_detail',
         'field_program_director_name' => 0,
+        'field_program_small_teams' => 0,
         'field_program_topics' => 'field_program_topics',
         'field_related_idea_story' => 0,
         'field_related_other_unlimited' => 0,
         'field_related_programs' => 0,
-        'field_sample_application_file' => 0,
-        'field_tag' => 'field_tag',
-        'field_taxonomy_vtab_prefix' => 0,
         'field_time_commitment' => 'field_time_commitment',
-        'field_video' => 0,
         'field_video_description' => 'field_video_description',
         'field_video_url' => 0,
       ),
@@ -6662,6 +6936,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'field_program_who_should_attend' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 68,
       ),
       'idea_story_related' => array(
         'label' => 'above',
@@ -6767,6 +7047,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'field_program_who_should_attend' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 56,
+      ),
       'idea_story_related' => array(
         'label' => 'above',
         'settings' => array(),
@@ -6868,6 +7154,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 36,
+      ),
+      'field_program_who_should_attend' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 42,
       ),
       'idea_story_related' => array(
         'label' => 'above',
@@ -6982,6 +7274,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'field_program_who_should_attend' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
       ),
       'idea_story_related' => array(
         'label' => 'above',

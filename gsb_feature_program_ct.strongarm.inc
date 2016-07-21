@@ -166,6 +166,9 @@ function gsb_feature_program_ct_strongarm() {
       'faculty_teaching_programs' => array(
         'custom_settings' => FALSE,
       ),
+      'field_program_who_should_attend' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -222,6 +225,10 @@ function gsb_feature_program_ct_strongarm() {
             'weight' => '0',
             'visible' => FALSE,
           ),
+          'field_program_who_should_attend' => array(
+            'weight' => '15',
+            'visible' => FALSE,
+          ),
         ),
         'gsb_program_program_instance_fields' => array(
           'teaser' => array(
@@ -256,6 +263,10 @@ function gsb_feature_program_ct_strongarm() {
             'weight' => '0',
             'visible' => FALSE,
           ),
+          'field_program_who_should_attend' => array(
+            'weight' => '5',
+            'visible' => FALSE,
+          ),
         ),
         'gsb_program_program_instance_faculty_fields' => array(
           'default' => array(
@@ -280,6 +291,10 @@ function gsb_feature_program_ct_strongarm() {
           ),
           'field_program_curriculum_two' => array(
             'weight' => '0',
+            'visible' => FALSE,
+          ),
+          'field_program_who_should_attend' => array(
+            'weight' => '12',
             'visible' => FALSE,
           ),
         ),
@@ -308,6 +323,10 @@ function gsb_feature_program_ct_strongarm() {
             'weight' => '0',
             'visible' => FALSE,
           ),
+          'field_program_who_should_attend' => array(
+            'weight' => '18',
+            'visible' => FALSE,
+          ),
         ),
         'gsb_program_participant_profile_blurb' => array(
           'default' => array(
@@ -332,6 +351,10 @@ function gsb_feature_program_ct_strongarm() {
           ),
           'field_program_curriculum_two' => array(
             'weight' => '0',
+            'visible' => FALSE,
+          ),
+          'field_program_who_should_attend' => array(
+            'weight' => '20',
             'visible' => FALSE,
           ),
         ),
@@ -360,6 +383,10 @@ function gsb_feature_program_ct_strongarm() {
             'weight' => '0',
             'visible' => FALSE,
           ),
+          'field_program_who_should_attend' => array(
+            'weight' => '70',
+            'visible' => FALSE,
+          ),
         ),
         'gsb_program_topics_location_category' => array(
           'default' => array(
@@ -386,6 +413,10 @@ function gsb_feature_program_ct_strongarm() {
             'weight' => '0',
             'visible' => FALSE,
           ),
+          'field_program_who_should_attend' => array(
+            'weight' => '17',
+            'visible' => FALSE,
+          ),
         ),
         'gsb_program_show_all_programs' => array(
           'default' => array(
@@ -410,6 +441,10 @@ function gsb_feature_program_ct_strongarm() {
           ),
           'field_program_curriculum_two' => array(
             'weight' => '0',
+            'visible' => FALSE,
+          ),
+          'field_program_who_should_attend' => array(
+            'weight' => '16',
             'visible' => FALSE,
           ),
         ),
