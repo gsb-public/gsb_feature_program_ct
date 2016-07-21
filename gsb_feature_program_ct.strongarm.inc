@@ -160,6 +160,12 @@ function gsb_feature_program_ct_strongarm() {
       'field_program_participant_one' => array(
         'custom_settings' => FALSE,
       ),
+      'print' => array(
+        'custom_settings' => FALSE,
+      ),
+      'faculty_teaching_programs' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
