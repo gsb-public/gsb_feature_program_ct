@@ -367,20 +367,25 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->mode = 'default';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => '',
+    'label' => 'Key Benefits',
     'weight' => '2',
     'children' => array(
       0 => 'field_key_benefits_description',
       1 => 'field_key_benefits_intro',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'div',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Key Benefits',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-key-benefits field-group-fieldset',
         'id' => '',
+        'classes' => 'group-key-benefits field-group-fieldset',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'none',
       ),
+      'formatter' => 'open',
     ),
   );
   $field_groups['group_key_benefits|node|program|default'] = $field_group;
