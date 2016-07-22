@@ -226,7 +226,7 @@ function gsb_feature_program_ct_strongarm() {
             'visible' => FALSE,
           ),
           'field_program_who_should_attend' => array(
-            'weight' => '15',
+            'weight' => '25',
             'visible' => FALSE,
           ),
         ),
@@ -264,7 +264,7 @@ function gsb_feature_program_ct_strongarm() {
             'visible' => FALSE,
           ),
           'field_program_who_should_attend' => array(
-            'weight' => '5',
+            'weight' => '15',
             'visible' => FALSE,
           ),
         ),
@@ -294,7 +294,7 @@ function gsb_feature_program_ct_strongarm() {
             'visible' => FALSE,
           ),
           'field_program_who_should_attend' => array(
-            'weight' => '12',
+            'weight' => '22',
             'visible' => FALSE,
           ),
         ),
@@ -324,7 +324,7 @@ function gsb_feature_program_ct_strongarm() {
             'visible' => FALSE,
           ),
           'field_program_who_should_attend' => array(
-            'weight' => '18',
+            'weight' => '28',
             'visible' => FALSE,
           ),
         ),
@@ -354,7 +354,7 @@ function gsb_feature_program_ct_strongarm() {
             'visible' => FALSE,
           ),
           'field_program_who_should_attend' => array(
-            'weight' => '20',
+            'weight' => '30',
             'visible' => FALSE,
           ),
         ),
@@ -384,7 +384,7 @@ function gsb_feature_program_ct_strongarm() {
             'visible' => FALSE,
           ),
           'field_program_who_should_attend' => array(
-            'weight' => '70',
+            'weight' => '69',
             'visible' => FALSE,
           ),
         ),
@@ -414,7 +414,7 @@ function gsb_feature_program_ct_strongarm() {
             'visible' => FALSE,
           ),
           'field_program_who_should_attend' => array(
-            'weight' => '17',
+            'weight' => '27',
             'visible' => FALSE,
           ),
         ),
@@ -444,7 +444,7 @@ function gsb_feature_program_ct_strongarm() {
             'visible' => FALSE,
           ),
           'field_program_who_should_attend' => array(
-            'weight' => '16',
+            'weight' => '26',
             'visible' => FALSE,
           ),
         ),
