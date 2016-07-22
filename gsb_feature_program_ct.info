@@ -99,6 +99,7 @@ features[field_group][] = group_program_lead|node|program|form
 features[field_group][] = group_related_content|node|program|form
 features[field_group][] = group_taxonomy|node|program|form
 features[field_group][] = group_time_commitment|node|program|form
+features[field_group][] = group_who_should_attend|node|program|default
 features[field_group][] = group_who_should|node|program|form
 features[field_group][] = group_wrapper_application_req|node|program|default
 features[field_group][] = group_wrapper_curriculum|node|program|default

@@ -831,6 +831,38 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_who_should_attend|node|program|default';
+  $field_group->group_name = 'group_who_should_attend';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'program';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Who Should Attend',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_event_who_attend',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Who Should Attend',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'group-who-should-attend field-group-fieldset format-body show-more-less show-more-less-num-7 show-more-less-min-10',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'none',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $field_groups['group_who_should_attend|node|program|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_who_should|node|program|form';
   $field_group->group_name = 'group_who_should';
   $field_group->entity_type = 'node';
@@ -1000,7 +1032,7 @@ function gsb_feature_program_ct_field_group_info() {
   $field_group->parent_name = 'group_wrapper_learn';
   $field_group->data = array(
     'label' => 'Participant wrapper',
-    'weight' => '66',
+    'weight' => '67',
     'children' => array(
       0 => 'gsb_program_participant_profile_blurb',
       1 => 'program_participant_header',
