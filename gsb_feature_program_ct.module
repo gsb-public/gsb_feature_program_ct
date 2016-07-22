@@ -366,11 +366,11 @@ function gsb_feature_program_ct_block_info() {
       'cache' => DRUPAL_CACHE_GLOBAL,
     ),
     'ee_section_header' => array(
-      'info' => t('EE Section Header'),
+      'info' => t('Header: Program CT'),
       'cache' => DRUPAL_CACHE_GLOBAL,
     ),
     'ee_section_footer' => array(
-      'info' => t('EE Section Footer'),
+      'info' => t('Footer: Program CT'),
       'cache' => DRUPAL_CACHE_GLOBAL,
     ),
     'ee_section_apply_brochure' => array(
