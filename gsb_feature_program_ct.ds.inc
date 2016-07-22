@@ -601,6 +601,44 @@ function gsb_feature_program_ct_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|program|field_program_who_should_attend';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'program';
+  $ds_fieldsetting->view_mode = 'field_program_who_should_attend';
+  $ds_fieldsetting->settings = array(
+    'field_event_who_attend' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'lb' => 'Who Should Attend',
+          'lb-el' => 'h2',
+          'lb-col' => TRUE,
+          'ow' => TRUE,
+          'ow-el' => 'div',
+          'ow-cl' => 'format-body show-more-less show-more-less-num-7 show-more-less-min-10',
+          'ow-def-cl' => TRUE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
+          'fis' => TRUE,
+          'fis-el' => 'ul',
+          'fis-cl' => '',
+          'fis-at' => '',
+          'fis-def-at' => FALSE,
+          'fi' => TRUE,
+          'fi-el' => 'li',
+          'fi-cl' => 'show-more-less-wrapper',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+          'fi-first-last' => FALSE,
+        ),
+      ),
+    ),
+  );
+  $export['node|program|field_program_who_should_attend'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|program|idea_story_related';
   $ds_fieldsetting->entity_type = 'node';
   $ds_fieldsetting->bundle = 'program';
@@ -1185,6 +1223,35 @@ function gsb_feature_program_ct_ds_layout_settings_info() {
     'layout_link_custom' => '',
   );
   $export['node|program|field_program_related'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|program|field_program_who_should_attend';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'program';
+  $ds_layout->view_mode = 'field_program_who_should_attend';
+  $ds_layout->layout = 'ds_1col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'field_event_who_attend',
+      ),
+    ),
+    'fields' => array(
+      'field_event_who_attend' => 'ds_content',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'ds_content' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
+    'layout_disable_css' => FALSE,
+  );
+  $export['node|program|field_program_who_should_attend'] = $ds_layout;
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
