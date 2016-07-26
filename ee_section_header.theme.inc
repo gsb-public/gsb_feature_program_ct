@@ -16,7 +16,8 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_ee_section_hea
 
   if (!empty($node->field_display_image[$language][0])) {
     $alt = !empty($node->field_display_image[$language][0]['alt']) ? $node->field_display_image[$language][0]['alt'] : '';
-    $vars['ee_section_header_image'] = theme('image' , array('path' => $node->field_display_image[$language][0]['uri'], 'alt' => $alt));
+    //$vars['ee_section_header_image'] = theme('image' , array('path' => $node->field_display_image[$language][0]['uri'], 'alt' => $alt));
+    $vars['ee_section_header_image'] = theme('image_style' , array('style_name' => 'program_display_image', 'path' => $node->field_display_image[$language][0]['uri'], 'alt' => $alt));
   }
   if (!empty($node->title)) {
     $vars['ee_section_header_title'] = $node->title;
