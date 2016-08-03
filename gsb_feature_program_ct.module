@@ -1778,9 +1778,10 @@ function gsb_feature_program_ct_show_all_programs($entity, $type, $view_mode, $l
 
   // get listing page url from program's program category
   $program_category = $node_wrapper->field_program_category->value();
-  $program_listing_page_url = '';
-  if (!empty($program_category->field_program_listing_page_url[$language][0]['url'])) {
-    $program_listing_page_url = $program_category->field_program_listing_page_url[$language][0]['url'];
+
+  $program_listing_page_url = 'programs';
+  if ($program_category->name == 'Exec Ed Program') {
+    $program_listing_page_url = 'exec-ed/programs';
   }
 
   // Wrap content in container.
