@@ -703,26 +703,24 @@ function gsb_program_ct_faculty_courses($entity, $type, $view_mode, $langcode) {
   // Sort the programs by their title
   asort($items);
 
-  // Create a content wrapper
-  $content_wrapper = array(
+  // Wrap content and title in container for the show more functionality.
+  $container = array(
     '#type' => 'container',
     '#attributes' => array(
-      'class' => array('program-faculty-courses show-more-less-wrapper'),
-    ),
-    '#suffix' => '<div>&nbsp;</div>',
-  );
+      'class' => array('show-more-less show-more-less-wrapper show-more-less-num-3 show-more-less-min-5 program-faculty-courses'),
+      ),
+    );
 
   // Create the label
   $label = array(
-    '#markup' => '<div class="label-above">' . t('Executive Education & Other Non-Degree Programs') . '</div>'
+    '#markup' => '<h2 class="title">' . t('Executive Education & Other Non-Degree Programs') . '</h2>'
   );
 
   // Create the list of program items - with link and overview intro text
   $list_items = array();
   foreach($items as $program_item) {
     $program = $program_item['program'];
-    $list_items[] = l($program->program_title, $program->alias, array('attributes' => array('class' => array('gsb-program-faculty-courses-program-link'), 'target' => '_blank')));
-    $list_items[] = t($program->field_overview_intro_value);
+    $list_items[] = '<span class="views-field-title">' . l($program->program_title, $program->alias, array('attributes' => array('class' => array('gsb-program-faculty-courses-program-link')))) . '</span><div class="views-field description-text">' . t($program->field_overview_intro_value) . '</div>';
   }
 
   $items = array();
@@ -730,7 +728,6 @@ function gsb_program_ct_faculty_courses($entity, $type, $view_mode, $langcode) {
     '#theme' => 'item_list',
     '#items' => $list_items,
     '#type' => 'ul',
-    '#attributes' => array('class' => ''),
   );
 
   $content = array(
@@ -738,16 +735,7 @@ function gsb_program_ct_faculty_courses($entity, $type, $view_mode, $langcode) {
     $items,
   );
 
-  $content_wrapper['content'] = $content;
-
-  // Wrap content and title in container.
-  $container = array(
-    '#type' => 'container',
-    '#attributes' => array(
-      'class' => array('gsb-program-faculty-courses-wrapper show-more-less show-more-less-min-9 show-more-less-num-6'),
-    ),
-  );
-  $container['content'] = $content_wrapper;
+  $container['content'] = $content;
 
   $entity->content['gsb_program_faculty_courses'] = $container;
 
