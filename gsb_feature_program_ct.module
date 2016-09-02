@@ -653,6 +653,7 @@ function gsb_program_ct_faculty_courses($entity, $type, $view_mode, $langcode) {
     $query->leftJoin('url_alias', 'ua', "ua.source = CONCAT('node/', p.field_program_target_id)");
     $query->addField('ua', 'alias');
 
+
     // get the display flag
 
     $query->join('field_data_field_display_on_finder', 'dof', "n.nid = dof.entity_id AND dof.entity_type = 'node' AND dof.deleted = '0'");
@@ -665,6 +666,14 @@ function gsb_program_ct_faculty_courses($entity, $type, $view_mode, $langcode) {
     $query->addField('pn', 'nid', 'program_nid');
     $query->condition('pn.status', '1');
     $query->condition('dof.field_display_on_finder_value', '1');
+    
+    //Detail Page and URL
+
+    $query->leftJoin('field_data_field_program_detail', 'pd', 'pn.nid = pd.entity_id AND pd.deleted = 0');
+    $query->addField('pd', 'field_program_detail_value', 'program_detail_page');
+    $query->leftJoin('field_data_field_link_single', 'pu', 'pn.nid = pu.entity_id AND pu.deleted = 0');
+    $query->addField('pu', 'field_link_single_url', 'link_url');
+    $query->addField('pu', 'field_link_single_attributes', 'link_url_attributes');
 
     $results = $query->execute();
 
@@ -721,7 +730,38 @@ function gsb_program_ct_faculty_courses($entity, $type, $view_mode, $langcode) {
   $list_items = array();
   foreach($items as $program_item) {
     $program = $program_item['program'];
-    $list_items[] = l($program->program_title, $program->alias, array('attributes' => array('class' => array('gsb-program-faculty-courses-program-link'), 'target' => '_blank')));
+
+    //Check if program has a detail page, and open external link in new window
+
+    if ($program->program_detail_page == 0) {
+      $list_items[] = l($program->program_title, $program->alias, array(
+        'attributes' => array(
+          'class' => array('gsb-program-faculty-courses-program-link'),
+        )
+      ));
+    }
+    else {
+      $link_url = $program->link_url;
+      $link_url_attributes = $program->link_url_attributes;
+      $parsed = parse_url($link_url);
+      if (!empty($parsed['scheme']) && ($parsed['scheme'] == 'http' || $parsed['scheme'] == 'https')) {
+        $list_items[] = l(t($program->program_title), $link_url, array(
+          'external' => TRUE,
+          'class' => array('gsb-program-faculty-courses-program-link'),
+          'attributes' => unserialize($link_url_attributes)
+        ));
+      }
+      else {
+        $list_items[] = l($program->program_title, $link_url, array(
+          'attributes' => array(
+            'class' => array('gsb-program-faculty-courses-program-link'),
+            'attributes' => unserialize($link_url_attributes)
+          )
+        ));
+      }
+    }
+
+   // $list_items[] = l($program->program_title, $program->alias, array('attributes' => array('class' => array('gsb-program-faculty-courses-program-link'), 'target' => '_blank')));
     $list_items[] = t($program->field_overview_intro_value);
   }
 
