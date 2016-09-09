@@ -716,7 +716,7 @@ function gsb_program_ct_faculty_courses($entity, $type, $view_mode, $langcode) {
   $container = array(
     '#type' => 'container',
     '#attributes' => array(
-      'class' => array('show-more-less show-more-less-wrapper show-more-less-num-3 show-more-less-min-5 program-faculty-courses'),
+      'class' => array('field-type-text show-more-less show-more-less-wrapper show-more-less-num-3 show-more-less-min-5 program-faculty-courses'),
     ),
   );
 
