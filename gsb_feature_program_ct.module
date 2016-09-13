@@ -1028,6 +1028,10 @@ function gsb_feature_program_ct_explore_more($entity, $type, $view_mode, $langco
 
   // Next look-up the most current program instances related to each of these programs
   $program_instances = _gsb_feature_program_ct_get_current_program_instances(array_keys($programs));
+  if (empty($program_instances)) {
+    return;
+  }
+
   $pi_data = array();
   foreach($program_instances as $pi) {
     $pi_data[$pi->nid] = array(
@@ -1894,6 +1898,10 @@ function _gsb_feature_program_ct_get_current_program_instances_ids($program_nids
  * Get the most current program instances related to each of these programs
  */
 function _gsb_feature_program_ct_get_current_program_instances($program_nids) {
+
+  if (empty($program_nids)) {
+    return null;
+  }
 
   $today = date('Y-m-d H:i:s', mktime(0,0,0));
 
