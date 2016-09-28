@@ -316,7 +316,6 @@ function gsb_feature_program_ct_field_group_info() {
     'weight' => '12',
     'children' => array(
       0 => 'field_display_image',
-      1 => 'field_image_key_image',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
