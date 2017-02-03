@@ -1112,7 +1112,6 @@ function _gsb_feature_program_ct_match_priority_sort($a, $b) {
  * Implements hook_entity_view().
  */
 function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mode, $langcode) {
-
   // Only go thru this code if we are working with a node
   if ($type != 'node') {
     return;
@@ -1136,7 +1135,6 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
   $program_instance_nids = _gsb_feature_program_ct_get_all_program_instances(array($nid));
 
   $node_wrapper = entity_metadata_wrapper('node', $nid);
-
   // get listing page url from program's program category
   $program_category = $node_wrapper->field_program_category->value();
   $program_listing_page_url = '';
@@ -1151,7 +1149,6 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
   foreach ($program_instance_nids as $pi_nid) {
 
     $instance_wrapper = entity_metadata_wrapper('node', $pi_nid);
-
     // get instance label
     $instance_label = $instance_wrapper->field_instance_label->value();
 
@@ -1281,30 +1278,44 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
       $program_instance_markups[$pi_nid][] = '<h4 class="deadline-header">Deadline</h4>';
 
       // add program application deadline markup
-      $program_deadline = $instance_wrapper->field_application_deadlines->value();
-      foreach($program_deadline as $pd) {
-        $ewrap_deadline = entity_metadata_wrapper('field_collection_item', $pd);
-        $deadline_text = $ewrap_deadline->field_deadline_text->value();
-        $deadline_date = $ewrap_deadline->field_date->value();
-        $formatted_date = '';
-        if ($deadline_date) {
-          $start_date = DateTime::createFromFormat('U', $deadline_date);
-          $formatted_date = $start_date->format('d M Y');
-        }
-        $deadline = '<div class="program-deadline">';
-        if (!empty($deadline_text)) {
-          $deadline .= $deadline_text;
-        }
-        if (!empty($formatted_date)) {
-          if (!empty($deadline_text)) {
-            $deadline .= '<span class="pipe">|</span>';
+      $application_state = $instance_wrapper->field_application_state->value();
+      if ($application_state == 'Closed') {
+        $program_instance_markups[$pi_nid][] = "The application is closed";
+      } else {
+        $program_deadline = $instance_wrapper->field_application_deadlines->value();
+        foreach ($program_deadline as $pd) {
+          $ewrap_deadline = entity_metadata_wrapper('field_collection_item', $pd);
+          $deadline_text = $ewrap_deadline->field_deadline_text->value();
+          $deadline_date = $ewrap_deadline->field_date->value();
+          $formatted_date = '';
+          if ($deadline_date) {
+            $start_date = DateTime::createFromFormat('U', $deadline_date);
+            $formatted_date = $start_date->format('d M Y');
           }
-          $deadline .= $formatted_date;
-        }
-        $deadline .= '</div>';
-        $program_instance_markups[$pi_nid][] = $deadline;
-      }
+          $deadline = '<div class="program-deadline">';
+          if ($application_state == 'Extended'){
+            $deadline .=  "Still accepting applications. ";
+            if (!empty($formatted_date)) {
+              $deadline .= "Deadline extended to " . $formatted_date . ".";
+            }
 
+          } else if ($application_state == "Not yet available") {
+            $deadline .= $deadline_text;
+          } else {
+            if (!empty($deadline_text)) {
+              $deadline .= $deadline_text;
+            }
+            if (!empty($formatted_date)) {
+              if (!empty($deadline_text)) {
+                $deadline .= '<span class="pipe">|</span>';
+              }
+              $deadline .= $formatted_date;
+            }
+          }
+          $deadline .= '</div>';
+          $program_instance_markups[$pi_nid][] = $deadline;
+        }
+      }
       $program_instance_markups[$pi_nid][] = '</div>';
       $program_instance_markups[$pi_nid][] = '</div>';
     }
