@@ -1279,8 +1279,10 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
 
       // add program application deadline markup
       $application_state = $instance_wrapper->field_application_state->value();
-      if ($application_state == 'Closed') {
-        $program_instance_markups[$pi_nid][] = "The application is closed";
+      $waitlist = $instance_wrapper->field_waitlist_only->value();
+
+      if ($application_state == '4') {
+        $program_instance_markups[$pi_nid][] = "The application is closed.";
       } else {
         $program_deadline = $instance_wrapper->field_application_deadlines->value();
         foreach ($program_deadline as $pd) {
@@ -1293,13 +1295,17 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
             $formatted_date = $start_date->format('d M Y');
           }
           $deadline = '<div class="program-deadline">';
-          if ($application_state == 'Extended'){
-            $deadline .=  "Still accepting applications. ";
+          if ($application_state == '1'){
+            if($waitlist) {
+              $deadline .= "Still accepting applications for waitlist only. ";
+            } else {
+              $deadline .= "Still accepting applications. ";
+            }
             if (!empty($formatted_date)) {
               $deadline .= "Deadline extended to " . $formatted_date . ".";
             }
 
-          } else if ($application_state == "Not yet available") {
+          } else if ($application_state == "3") {
             $deadline .= $deadline_text;
           } else {
             if (!empty($deadline_text)) {
