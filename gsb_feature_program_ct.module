@@ -1279,7 +1279,7 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
 
       // add program application deadline markup
       $application_state = $instance_wrapper->field_application_state->value();
-      $waitlist = $instance_wrapper->field_waitlist_only->value();
+      //$waitlist = $instance_wrapper->field_waitlist_only->value();
 
       if ($application_state == '4') {
         $program_instance_markups[$pi_nid][] = "The application is closed.";
@@ -1295,17 +1295,18 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
             $formatted_date = $start_date->format('d M Y');
           }
           $deadline = '<div class="program-deadline">';
-          if ($application_state == '1'){
-            if($waitlist) {
-              $deadline .= "Still accepting applications for waitlist only. ";
-            } else {
-              $deadline .= "Still accepting applications. ";
-            }
-            if (!empty($formatted_date)) {
-              $deadline .= "Deadline extended to " . $formatted_date . ".";
-            }
-
-          } else if ($application_state == "3") {
+//          if ($application_state == '5'){
+//            if($waitlist) {
+//              $deadline .= "Still accepting applications for waitlist only. ";
+//            } else {
+//              $deadline .= "Still accepting applications. ";
+//            }
+//            if (!empty($formatted_date)) {
+//              $deadline .= "Deadline extended to " . $formatted_date . ".";
+//            }
+//
+//          } else
+          if ($application_state == "3" ) {
             $deadline .= $deadline_text;
           } else {
             if (!empty($deadline_text)) {
