@@ -1867,10 +1867,14 @@ function _gsb_feature_program_ct_get_all_program_instances($program_nids) {
   $query->fields('fid', array('field_instance_date_value'));
   $query->join('field_data_field_display_on_finder', 'dof', "n.nid = dof.entity_id AND dof.entity_type = 'node' AND dof.deleted = '0'");
   $query->fields('dof', array('field_display_on_finder_value'));
+  // Application State
+  $query->join('field_data_field_application_state', 'das', "n.nid = das.entity_id AND das.entity_type = 'node' AND das.deleted = '0'");
+  $query->addField('das', 'field_application_state_value', 'application_state');
   $query->condition('nodefp.nid', $program_nids, 'IN');
   $query->condition('n.status', '1');
   $query->condition('n.type', 'program_instance');
-  $query->condition('dof.field_display_on_finder_value', '1');
+  $query->condition(db_or()->condition('das.field_application_state_value', array('2', '1'), 'IN')->condition(db_and()->condition('das.field_application_state_value', '3')->condition('dof.field_display_on_finder_value', '1')));
+ //$query->condition('dof.field_display_on_finder_value', '1');
   $query->orderBy('fid.field_instance_date_value', 'ASC');
   $results = $query->execute();
 
@@ -1929,14 +1933,17 @@ function _gsb_feature_program_ct_get_current_program_instances($program_nids) {
   $query->fields('nodefp', array('nid'));
   $query->join('field_data_field_instance_date', 'fid', "n.nid = fid.entity_id AND fid.entity_type = 'node' AND fid.deleted = '0'");
   $query->fields('fid', array('field_instance_date_value'));
-  //$query->join('field_data_field_display_on_finder_select', 'fdo', "n.nid = fdo.entity_id AND fdo.entity_type = 'node' AND fdo.deleted = '0'");
   $query->join('field_data_field_display_on_finder', 'dof', "n.nid = dof.entity_id AND dof.entity_type = 'node' AND dof.deleted = '0'");
+  // Application State
+  $query->join('field_data_field_application_state', 'das', "n.nid = das.entity_id AND das.entity_type = 'node' AND das.deleted = '0'");
+  $query->addField('das', 'field_application_state_value', 'application_state');
   $query->condition('nodefp.nid', $program_nids, 'IN');
   $query->condition('n.status', '1');
   $query->condition('n.type', 'program_instance');
   $query->condition('fid.field_instance_date_value', $today, '>=');
-  //$query->condition('fdo.field_display_on_finder_select_value', 'visible', '=');
-  $query->condition('dof.field_display_on_finder_value', '1');
+  //$query->condition('dof.field_display_on_finder_value', '1');
+  $query->condition(db_or()->condition('das.field_application_state_value', array('2', '1'), 'IN')->condition(db_and()->condition('das.field_application_state_value', '3')->condition('dof.field_display_on_finder_value', '1')));
+
   $query->orderBy('fid.field_instance_date_value', 'ASC');
   $results = $query->execute();
 
