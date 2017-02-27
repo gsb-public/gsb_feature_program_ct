@@ -1873,11 +1873,16 @@ function _gsb_feature_program_ct_get_all_program_instances($program_nids) {
   $query->condition('nodefp.nid', $program_nids, 'IN');
   $query->condition('n.status', '1');
   $query->condition('n.type', 'program_instance');
-  $query->condition(db_or()->condition('das.field_application_state_value', array('2', '1'), 'IN')->condition(db_and()->condition('das.field_application_state_value', '3')->condition('dof.field_display_on_finder_value', '1')));
+  $query->condition(db_or()
+      ->condition('das.field_application_state_value', array('2', '1'), 'IN')
+      ->condition(db_and()
+        ->condition('das.field_application_state_value', '3')
+        ->condition('dof.field_display_on_finder_value', '1')));
+
  //$query->condition('dof.field_display_on_finder_value', '1');
+  $query->orderBy('das.field_application_state_value', 'ASC');
   $query->orderBy('fid.field_instance_date_value', 'ASC');
   $results = $query->execute();
-
   $program_instances = array();
   $program_instances_no_date = array();
   foreach($results as $instance) {
@@ -1903,7 +1908,6 @@ function _gsb_feature_program_ct_get_all_program_instances($program_nids) {
 function _gsb_feature_program_ct_get_current_program_instances_ids($program_nids) {
 
   $results = _gsb_feature_program_ct_get_current_program_instances($program_nids);
-
   $program_instances = array();
   foreach($results as $instance) {
     if (empty($program_instances[$instance->field_program_target_id])) {
@@ -1942,8 +1946,14 @@ function _gsb_feature_program_ct_get_current_program_instances($program_nids) {
   $query->condition('n.type', 'program_instance');
   $query->condition('fid.field_instance_date_value', $today, '>=');
   //$query->condition('dof.field_display_on_finder_value', '1');
-  $query->condition(db_or()->condition('das.field_application_state_value', array('2', '1'), 'IN')->condition(db_and()->condition('das.field_application_state_value', '3')->condition('dof.field_display_on_finder_value', '1')));
 
+    $query->condition(db_or()
+      ->condition('das.field_application_state_value', array('2', '1'), 'IN')
+      ->condition(db_and()
+        ->condition('das.field_application_state_value', '3')
+        ->condition('dof.field_display_on_finder_value', '1')));
+
+  $query->orderBy('das.field_application_state_value', 'ASC');
   $query->orderBy('fid.field_instance_date_value', 'ASC');
   $results = $query->execute();
 
