@@ -1132,7 +1132,7 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
   $language = $entity->language;
 
   // Lookup the program instances for this program
-  $program_instance_nids = _gsb_feature_program_ct_get_all_program_instances(array($nid));
+  $program_instance_nids = _gsb_feature_program_ct_get_all_program_instances(array($nid), "all");
 
   $node_wrapper = entity_metadata_wrapper('node', $nid);
   // get listing page url from program's program category
@@ -1295,17 +1295,7 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
             $formatted_date = $start_date->format('d M Y');
           }
           $deadline = '<div class="program-deadline">';
-//          if ($application_state == '5'){
-//            if($waitlist) {
-//              $deadline .= "Still accepting applications for waitlist only. ";
-//            } else {
-//              $deadline .= "Still accepting applications. ";
-//            }
-//            if (!empty($formatted_date)) {
-//              $deadline .= "Deadline extended to " . $formatted_date . ".";
-//            }
-//
-//          } else
+
           if ($application_state == "3" ) {
             $deadline .= $deadline_text;
           } else {
@@ -1723,8 +1713,7 @@ function gsb_feature_program_ct_topics_location_category($entity, $type, $view_m
 
   $node_wrapper = entity_metadata_wrapper('node', $nid);
 
-  $program_instances = _gsb_feature_program_ct_get_all_program_instances(array($nid));
-
+  $program_instances = _gsb_feature_program_ct_get_all_program_instances(array($nid), "all");
   // get listing page url from program's program category
   $program_category = $node_wrapper->field_program_category->value();
   $program_listing_page_url = '';
@@ -1799,7 +1788,6 @@ function gsb_feature_program_ct_topics_location_category($entity, $type, $view_m
       implode('', $topics_location_categories_markup) .
     '</div>'
   );
-
   $entity->content['gsb_program_topics_location_category'] = $content_wrapper;
 }
 
@@ -1854,9 +1842,9 @@ function gsb_feature_program_ct_show_all_programs($entity, $type, $view_mode, $l
 
 /**
  * Get all program instances related to each of these programs
+ * Added $type to add condition whether to apply application state or not
  */
-function _gsb_feature_program_ct_get_all_program_instances($program_nids) {
-
+function _gsb_feature_program_ct_get_all_program_instances($program_nids,$type) {
   $query = db_select('node', 'n');
   $query->fields('n', array('nid', 'status', 'type'));
   $query->join('field_data_field_program', 'fp', "n.nid = fp.entity_id AND fp.entity_type = 'node' AND fp.deleted = '0'");
@@ -1873,12 +1861,17 @@ function _gsb_feature_program_ct_get_all_program_instances($program_nids) {
   $query->condition('nodefp.nid', $program_nids, 'IN');
   $query->condition('n.status', '1');
   $query->condition('n.type', 'program_instance');
+  //Add application state for featured programs
+  if ($type == "featured") {
   $query->condition(db_or()
       ->condition('das.field_application_state_value', array('2', '1'), 'IN')
       ->condition(db_and()
         ->condition('das.field_application_state_value', '3')
         ->condition('dof.field_display_on_finder_value', '1')));
-  
+  } else {
+    //use display on finder flag to get all the instances for program ct
+    $query->condition('dof.field_display_on_finder_value', '1');
+  }
   $query->orderBy('fid.field_instance_date_value', 'ASC');
   $results = $query->execute();
   $program_instances = array();
@@ -1956,6 +1949,5 @@ function _gsb_feature_program_ct_get_current_program_instances($program_nids) {
   foreach($results as $instance) {
     $program_instances[] = $instance;
   }
-
   return $program_instances;
 }
