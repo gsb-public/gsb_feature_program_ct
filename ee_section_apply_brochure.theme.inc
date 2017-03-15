@@ -78,8 +78,9 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_ee_section_app
   $query->fields('fid', array('field_instance_date_value'));
   $query->join('field_data_field_display_on_finder', 'dof', "n.nid = dof.entity_id AND dof.entity_type = 'node' AND dof.deleted = '0'");
   $query->fields('dof', array('field_display_on_finder_value'));
-  $query->join('field_data_field_is_application_open', 'ao', "n.nid = ao.entity_id AND ao.entity_type = 'node' AND ao.deleted = '0'");
-  $query->fields('ao', array('field_is_application_open_value'));
+  // Application State
+  $query->join('field_data_field_application_state', 'das', "n.nid = das.entity_id AND das.entity_type = 'node' AND das.deleted = '0'");
+  $query->fields('das', array('field_application_state_value'));
   $query->condition('nodefp.nid', $nid);
   $query->condition('n.status', '1');
   $query->condition('n.type', 'program_instance');
@@ -93,11 +94,14 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_ee_section_app
   foreach ($results as $record) {
     $instance_wrapper = entity_metadata_wrapper('node', $record->nid);
     $display_on_finder = $instance_wrapper->field_display_on_finder->value();
-    $is_application_open = $instance_wrapper->field_is_application_open->value();
+    $application_state = $instance_wrapper->field_application_state->value();
+
     if ($display_on_finder) {
       $countDisplay++;
     }
-    if ($display_on_finder && $is_application_open) {
+
+    if ($display_on_finder && in_array($application_state,array('2','1'))) {
+
       $apply_button_url = '';
       $query = '';
       if ($program_category == 'Exec Ed Program') {
