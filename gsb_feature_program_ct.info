@@ -62,6 +62,7 @@ features[ds_layout_settings][] = node|program|field_program_participants_intro
 features[ds_layout_settings][] = node|program|field_program_related
 features[ds_layout_settings][] = node|program|field_program_who_should_attend
 features[ds_layout_settings][] = node|program|idea_story_related
+features[ds_layout_settings][] = node|program|page_featured_programs
 features[ds_layout_settings][] = node|program|program_explore_other
 features[ds_view_modes][] = field_program_ctas
 features[ds_view_modes][] = field_program_curriculum
