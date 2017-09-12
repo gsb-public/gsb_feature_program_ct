@@ -686,6 +686,21 @@ function gsb_feature_program_ct_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|program|page_featured_programs';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'program';
+  $ds_fieldsetting->view_mode = 'page_featured_programs';
+  $ds_fieldsetting->settings = array(
+    'title' => array(
+      'weight' => '1',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+  );
+  $export['node|program|page_featured_programs'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|program|program_explore_other';
   $ds_fieldsetting->entity_type = 'node';
   $ds_fieldsetting->bundle = 'program';
@@ -879,30 +894,30 @@ function gsb_feature_program_ct_ds_layout_settings_info() {
         0 => 'field_overview_intro',
         1 => 'field_overview_description',
         2 => 'group_key_benefits',
-        3 => 'field_key_benefits_intro',
-        4 => 'group_who_should_attend',
-        6 => 'field_key_benefits_description',
-        7 => 'field_event_who_attend',
+        3 => 'group_who_should_attend',
+        4 => 'field_key_benefits_intro',
+        5 => 'field_key_benefits_description',
+        6 => 'field_event_who_attend',
       ),
       'right' => array(
-        5 => 'group_wrapper_featured_item',
+        7 => 'group_wrapper_featured_item',
         8 => 'gsb_program_program_instance_fields',
         9 => 'field_featured_superhead',
         10 => 'field_program_director_name',
-        11 => 'field_program_contact_link',
-        12 => 'field_featured_event',
+        11 => 'field_featured_event',
+        12 => 'field_program_contact_link',
       ),
       'learn' => array(
         13 => 'field_learn_more_photo',
         14 => 'field_video',
         15 => 'group_wrapper_learn',
         23 => 'group_wrapper_curriculum',
-        24 => 'program_curriculum_header',
-        25 => 'group_wrapper_application_req',
+        24 => 'group_wrapper_application_req',
+        25 => 'program_curriculum_header',
         26 => 'gsb_program_curriculum_blurb',
         27 => 'group_wrapper_participant',
-        28 => 'program_participant_header',
-        29 => 'field_additional_pages',
+        28 => 'field_additional_pages',
+        29 => 'program_participant_header',
         30 => 'gsb_program_participant_profile_blurb',
         31 => 'program_application_reqs_header',
         32 => 'gsb_program_application_requirements_blurb',
@@ -927,16 +942,16 @@ function gsb_feature_program_ct_ds_layout_settings_info() {
       'field_overview_intro' => 'left',
       'field_overview_description' => 'left',
       'group_key_benefits' => 'left',
-      'field_key_benefits_intro' => 'left',
       'group_who_should_attend' => 'left',
-      'group_wrapper_featured_item' => 'right',
+      'field_key_benefits_intro' => 'left',
       'field_key_benefits_description' => 'left',
       'field_event_who_attend' => 'left',
+      'group_wrapper_featured_item' => 'right',
       'gsb_program_program_instance_fields' => 'right',
       'field_featured_superhead' => 'right',
       'field_program_director_name' => 'right',
-      'field_program_contact_link' => 'right',
       'field_featured_event' => 'right',
+      'field_program_contact_link' => 'right',
       'field_learn_more_photo' => 'learn',
       'field_video' => 'learn',
       'group_wrapper_learn' => 'learn',
@@ -948,12 +963,12 @@ function gsb_feature_program_ct_ds_layout_settings_info() {
       'gsb_program_show_all_programs' => 'explore',
       'gsb_program_topics_location_category' => 'footer',
       'group_wrapper_curriculum' => 'learn',
-      'program_curriculum_header' => 'learn',
       'group_wrapper_application_req' => 'learn',
+      'program_curriculum_header' => 'learn',
       'gsb_program_curriculum_blurb' => 'learn',
       'group_wrapper_participant' => 'learn',
-      'program_participant_header' => 'learn',
       'field_additional_pages' => 'learn',
+      'program_participant_header' => 'learn',
       'gsb_program_participant_profile_blurb' => 'learn',
       'program_application_reqs_header' => 'learn',
       'gsb_program_application_requirements_blurb' => 'learn',
@@ -1398,6 +1413,15 @@ function gsb_feature_program_ct_ds_view_modes_info() {
     'node' => 'node',
   );
   $export['field_program_related'] = $ds_view_mode;
+
+  $ds_view_mode = new stdClass();
+  $ds_view_mode->api_version = 1;
+  $ds_view_mode->view_mode = 'page_featured_programs';
+  $ds_view_mode->label = 'Page Featured Programs';
+  $ds_view_mode->entities = array(
+    'node' => 'node',
+  );
+  $export['page_featured_programs'] = $ds_view_mode;
 
   return $export;
 }

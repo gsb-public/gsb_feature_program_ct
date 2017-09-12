@@ -169,6 +169,9 @@ function gsb_feature_program_ct_strongarm() {
       'field_program_who_should_attend' => array(
         'custom_settings' => TRUE,
       ),
+      'page_featured_programs' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -229,6 +232,14 @@ function gsb_feature_program_ct_strongarm() {
             'weight' => '25',
             'visible' => FALSE,
           ),
+          'featured_program' => array(
+            'weight' => '15',
+            'visible' => FALSE,
+          ),
+          'page_featured_programs' => array(
+            'weight' => '22',
+            'visible' => FALSE,
+          ),
         ),
         'gsb_program_program_instance_fields' => array(
           'teaser' => array(
@@ -267,6 +278,14 @@ function gsb_feature_program_ct_strongarm() {
             'weight' => '15',
             'visible' => FALSE,
           ),
+          'featured_program' => array(
+            'weight' => '6',
+            'visible' => FALSE,
+          ),
+          'page_featured_programs' => array(
+            'weight' => '13',
+            'visible' => FALSE,
+          ),
         ),
         'gsb_program_program_instance_faculty_fields' => array(
           'default' => array(
@@ -295,6 +314,14 @@ function gsb_feature_program_ct_strongarm() {
           ),
           'field_program_who_should_attend' => array(
             'weight' => '22',
+            'visible' => FALSE,
+          ),
+          'featured_program' => array(
+            'weight' => '12',
+            'visible' => FALSE,
+          ),
+          'page_featured_programs' => array(
+            'weight' => '19',
             'visible' => FALSE,
           ),
         ),
@@ -327,6 +354,14 @@ function gsb_feature_program_ct_strongarm() {
             'weight' => '28',
             'visible' => FALSE,
           ),
+          'featured_program' => array(
+            'weight' => '18',
+            'visible' => FALSE,
+          ),
+          'page_featured_programs' => array(
+            'weight' => '25',
+            'visible' => FALSE,
+          ),
         ),
         'gsb_program_participant_profile_blurb' => array(
           'default' => array(
@@ -355,6 +390,14 @@ function gsb_feature_program_ct_strongarm() {
           ),
           'field_program_who_should_attend' => array(
             'weight' => '30',
+            'visible' => FALSE,
+          ),
+          'featured_program' => array(
+            'weight' => '20',
+            'visible' => FALSE,
+          ),
+          'page_featured_programs' => array(
+            'weight' => '27',
             'visible' => FALSE,
           ),
         ),
@@ -387,6 +430,14 @@ function gsb_feature_program_ct_strongarm() {
             'weight' => '69',
             'visible' => FALSE,
           ),
+          'featured_program' => array(
+            'weight' => '21',
+            'visible' => FALSE,
+          ),
+          'page_featured_programs' => array(
+            'weight' => '28',
+            'visible' => FALSE,
+          ),
         ),
         'gsb_program_topics_location_category' => array(
           'default' => array(
@@ -417,6 +468,14 @@ function gsb_feature_program_ct_strongarm() {
             'weight' => '27',
             'visible' => FALSE,
           ),
+          'featured_program' => array(
+            'weight' => '17',
+            'visible' => FALSE,
+          ),
+          'page_featured_programs' => array(
+            'weight' => '24',
+            'visible' => FALSE,
+          ),
         ),
         'gsb_program_show_all_programs' => array(
           'default' => array(
@@ -445,6 +504,14 @@ function gsb_feature_program_ct_strongarm() {
           ),
           'field_program_who_should_attend' => array(
             'weight' => '26',
+            'visible' => FALSE,
+          ),
+          'featured_program' => array(
+            'weight' => '16',
+            'visible' => FALSE,
+          ),
+          'page_featured_programs' => array(
+            'weight' => '23',
             'visible' => FALSE,
           ),
         ),
@@ -582,6 +649,16 @@ function gsb_feature_program_ct_strongarm() {
   $strongarm->name = 'workbench_moderation_default_state_program';
   $strongarm->value = 'draft';
   $export['workbench_moderation_default_state_program'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'xmlsitemap_settings_node_program';
+  $strongarm->value = array(
+    'status' => '1',
+    'priority' => '0.5',
+  );
+  $export['xmlsitemap_settings_node_program'] = $strongarm;
 
   return $export;
 }

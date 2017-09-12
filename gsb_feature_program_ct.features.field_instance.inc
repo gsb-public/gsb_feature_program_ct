@@ -202,6 +202,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'field_collection_fields',
         'weight' => 68,
       ),
+      'featured_program' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 19,
+      ),
       'field_program_ctas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -262,6 +268,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 43,
       ),
+      'page_featured_programs' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 26,
+      ),
       'program_explore_other' => array(
         'label' => 'hidden',
         'settings' => array(),
@@ -309,6 +321,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 31,
+      ),
+      'featured_program' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 27,
       ),
       'field_program_ctas' => array(
         'label' => 'hidden',
@@ -372,6 +390,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 25,
+      ),
+      'page_featured_programs' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 34,
       ),
       'program_explore_other' => array(
         'label' => 'hidden',
@@ -445,6 +469,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 44,
       ),
+      'featured_program' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 39,
+      ),
       'field_program_ctas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -504,6 +534,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 14,
+      ),
+      'page_featured_programs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 46,
       ),
       'program_explore_other' => array(
         'label' => 'above',
@@ -622,6 +658,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 62,
       ),
+      'featured_program' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 57,
+      ),
       'field_program_ctas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -682,6 +724,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'page_featured_programs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 64,
+      ),
       'program_explore_other' => array(
         'label' => 'above',
         'settings' => array(),
@@ -736,6 +784,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 63,
+      ),
+      'featured_program' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 58,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -796,6 +850,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'page_featured_programs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 65,
       ),
       'program_explore_other' => array(
         'label' => 'above',
@@ -871,6 +931,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 65,
       ),
+      'featured_program' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 60,
+      ),
       'field_program_ctas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -931,6 +997,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'page_featured_programs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 67,
+      ),
       'program_explore_other' => array(
         'label' => 'above',
         'settings' => array(),
@@ -979,6 +1051,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 37,
+      ),
+      'featured_program' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 33,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -1040,6 +1118,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 34,
       ),
+      'page_featured_programs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 40,
+      ),
       'program_explore_other' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1095,6 +1179,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
           'conditions' => array(),
         ),
         'type' => 'link_default',
+        'weight' => 13,
+      ),
+      'featured_program' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 13,
       ),
       'field_program_ctas' => array(
@@ -1159,6 +1249,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 23,
+      ),
+      'page_featured_programs' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 20,
       ),
       'program_explore_other' => array(
         'label' => 'hidden',
@@ -1235,6 +1331,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'link_default',
         'weight' => 14,
       ),
+      'featured_program' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 14,
+      ),
       'field_program_ctas' => array(
         'label' => 'hidden',
         'module' => 'link',
@@ -1297,6 +1399,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 24,
+      ),
+      'page_featured_programs' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 21,
       ),
       'program_explore_other' => array(
         'label' => 'hidden',
@@ -1370,6 +1478,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 51,
       ),
+      'featured_program' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 46,
+      ),
       'field_program_ctas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1432,6 +1546,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 10,
+      ),
+      'page_featured_programs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 53,
       ),
       'program_explore_other' => array(
         'label' => 'above',
@@ -1550,6 +1670,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 52,
       ),
+      'featured_program' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 47,
+      ),
       'field_program_ctas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1612,6 +1738,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 11,
+      ),
+      'page_featured_programs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 54,
       ),
       'program_explore_other' => array(
         'label' => 'above',
@@ -1730,6 +1862,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 30,
       ),
+      'featured_program' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 26,
+      ),
       'field_program_ctas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1792,6 +1930,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 12,
+      ),
+      'page_featured_programs' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 33,
       ),
       'program_explore_other' => array(
         'label' => 'hidden',
@@ -1909,6 +2053,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 43,
       ),
+      'featured_program' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 38,
+      ),
       'field_program_ctas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1968,6 +2118,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 41,
+      ),
+      'page_featured_programs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 45,
       ),
       'program_explore_other' => array(
         'label' => 'above',
@@ -2048,6 +2204,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 64,
       ),
+      'featured_program' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 59,
+      ),
       'field_program_ctas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2107,6 +2269,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'page_featured_programs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 66,
       ),
       'program_explore_other' => array(
         'label' => 'above',
@@ -2179,6 +2347,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 55,
       ),
+      'featured_program' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 50,
+      ),
       'field_program_ctas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2239,6 +2413,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'page_featured_programs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 57,
+      ),
       'program_explore_other' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2285,6 +2465,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 56,
+      ),
+      'featured_program' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 51,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -2346,6 +2532,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'page_featured_programs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 58,
+      ),
       'program_explore_other' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2396,6 +2588,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 4,
+      ),
+      'featured_program' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -2459,6 +2657,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 13,
+      ),
+      'page_featured_programs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
       ),
       'program_explore_other' => array(
         'label' => 'above',
@@ -2573,10 +2777,23 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(
           'conditions' => array(),
           'links' => 0,
+          'use_content_language' => TRUE,
           'view_mode' => 'teaser',
         ),
         'type' => 'entityreference_entity_view',
         'weight' => 7,
+      ),
+      'featured_program' => array(
+        'label' => 'hidden',
+        'module' => 'gsb_feature_existing_node_list_fpp',
+        'settings' => array(
+          'conditions' => array(),
+          'links' => 0,
+          'use_content_language' => TRUE,
+          'view_mode' => 'teaser',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 0,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -2638,6 +2855,16 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 26,
       ),
+      'page_featured_programs' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'conditions' => array(),
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 0,
+      ),
       'program_explore_other' => array(
         'label' => 'hidden',
         'settings' => array(),
@@ -2692,6 +2919,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 6,
+      ),
+      'featured_program' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -2752,6 +2985,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 17,
+      ),
+      'page_featured_programs' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 15,
       ),
       'program_explore_other' => array(
         'label' => 'hidden',
@@ -2863,6 +3102,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 49,
       ),
+      'featured_program' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 44,
+      ),
       'field_program_ctas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2925,6 +3170,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 46,
+      ),
+      'page_featured_programs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 51,
       ),
       'program_explore_other' => array(
         'label' => 'above',
@@ -3004,6 +3255,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 53,
       ),
+      'featured_program' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 48,
+      ),
       'field_program_ctas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3064,6 +3321,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'page_featured_programs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 55,
+      ),
       'program_explore_other' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3121,6 +3384,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
           'conditions' => array(),
         ),
         'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'featured_program' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 4,
       ),
       'field_program_ctas' => array(
@@ -3182,6 +3451,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 45,
+      ),
+      'page_featured_programs' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
       ),
       'program_explore_other' => array(
         'label' => 'hidden',
@@ -3299,6 +3574,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 3,
       ),
+      'featured_program' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
       'field_program_ctas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3358,6 +3639,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'page_featured_programs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 10,
       ),
       'program_explore_other' => array(
         'label' => 'above',
@@ -3476,6 +3763,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 38,
       ),
+      'featured_program' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 34,
+      ),
       'field_program_ctas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3536,6 +3829,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 36,
       ),
+      'page_featured_programs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 41,
+      ),
       'program_explore_other' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3584,6 +3883,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 36,
+      ),
+      'featured_program' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 32,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -3644,6 +3949,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 33,
+      ),
+      'page_featured_programs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 39,
       ),
       'program_explore_other' => array(
         'label' => 'above',
@@ -3711,6 +4022,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'image',
         'weight' => 8,
       ),
+      'featured_program' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 10,
+      ),
       'field_program_ctas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3770,6 +4087,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 19,
+      ),
+      'page_featured_programs' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 17,
       ),
       'program_explore_other' => array(
         'label' => 'above',
@@ -3850,6 +4173,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 58,
       ),
+      'featured_program' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 53,
+      ),
       'field_program_ctas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3909,6 +4238,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'page_featured_programs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 60,
       ),
       'program_explore_other' => array(
         'label' => 'above',
@@ -3982,6 +4317,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 35,
       ),
+      'featured_program' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 31,
+      ),
       'field_program_ctas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4041,6 +4382,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 32,
+      ),
+      'page_featured_programs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 38,
       ),
       'program_explore_other' => array(
         'label' => 'above',
@@ -4114,6 +4461,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 48,
       ),
+      'featured_program' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 43,
+      ),
       'field_program_ctas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4176,6 +4529,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 30,
+      ),
+      'page_featured_programs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 50,
       ),
       'program_explore_other' => array(
         'label' => 'above',
@@ -4252,6 +4611,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 1,
       ),
+      'featured_program' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 1,
+      ),
       'field_program_ctas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4311,6 +4676,24 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 42,
+      ),
+      'page_featured_programs' => array(
+        'label' => 'hidden',
+        'module' => 'smart_trim',
+        'settings' => array(
+          'conditions' => array(),
+          'more_link' => FALSE,
+          'more_text' => 'Read more',
+          'summary_handler' => 'full',
+          'trim_length' => 300,
+          'trim_link' => FALSE,
+          'trim_options' => array(),
+          'trim_preserve_tags' => '',
+          'trim_suffix' => '...',
+          'trim_type' => 'chars',
+        ),
+        'type' => 'smart_trim_format',
+        'weight' => 2,
       ),
       'program_explore_other' => array(
         'label' => 'hidden',
@@ -4428,6 +4811,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 0,
       ),
+      'featured_program' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
       'field_program_ctas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4487,6 +4876,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'page_featured_programs' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
       ),
       'program_explore_other' => array(
         'label' => 'hidden',
@@ -4605,6 +5000,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 41,
       ),
+      'featured_program' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 37,
+      ),
       'field_program_ctas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4664,6 +5065,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 38,
+      ),
+      'page_featured_programs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 44,
       ),
       'program_explore_other' => array(
         'label' => 'above',
@@ -4776,6 +5183,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 33,
       ),
+      'featured_program' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 29,
+      ),
       'field_program_ctas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4838,6 +5251,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'page_featured_programs' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 36,
       ),
       'program_explore_other' => array(
         'label' => 'hidden',
@@ -4956,6 +5375,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 32,
       ),
+      'featured_program' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 28,
+      ),
       'field_program_ctas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -5018,6 +5443,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'page_featured_programs' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 35,
       ),
       'program_explore_other' => array(
         'label' => 'hidden',
@@ -5141,6 +5572,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 60,
       ),
+      'featured_program' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 55,
+      ),
       'field_program_ctas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -5201,6 +5638,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'page_featured_programs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 62,
+      ),
       'program_explore_other' => array(
         'label' => 'above',
         'settings' => array(),
@@ -5248,6 +5691,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 59,
+      ),
+      'featured_program' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 54,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -5308,6 +5757,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'page_featured_programs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 61,
       ),
       'program_explore_other' => array(
         'label' => 'above',
@@ -5381,6 +5836,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 39,
       ),
+      'featured_program' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 35,
+      ),
       'field_program_ctas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -5446,6 +5907,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'ds_taxonomy_view_mode',
         'weight' => 1,
       ),
+      'page_featured_programs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 42,
+      ),
       'program_explore_other' => array(
         'label' => 'above',
         'settings' => array(),
@@ -5508,6 +5975,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'link_default',
         'weight' => 7,
       ),
+      'featured_program' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
+      ),
       'field_program_ctas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -5564,6 +6037,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
       ),
       'idea_story_related' => array(
         'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 16,
+      ),
+      'page_featured_programs' => array(
+        'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 16,
@@ -5640,6 +6119,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 57,
       ),
+      'featured_program' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 52,
+      ),
       'field_program_ctas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -5699,6 +6184,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'page_featured_programs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 59,
       ),
       'program_explore_other' => array(
         'label' => 'above',
@@ -5760,6 +6251,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 34,
       ),
+      'featured_program' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 30,
+      ),
       'field_program_ctas' => array(
         'label' => 'hidden',
         'settings' => array(),
@@ -5819,6 +6316,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 31,
+      ),
+      'page_featured_programs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 37,
       ),
       'program_explore_other' => array(
         'label' => 'above',
@@ -5884,10 +6387,17 @@ function gsb_feature_program_ct_field_default_field_instances() {
             ),
           ),
           'links' => 0,
+          'use_content_language' => TRUE,
           'view_mode' => 'program_contact',
         ),
         'type' => 'entityreference_entity_view',
         'weight' => 6,
+      ),
+      'featured_program' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -5919,6 +6429,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(
           'conditions' => array(),
           'links' => 0,
+          'use_content_language' => TRUE,
           'view_mode' => 'field_program_director',
         ),
         'type' => 'entityreference_entity_view',
@@ -5953,6 +6464,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 15,
+      ),
+      'page_featured_programs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 14,
       ),
       'program_explore_other' => array(
         'label' => 'above',
@@ -6005,6 +6522,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 15,
+      ),
+      'featured_program' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 22,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -6066,6 +6589,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 35,
       ),
+      'page_featured_programs' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 29,
+      ),
       'program_explore_other' => array(
         'label' => 'above',
         'settings' => array(),
@@ -6120,6 +6649,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 45,
       ),
+      'featured_program' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 40,
+      ),
       'field_program_ctas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -6168,6 +6703,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(
           'conditions' => array(),
           'links' => 0,
+          'use_content_language' => TRUE,
           'view_mode' => 'idea_story_related',
         ),
         'type' => 'entityreference_entity_view',
@@ -6184,6 +6720,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 27,
+      ),
+      'page_featured_programs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 47,
       ),
       'program_explore_other' => array(
         'label' => 'above',
@@ -6236,6 +6778,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 46,
+      ),
+      'featured_program' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 41,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -6301,6 +6849,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 28,
       ),
+      'page_featured_programs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 48,
+      ),
       'program_explore_other' => array(
         'label' => 'above',
         'settings' => array(),
@@ -6348,6 +6902,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 47,
+      ),
+      'featured_program' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 42,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -6397,6 +6957,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(
           'conditions' => array(),
           'links' => 0,
+          'use_content_language' => TRUE,
           'view_mode' => 'idea_story_related',
         ),
         'type' => 'entityreference_entity_view',
@@ -6413,6 +6974,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 29,
+      ),
+      'page_featured_programs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 49,
       ),
       'program_explore_other' => array(
         'label' => 'above',
@@ -6464,6 +7031,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 61,
+      ),
+      'featured_program' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 56,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -6524,6 +7097,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'page_featured_programs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 63,
       ),
       'program_explore_other' => array(
         'label' => 'above',
@@ -6598,6 +7177,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 50,
       ),
+      'featured_program' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 45,
+      ),
       'field_program_ctas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -6657,6 +7242,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 47,
+      ),
+      'page_featured_programs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 52,
       ),
       'program_explore_other' => array(
         'label' => 'above',
@@ -6763,6 +7354,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 66,
       ),
+      'featured_program' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 61,
+      ),
       'field_program_ctas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -6823,6 +7420,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'page_featured_programs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 68,
+      ),
       'program_explore_other' => array(
         'label' => 'above',
         'settings' => array(),
@@ -6872,6 +7475,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 54,
+      ),
+      'featured_program' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 49,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -6933,6 +7542,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'page_featured_programs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 56,
+      ),
       'program_explore_other' => array(
         'label' => 'above',
         'settings' => array(),
@@ -6980,6 +7595,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 40,
+      ),
+      'featured_program' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 36,
       ),
       'field_program_ctas' => array(
         'label' => 'above',
@@ -7041,6 +7662,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 37,
       ),
+      'page_featured_programs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 43,
+      ),
       'program_explore_other' => array(
         'label' => 'hidden',
         'settings' => array(),
@@ -7101,6 +7728,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'type' => 'field_collection_fields',
         'weight' => 9,
       ),
+      'featured_program' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
+      ),
       'field_program_ctas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -7160,6 +7793,12 @@ function gsb_feature_program_ct_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'page_featured_programs' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 18,
       ),
       'program_explore_other' => array(
         'label' => 'above',
