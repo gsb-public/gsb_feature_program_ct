@@ -695,6 +695,13 @@ function gsb_feature_program_ct_ds_field_settings_info() {
       'weight' => '1',
       'label' => 'hidden',
       'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '1',
+        'wrapper' => 'h2',
+        'class' => '',
+        'ft' => array(),
+        'conditions' => array(),
+      ),
     ),
   );
   $export['node|program|page_featured_programs'] = $ds_fieldsetting;
@@ -1312,15 +1319,15 @@ function gsb_feature_program_ct_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'ds_content' => array(
-        0 => 'field_featured_event',
+        0 => 'gsb_feature_ee_program_display_featured_programs_program_location_field',
         1 => 'title',
-        2 => 'field_overview_description',
+        2 => 'field_overview_intro',
       ),
     ),
     'fields' => array(
-      'field_featured_event' => 'ds_content',
+      'gsb_feature_ee_program_display_featured_programs_program_location_field' => 'ds_content',
       'title' => 'ds_content',
-      'field_overview_description' => 'ds_content',
+      'field_overview_intro' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(

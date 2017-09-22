@@ -237,7 +237,7 @@ function gsb_feature_program_ct_strongarm() {
             'visible' => FALSE,
           ),
           'page_featured_programs' => array(
-            'weight' => '22',
+            'weight' => '24',
             'visible' => FALSE,
           ),
         ),
@@ -283,7 +283,7 @@ function gsb_feature_program_ct_strongarm() {
             'visible' => FALSE,
           ),
           'page_featured_programs' => array(
-            'weight' => '13',
+            'weight' => '15',
             'visible' => FALSE,
           ),
         ),
@@ -321,7 +321,7 @@ function gsb_feature_program_ct_strongarm() {
             'visible' => FALSE,
           ),
           'page_featured_programs' => array(
-            'weight' => '19',
+            'weight' => '21',
             'visible' => FALSE,
           ),
         ),
@@ -359,7 +359,7 @@ function gsb_feature_program_ct_strongarm() {
             'visible' => FALSE,
           ),
           'page_featured_programs' => array(
-            'weight' => '25',
+            'weight' => '26',
             'visible' => FALSE,
           ),
         ),
@@ -397,7 +397,7 @@ function gsb_feature_program_ct_strongarm() {
             'visible' => FALSE,
           ),
           'page_featured_programs' => array(
-            'weight' => '27',
+            'weight' => '28',
             'visible' => FALSE,
           ),
         ),
@@ -435,7 +435,7 @@ function gsb_feature_program_ct_strongarm() {
             'visible' => FALSE,
           ),
           'page_featured_programs' => array(
-            'weight' => '28',
+            'weight' => '29',
             'visible' => FALSE,
           ),
         ),
@@ -473,7 +473,7 @@ function gsb_feature_program_ct_strongarm() {
             'visible' => FALSE,
           ),
           'page_featured_programs' => array(
-            'weight' => '24',
+            'weight' => '9',
             'visible' => FALSE,
           ),
         ),
@@ -511,8 +511,14 @@ function gsb_feature_program_ct_strongarm() {
             'visible' => FALSE,
           ),
           'page_featured_programs' => array(
-            'weight' => '23',
+            'weight' => '25',
             'visible' => FALSE,
+          ),
+        ),
+        'gsb_feature_ee_program_display_featured_programs_program_location_field' => array(
+          'page_featured_programs' => array(
+            'weight' => '0',
+            'visible' => TRUE,
           ),
         ),
       ),
