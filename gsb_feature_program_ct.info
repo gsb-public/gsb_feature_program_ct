@@ -135,6 +135,7 @@ features[field_instance][] = node-program-field_event_who_attend
 features[field_instance][] = node-program-field_featured_event
 features[field_instance][] = node-program-field_featured_superhead
 features[field_instance][] = node-program-field_file_unlimited_public
+features[field_instance][] = node-program-field_image_key_image
 features[field_instance][] = node-program-field_image_or_video
 features[field_instance][] = node-program-field_key_benefits_description
 features[field_instance][] = node-program-field_key_benefits_intro
