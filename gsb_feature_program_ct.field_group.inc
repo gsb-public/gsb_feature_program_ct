@@ -599,6 +599,7 @@ function gsb_feature_program_ct_field_group_info() {
     'children' => array(
       0 => 'field_overview_description',
       1 => 'field_overview_intro',
+      2 => 'field_editorial_summary',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
