@@ -2578,7 +2578,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
     'custom_remove' => '',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This field does not appear on the content type; it is used for the meta description only. Set expectations for the page with this content. Include the primary keyword and a call to action. 150 character maximum.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -8206,6 +8206,7 @@ function gsb_feature_program_ct_field_default_field_instances() {
   t('Stories and Announcements');
   t('Superhead');
   t('Taxonomy VTab Prefix');
+  t('This field does not appear on the content type; it is used for the meta description only. Set expectations for the page with this content. Include the primary keyword and a call to action. 150 character maximum.');
   t('Time Commitment');
   t('Title');
   t('URL');
