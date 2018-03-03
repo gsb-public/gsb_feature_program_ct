@@ -324,10 +324,6 @@ function gsb_feature_program_ct_strongarm() {
             'weight' => '21',
             'visible' => FALSE,
           ),
-          'program_explore_other' => array(
-            'weight' => '0',
-            'visible' => FALSE,
-          ),
         ),
         'gsb_program_curriculum_blurb' => array(
           'default' => array(
@@ -364,10 +360,6 @@ function gsb_feature_program_ct_strongarm() {
           ),
           'page_featured_programs' => array(
             'weight' => '26',
-            'visible' => FALSE,
-          ),
-          'program_explore_other' => array(
-            'weight' => '0',
             'visible' => FALSE,
           ),
         ),
@@ -408,10 +400,6 @@ function gsb_feature_program_ct_strongarm() {
             'weight' => '28',
             'visible' => FALSE,
           ),
-          'program_explore_other' => array(
-            'weight' => '0',
-            'visible' => FALSE,
-          ),
         ),
         'gsb_program_application_requirements_blurb' => array(
           'default' => array(
@@ -448,10 +436,6 @@ function gsb_feature_program_ct_strongarm() {
           ),
           'page_featured_programs' => array(
             'weight' => '29',
-            'visible' => FALSE,
-          ),
-          'program_explore_other' => array(
-            'weight' => '0',
             'visible' => FALSE,
           ),
         ),
@@ -492,10 +476,6 @@ function gsb_feature_program_ct_strongarm() {
             'weight' => '9',
             'visible' => FALSE,
           ),
-          'program_explore_other' => array(
-            'weight' => '0',
-            'visible' => FALSE,
-          ),
         ),
         'gsb_program_show_all_programs' => array(
           'default' => array(
@@ -534,17 +514,13 @@ function gsb_feature_program_ct_strongarm() {
             'weight' => '25',
             'visible' => FALSE,
           ),
-          'program_explore_other' => array(
-            'weight' => '0',
-            'visible' => FALSE,
-          ),
         ),
         'gsb_feature_ee_program_display_featured_programs_program_location_field' => array(
           'page_featured_programs' => array(
             'weight' => '0',
             'visible' => TRUE,
           ),
-          'program_explore_other' => array(
+          'field_program_who_should_attend' => array(
             'weight' => '0',
             'visible' => FALSE,
           ),
