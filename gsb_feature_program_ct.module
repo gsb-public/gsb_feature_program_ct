@@ -295,7 +295,7 @@ function _gsb_feature_program_ct_create_ppp($node, $ppp_type) {
 
   $ppp_node->title = $node->title . ' --- ' . $ppp_type;
 
-  $ppp_node->status = 1;   // (1 or 0): published or unpublished
+  $ppp_node->status = 0;   // (1 or 0): published or unpublished
   $ppp_node->promote = 0;  // (1 or 0): promoted to front page or not
   $ppp_node->sticky = 0;   // (1 or 0): sticky at top of lists or not
   $ppp_node->comment = 0;  // 2 = comments open, 1 = comments closed, 0 = comments hidden
