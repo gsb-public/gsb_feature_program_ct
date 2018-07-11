@@ -7,7 +7,7 @@
   <div class="ee-section-footer-overlay">
     <div class="overlay-inner-wrapper">
       <?php if (!empty($ee_section_footer_title)) : ?>
-        <h1 class="ee-section-footer-title"><?php print $ee_section_footer_title; ?></h1>
+        <h2 class="ee-section-footer-title"><?php print $ee_section_footer_title; ?></h2>
       <?php endif; ?>
       <?php if (!empty($ee_section_footer_menu)) : ?>
         <div class="ee-section-footer-menu">
