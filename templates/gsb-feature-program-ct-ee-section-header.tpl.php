@@ -7,7 +7,7 @@
   <div class="ee-section-header-overlay">
     <div class="overlay-inner-wrapper">
       <?php if (!empty($ee_section_header_title)) : ?>
-        <h2 class="ee-section-header-title"><?php print $ee_section_header_title; ?></h2>
+        <span class="ee-section-header-title"><?php print $ee_section_header_title; ?></span>
       <?php endif; ?>
       <?php if (!empty($ee_section_header_menu)) : ?>
         <div class="ee-section-header-menu">
