@@ -4,7 +4,7 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_ee_section_app
 
   $node = menu_get_object();
 
-  if (empty($node)) {
+  if ($node == false || empty($node)) {
     return;
   }
 
@@ -15,6 +15,9 @@ function gsb_feature_program_ct_preprocess_gsb_feature_program_ct_ee_section_app
   if ($node->type == 'program_panelized_page') {
     $program_id = $node->field_program[$node->language][0]['target_id'];
     $node = node_load($program_id);
+    if ($node == false || empty($node)) {
+      return;
+    }
   }
 
   $language = $node->language;
