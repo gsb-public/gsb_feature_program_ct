@@ -1328,7 +1328,12 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
     $tuition = $instance_wrapper->field_tuition->value();
     $tuition_markup = '<div class="tuition-amount">';
     if (!empty($tuition['url'])) {
-      $tuition['attributes']['target'] = $tuition['attributes']['target'] == 0 ? '' : $tuition['attributes']['target'];
+      if (!empty($tuition['attributes']['target'])) {
+        $tuition['attributes']['target'] = $tuition['attributes']['target'] == 0 ? '' : $tuition['attributes']['target'];
+      }
+      else {
+        $tuition['attributes']['target'] = '';
+      }
       $tuition_markup .= l($tuition['title'], $tuition['url'], array('attributes' => $tuition['attributes']));
     }
     else {
