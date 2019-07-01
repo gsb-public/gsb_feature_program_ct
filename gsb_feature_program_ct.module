@@ -1437,7 +1437,8 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
   $topics_markup = '';
   $count = count($topic_names);
   foreach($topic_names as $delta => $item) {
-    $path = $program_listing_page_url . '?program-topic=' . str_replace(' ', '-', strtolower($item));
+    $item_link = str_replace('&', '', strtolower($item));
+    $path = $program_listing_page_url . '?program-topic=' . str_replace(' ', '-', strtolower($item_link));
     $topics_markup .= '<a href="' . base_path() . $path . '">' . check_plain($item) . '</a>';
     if ($delta != $count - 1) {
       $topics_markup .= '<span class="separator">' . check_plain(', ') . '</span>';
