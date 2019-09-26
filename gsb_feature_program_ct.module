@@ -1275,7 +1275,10 @@ function gsb_feature_program_ct_program_instance_fields($entity, $type, $view_mo
 
       $program_instance_markups[$pi_nid][] = '<div class="instance-item-wrapper application-wrapper">';
       $program_instance_markups[$pi_nid][] = '<h3 class="app-requirements-link">' . theme('link', $link) . '</h3>';
-      $program_instance_markups[$pi_nid][] = $instance_wrapper->field_admission_statement->value()['safe_value'];
+
+      if ($instance_wrapper->field_admission_statement->value()['safe_value'] !== '') {
+        $program_instance_markups[$pi_nid][] = $instance_wrapper->field_admission_statement->value()['safe_value'];
+      }
       $program_instance_markups[$pi_nid][] = '<div class="program-deadline-wrapper">';
       $program_instance_markups[$pi_nid][] = '<h4 class="deadline-header">Deadline</h4>';
 
